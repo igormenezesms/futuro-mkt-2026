@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuro Corp | Strategic Board 2026</title>
+    <title>Futuro Corp | Vision 2026</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500;700;900&family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;500;700;900&family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- BRAND SYSTEM FUSION --- */
+        /* --- SYSTEM DNA --- */
         :root {
-            /* Cores Oficiais */
-            --corp-blue: #19253f;       
-            --corp-orange: #e4702b;     
-            --grid-line: rgba(255, 255, 255, 0.1); 
+            /* Palette Fusão */
+            --navy-base: #19253f;       /* O Azul do Colega (Base) */
+            --navy-dark: #0f182a;       /* Profundidade */
+            --orange-futuro: #e4702b;   /* O Laranja Oficial */
             --white: #FFFFFF;
-
-            /* UI Glass + Glow */
-            --glass-surface: rgba(255, 255, 255, 0.03); 
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --blur-strength: 10px;
+            --grid-line: rgba(255, 255, 255, 0.08); /* Linhas mais sutis */
+            
+            /* Glass System (Minha Assinatura) */
+            --glass-bg: rgba(25, 37, 63, 0.6); /* Baseado no Azul da marca */
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shine: rgba(255, 255, 255, 0.05);
             
             /* Spacing */
             --margin-x: 6vw;
@@ -30,14 +31,15 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--corp-blue);
+            background-color: var(--navy-base);
+            /* Gradiente sutil para não ficar "chapado" como o do colega */
+            background-image: radial-gradient(circle at 15% 50%, #244676 0%, var(--navy-base) 40%);
             color: var(--white);
             font-family: 'Rubik', sans-serif;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
-        /* --- BACKGROUND GRID (Estrutura Intocável) --- */
+        /* --- 1. A ESTRUTURA (Do Colega) --- */
         .bg-grid {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -47,127 +49,84 @@
             justify-content: space-between;
             padding: 0 var(--margin-x);
         }
-        .line { width: 1px; height: 100%; background: var(--grid-line); }
+        .line { 
+            width: 1px; 
+            height: 100%; 
+            background: linear-gradient(to bottom, transparent, var(--grid-line) 10%, var(--grid-line) 90%, transparent); 
+        }
 
-        /* --- LOGO FIXO --- */
+        /* --- 2. OS ELEMENTOS FIXOS (Credibilidade) --- */
         .brand-fixed {
             position: fixed;
-            top: 40px; left: 50px;
+            top: 40px; left: var(--margin-x);
             z-index: 1000;
-            width: 140px;
+            width: 150px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3)); /* Sombra para destacar do vidro */
         }
 
-        /* --- NAVEGAÇÃO LATERAL (O Retorno das Bolinhas) --- */
-        .nav-dots {
-            position: fixed; 
-            right: 50px; 
-            top: 50%; 
-            transform: translateY(-50%);
-            display: flex; 
-            flex-direction: column; 
-            gap: 25px; /* Espaçamento elegante */
+        .progress-bar {
+            position: fixed;
+            right: 40px; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 15px;
             z-index: 100;
         }
-
         .dot {
-            width: 10px; 
-            height: 10px;
+            width: 8px; height: 8px;
             background: rgba(255,255,255,0.2);
             border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-        }
-
-        /* Efeito de Hover */
-        .dot:hover {
-            background: rgba(255,255,255,0.5);
-            transform: scale(1.2);
-        }
-
-        /* Estado Ativo (O Glow Laranja) */
-        .dot.active {
-            background: var(--corp-orange);
-            transform: scale(1.4);
-            box-shadow: 0 0 15px rgba(228, 112, 43, 0.6); /* O Brilho Tecnológico */
-        }
-        
-        /* Tooltip flutuante ao passar o mouse na bolinha */
-        .dot::after {
-            content: attr(data-label);
-            position: absolute;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%) translateX(10px);
-            background: var(--corp-blue);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
             transition: all 0.3s ease;
-            border: 1px solid var(--glass-border);
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
-        .dot:hover::after {
-            opacity: 1;
-            transform: translateY(-50%) translateX(0);
+        .dot.active {
+            background: var(--orange-futuro);
+            box-shadow: 0 0 10px var(--orange-futuro); /* O "Glow" tecnológico */
+            transform: scale(1.5);
         }
 
-        /* --- LAYOUT SYSTEM --- */
+        /* --- 3. O LAYOUT & VIDRO (Minha Contribuição) --- */
         section {
             min-height: 100vh;
             width: 100%;
             padding: 0 var(--margin-x);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             position: relative;
             z-index: 2;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid var(--glass-border);
             scroll-snap-align: start;
         }
 
-        .split-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr; 
-            gap: 60px;
-            width: 100%;
-            align-items: center;
-        }
-
-        .col-text {
-            display: flex; flex-direction: column; justify-content: center;
-        }
-
-        /* Coluna Visual com Vidro Sutil */
-        .col-visual {
-            background: var(--glass-surface);
-            backdrop-filter: blur(var(--blur-strength));
-            -webkit-backdrop-filter: blur(var(--blur-strength));
+        /* O Card de Vidro que "flutua" sobre a grade */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border);
-            border-radius: 4px;
+            border-top: 1px solid rgba(255,255,255,0.2); /* Luz de borda superior */
+            border-radius: 16px;
             padding: 40px;
-            position: relative;
-            transition: transform 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            transition: transform 0.4s ease;
         }
-        .col-visual:hover {
-            border-color: rgba(255,255,255,0.2);
+        .glass-panel:hover {
+            transform: translateY(-5px);
+            border-color: rgba(228, 112, 43, 0.3); /* Brilho laranja sutil no hover */
         }
-        
-        /* Detalhe Tech Canto Superior Direito */
-        .col-visual::after {
-            content: ''; position: absolute; top: -1px; right: -1px; width: 20px; height: 20px;
-            border-top: 2px solid var(--corp-orange); border-right: 2px solid var(--corp-orange);
+
+        /* Grid Layout Moderno */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1.8fr; /* Assimetria elegante */
+            gap: 40px;
+            align-items: center;
+            width: 100%;
         }
 
         /* --- TYPOGRAPHY --- */
         h1 {
             font-family: 'Darker Grotesque', sans-serif;
-            font-size: 5.5rem;
-            font-weight: 900;
-            line-height: 0.9;
+            font-size: clamp(4rem, 7vw, 6.5rem);
+            font-weight: 800;
+            line-height: 0.85;
             letter-spacing: -2px;
             margin-bottom: 30px;
             text-transform: uppercase;
@@ -175,77 +134,71 @@
         
         h2 {
             font-family: 'Darker Grotesque', sans-serif;
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 0.95;
+            font-size: 3.5rem;
+            line-height: 1;
             margin-bottom: 20px;
-            color: var(--white);
         }
 
         .label {
             font-family: 'Rubik', sans-serif;
-            color: var(--corp-orange);
+            color: var(--orange-futuro);
             font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: block;
+            display: flex; align-items: center; gap: 10px;
         }
+        .label::before { content: ''; width: 20px; height: 2px; background: var(--orange-futuro); }
 
         p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             line-height: 1.6;
-            color: #d1d5db; 
+            color: rgba(255,255,255,0.7);
             font-weight: 300;
-            max-width: 90%;
+            max-width: 600px;
         }
 
         /* --- COMPONENTS --- */
-        .kpi-big {
+        /* KPI Gigante */
+        .big-number {
             font-family: 'Darker Grotesque', sans-serif;
-            font-size: 7rem;
+            font-size: 6rem;
             font-weight: 900;
-            color: var(--corp-orange);
-            line-height: 0.9;
+            color: var(--white);
+            line-height: 1;
         }
-        .kpi-label {
-            font-family: 'Rubik', sans-serif;
-            font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;
-            color: var(--white); margin-bottom: 10px; opacity: 0.8;
-        }
+        .big-number small { font-size: 2rem; font-weight: 400; color: var(--orange-futuro); }
 
-        .list-item {
-            padding: 25px 0;
+        /* Lista Tecnológica */
+        .tech-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        .tech-list li {
+            padding: 15px 0;
             border-bottom: 1px solid var(--glass-border);
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex; justify-content: space-between;
+            font-size: 1.1rem;
         }
-        .list-item:last-child { border-bottom: none; }
-        .list-item strong { font-size: 1.5rem; font-family: 'Darker Grotesque', sans-serif; }
+        .tech-list li strong { color: var(--white); }
 
-        .tag {
-            background: rgba(228, 112, 43, 0.1);
-            color: var(--corp-orange);
-            padding: 6px 16px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid rgba(228, 112, 43, 0.3);
-            display: inline-block;
-            margin-bottom: 15px;
-            border-radius: 50px;
+        /* Footer flutuante */
+        .footer-meta {
+            position: absolute; bottom: 30px; left: var(--margin-x); right: var(--margin-x);
+            display: flex; justify-content: space-between;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
+            opacity: 0.4;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 20px;
         }
 
-        .footer {
-            position: absolute; bottom: 30px; left: var(--margin-x);
-            font-size: 0.75rem; opacity: 0.4; letter-spacing: 2px; text-transform: uppercase;
-        }
-
+        /* Responsividade */
         @media (max-width: 1000px) {
-            .split-layout { grid-template-columns: 1fr; gap: 40px; margin-top: 80px; padding-bottom: 60px;}
+            .grid-layout { grid-template-columns: 1fr; }
             h1 { font-size: 3.5rem; }
-            .bg-grid { display: none; }
-            .nav-dots { display: none; } /* Ocultar em mobile */
+            .bg-grid { display: none; } /* Limpa o visual no mobile */
         }
     </style>
 </head>
@@ -261,183 +214,154 @@
         <div class="line"></div>
     </div>
 
-    <div class="nav-dots">
-        <div class="dot active" data-label="Capa"></div>
-        <div class="dot" data-label="A Tese"></div>
-        <div class="dot" data-label="Receita"></div>
-        <div class="dot" data-label="Rede"></div>
-        <div class="dot" data-label="Valuation"></div>
+    <div class="progress-bar">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
     </div>
 
     <section>
-        <div class="split-layout">
-            <div class="col-text">
-                <span class="label">Plano Tático 2026</span>
-                <h1>
-                    Acelerando<br>
-                    o Ecossistema.
-                </h1>
-                <p>
-                    Estratégia de Marketing Integrado para acelerar Receita (B2C), Rede (B2B) e Valuation (Equity).
+        <div style="max-width: 900px;">
+            <span class="label">Plano Tático 2026</span>
+            <h1>
+                Acelerando a<br>
+                Receita, a Rede<br>
+                <span style="color: transparent; -webkit-text-stroke: 2px var(--orange-futuro);">E O ECOSSISTEMA.</span>
+            </h1>
+            
+            <div class="glass-panel" style="display: inline-block; padding: 20px 40px; margin-top: 20px;">
+                <p style="margin: 0; color: var(--white);">
+                    <strong>Board Version</strong> — Estratégia de Crescimento Integrado
                 </p>
             </div>
-            <div class="col-visual" style="align-items: flex-start; justify-content: flex-end; height: 100%;">
-                <div style="margin-bottom: 40px;">
-                    <span class="tag">Board Version</span>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 10px;">R$ 30 Milhões</h2>
-                    <p style="font-size: 1rem;">Meta Global de Faturamento</p>
-                </div>
-                <div style="width: 100%; height: 1px; background: var(--corp-orange);"></div>
-                <p style="font-size: 0.8rem; margin-top: 20px; opacity: 0.6; letter-spacing: 1px;">CONFIDENCIAL • JAN 2026</p>
-            </div>
         </div>
-        <div class="footer">Futuro Corp © 2026</div>
+
+        <div class="footer-meta">
+            <span>Futuro Corp © 2026</span>
+            <span>Confidencial</span>
+        </div>
     </section>
 
     <section>
-        <div class="split-layout">
-            <div class="col-text">
+        <div class="grid-layout">
+            <div>
                 <span class="label">O Pivô Estratégico</span>
                 <h2>Tech-Enabled<br>Service</h2>
                 <p>
-                    Deixamos de ser "suporte" para ser a <strong>Inteligência Central</strong>.
+                    Para atingir os <strong>R$ 30 Milhões</strong>, o Marketing evolui de "suporte" para <strong>Inteligência Central</strong>.
                     <br><br>
-                    "Não somos um app, nem um escritório. Somos o <em>Uber do Planejamento</em>: Tecnologia proprietária (Oráculo) com atendimento humano de elite."
+                    Não somos apenas um app. Não somos apenas um escritório.<br>
+                    Somos o <em>"Uber do Planejamento Financeiro"</em>.
                 </p>
             </div>
             
-            <div class="col-visual">
-                <div class="list-item">
-                    <div>
-                        <span class="kpi-label">Originação (B2C)</span>
-                        <div style="font-size: 1.1rem; color: white;">Injeção de Demanda Qualificada</div>
-                    </div>
-                    <strong style="color: var(--corp-orange);">R$ 5MM</strong>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="glass-panel">
+                    <span style="font-size: 2rem;">🚀</span>
+                    <h3 style="margin: 15px 0;">Originação (B2C)</h3>
+                    <p style="font-size: 0.9rem;">Injetar demanda qualificada via dados proprietários.</p>
                 </div>
-                <div class="list-item">
-                    <div>
-                        <span class="kpi-label">Atração (B2B)</span>
-                        <div style="font-size: 1.1rem; color: white;">Expansão da Rede de Sócios</div>
-                    </div>
-                    <strong style="color: var(--corp-orange);">150 PNs</strong>
+                <div class="glass-panel" style="border-color: var(--orange-futuro);">
+                    <span style="font-size: 2rem;">🤝</span>
+                    <h3 style="margin: 15px 0; color: var(--orange-futuro);">Atração (B2B)</h3>
+                    <p style="font-size: 0.9rem;">Filtro de talentos de elite para expansão da rede.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section>
-        <div class="split-layout">
-            <div class="col-visual">
-                <span class="kpi-label">Receita Originada</span>
-                <div class="kpi-big">R$ 5<span style="font-size: 3rem; color: white;">MM</span></div>
-                
-                <div style="margin-top: 30px;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                        <span style="font-size: 0.9rem;">Meta High Ticket (15%)</span>
-                        <span style="font-size: 0.9rem; color: var(--corp-orange);">7.200 Leads</span>
-                    </div>
-                    <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
-                        <div style="width: 15%; height: 100%; background: var(--corp-orange); border-radius: 3px;"></div>
-                    </div>
-                </div>
+        <div class="grid-layout">
+            <div class="glass-panel">
+                <div class="big-number">R$ 5<small>MM</small></div>
+                <div style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Receita Originada</div>
+                <p>Foco total no <strong>High Ticket</strong>. O "Agente IA" assume a base menor em Abril/26, liberando o humano para margem alta.</p>
             </div>
 
-            <div class="col-text">
+            <div style="padding-left: 40px;">
                 <span class="label">OKR 1: Máquina de Vendas</span>
                 <h2>Originação &<br>Qualificação</h2>
-                <p>
-                    Foco total no cliente com capacidade de investimento. 
-                    <br><br>
-                    O <strong>Agente IA</strong> (Deploy em Abril) assume a base menor, liberando o humano para focar onde há margem real.
-                </p>
-                <div style="margin-top: 30px;">
-                    <span class="tag">ROAS Alvo: 4x</span>
-                    <span class="tag">Volume: 48k/ano</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="split-layout">
-            <div class="col-text">
-                <span class="label">OKR 2: Expansão da Rede</span>
-                <h2>Qualidade ><br>Quantidade</h2>
-                <p>
-                    O foco muda de "vender franquia" para <strong>"recrutar sócios"</strong>.
-                    <br><br>
-                    Usamos um "Funil Reverso" onde o candidato precisa provar seu DNA e fit cultural antes de entrar no Ecossistema.
-                </p>
-            </div>
-
-            <div class="col-visual" style="display: flex; flex-direction: column; gap: 20px;">
-                <div style="border-left: 3px solid var(--corp-orange); padding-left: 20px;">
-                    <h3 style="font-size: 1.5rem; color: var(--corp-orange); margin-bottom: 5px;">1. Narrativa "Partner"</h3>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Atração de empreendedores com fome de equity.</p>
-                </div>
-                <div style="border-left: 3px solid rgba(255,255,255,0.1); padding-left: 20px;">
-                    <h3 style="font-size: 1.5rem; color: white; margin-bottom: 5px;">2. O Filtro (DNA)</h3>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.5);">Triagem cultural rigorosa e teste de perfil.</p>
-                </div>
-                <div style="border-left: 3px solid rgba(255,255,255,0.1); padding-left: 20px;">
-                    <h3 style="font-size: 1.5rem; color: white; margin-bottom: 5px;">3. Onboarding</h3>
-                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.5);">MBA Prático para conversão final.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div style="width: 100%; text-align: center;">
-            <span class="label" style="display: inline-block;">OKR 5: Preparação Série A</span>
-            <h2 style="margin-bottom: 50px;">Somos uma Data Company.</h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto;">
-                <div class="col-visual">
-                    <span class="kpi-label">Captação</span>
-                    <strong style="font-size: 3.5rem; color: white; display: block; margin-top: 10px;">R$ 6MM</strong>
-                </div>
-                <div class="col-visual">
-                    <span class="kpi-label">A Tese</span>
-                    <strong style="font-size: 1.8rem; color: white; display: block; margin-top: 15px;">Custo de Servir ↓<br>LTV ↑</strong>
-                </div>
-                <div class="col-visual">
-                    <span class="kpi-label">Ativo Chave</span>
-                    <strong style="font-size: 1.8rem; color: white; display: block; margin-top: 15px;">Filme "Scalability"</strong>
-                    <span style="font-size: 0.8rem; opacity: 0.6; margin-top: 5px; display: block;">Exclusivo Investidores</span>
-                </div>
-            </div>
-        </div>
-        <div class="footer">FUTURO CORP © 2026 | BRAND SYSTEM KB-03</div>
-    </section>
-
-    <script>
-        // Adiciona funcionalidade de clique nas bolinhas
-        const dots = document.querySelectorAll('.dot');
-        const sections = document.querySelectorAll('section');
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                sections[index].scrollIntoView({ behavior: 'smooth' });
                 
-                // Atualiza estado ativo
-                dots.forEach(d => d.classList.remove('active'));
-                dot.classList.add('active');
-            });
-        });
+                <ul class="tech-list">
+                    <li>
+                        <span>Volume de Leads</span>
+                        <strong>48.000 / ano</strong>
+                    </li>
+                    <li>
+                        <span>Filtro High Income</span>
+                        <strong style="color: var(--orange-futuro);">15% (>30k renda)</strong>
+                    </li>
+                    <li>
+                        <span>ROAS Alvo</span>
+                        <strong>4x</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-        // Opcional: Atualizar bolinha ao rolar a página
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach((section, index) => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 200) {
-                    dots.forEach(d => d.classList.remove('active'));
-                    dots[index].classList.add('active');
-                }
-            });
-        });
-    </script>
+    <section>
+        <div style="text-align: center; margin-bottom: 40px;">
+            <span class="label" style="justify-content: center;">OKR 2: Expansão da Rede</span>
+            <h2>Qualidade > Quantidade</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+            <div class="glass-panel" style="opacity: 0.5;">
+                <h3>01. Topo</h3>
+                <p>Narrativa "Business Partner". Atração de sócios, não funcionários.</p>
+            </div>
+            <div class="glass-panel" style="opacity: 0.8;">
+                <h3>02. O Filtro</h3>
+                <p>Triagem cultural rigorosa e Teste de Perfil (DNA Campeão).</p>
+            </div>
+            <div class="glass-panel" style="background: rgba(228, 112, 43, 0.15); border-color: var(--orange-futuro);">
+                <h3 style="color: var(--orange-futuro);">03. Meta: 150</h3>
+                <p>Novos Franqueados aprovados e treinados.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="grid-layout">
+            <div>
+                <span class="label">OKR 5: Equity</span>
+                <h2>Preparação<br>Série A</h2>
+                <p>
+                    <strong>Tese para Investidores:</strong><br>
+                    "Somos uma Data Company. O Oráculo reduz o custo de servir e aumenta o LTV."
+                </p>
+                <div style="margin-top: 40px;">
+                    <span style="display: block; font-size: 0.8rem; opacity: 0.6; margin-bottom: 5px;">META DE CAPTAÇÃO</span>
+                    <span class="big-number" style="font-size: 5rem;">R$ 6<small>MM</small></span>
+                </div>
+            </div>
+
+            <div class="glass-panel">
+                <h3 style="margin-bottom: 20px;">Roadmap 2026</h3>
+                
+                <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 20px;">
+                    <div style="font-size: 2rem; font-weight: bold; color: var(--orange-futuro);">Q1</div>
+                    <div>Unificação Branded House<br><small style="opacity: 0.6;">30 de Março</small></div>
+                </div>
+                <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 20px;">
+                    <div style="font-size: 2rem; font-weight: bold; color: var(--white);">Q2</div>
+                    <div>Deploy Agente IA<br><small style="opacity: 0.6;">Rentabilização da base C</small></div>
+                </div>
+                <div style="display: flex; gap: 20px; align-items: center;">
+                    <div style="font-size: 2rem; font-weight: bold; color: var(--white);">Q4</div>
+                    <div>Roadshow Série A<br><small style="opacity: 0.6;">Bancos e Family Offices</small></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-meta">
+            <span>Futuro Corp Brand System</span>
+            <span>Versão Final v.9.5</span>
+        </div>
+    </section>
 
 </body>
 </html>
