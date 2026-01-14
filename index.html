@@ -3,161 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuro Corp | Visão 2026</title>
-    
-    <meta property="og:title" content="Futuro Corp | Plano Tático 2026">
-    <meta name="theme-color" content="#052343">
-
+    <title>Futuro Corp | Plano MKT 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;600;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* --- BRANDING SYSTEM --- */
+        /* * BRAND SYSTEM VARIABLES (JSON SOURCE)
+         */
         :root {
-            --azul-futuro: #052343;
-            --azul-deep: #021121;
-            --laranja-futuro: #EC6C23;
-            --branco: #FFFFFF;
-            --cinza-bg: #F4F6F8;
-            --cinza-txt: #4A5568;
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --prussian-blue: #132343;
+            --platinum: #F4F5F6;
+            --pale-slate: #AFB8BE;
+            --white: #FFFFFF;
+            --accent-orange: #FF6408; /* Futuro Corp & Hub Accent */
+            
+            --radius-dna: 15px;
+            --grid-unit: 9px;
+            
+            --font-display: 'Darker Grotesque', sans-serif;
+            --font-body: 'Manrope', sans-serif; /* Proxy for Effra */
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            font-family: 'Rubik', sans-serif; /* Fonte Oficial */
-            background-color: var(--azul-deep);
-            color: var(--cinza-txt);
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            height: 100vh;
+            font-family: var(--font-body);
+            color: var(--prussian-blue);
+            background-color: var(--platinum);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* --- ESTRUTURA GLOBAL --- */
-        section {
+        /* Presentation Layout Logic */
+        .presentation-container {
+            width: 100vw;
             height: 100vh;
-            width: 100%;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+
+        section.slide {
+            width: 100vw;
+            height: 100vh;
             scroll-snap-align: start;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 5% 10%; /* Responsivo */
+            padding: calc(var(--grid-unit) * 8); /* 72px */
             position: relative;
-            overflow: hidden;
+            background: var(--white);
         }
 
-        /* --- LOGO --- */
-        .logo-capa {
-            max-width: 180px;
-            width: 100%;
-            margin-bottom: 4vh;
-            display: block;
-            /* Filtro de segurança caso a imagem quebre */
-            min-height: 50px; 
-            background: rgba(255,255,255,0.05); 
-            border-radius: 8px;
-        }
-
-        /* --- TIPOGRAFIA --- */
+        /* Typography */
         h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem); /* Escala conforme a tela */
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 80px;
+            line-height: 0.9;
+            margin-bottom: calc(var(--grid-unit) * 3);
             letter-spacing: -1px;
         }
 
         h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--azul-futuro);
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 1rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 48px;
+            line-height: 1;
+            margin-bottom: calc(var(--grid-unit) * 4);
+            color: var(--prussian-blue);
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 32px;
+            margin-bottom: calc(var(--grid-unit) * 2);
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: var(--prussian-blue);
+            margin-bottom: calc(var(--grid-unit) * 2);
+        }
+
+        .subtitle {
+            font-family: var(--font-body);
+            font-size: 24px;
+            color: var(--accent-orange);
             font-weight: 500;
-        }
-        
-        h2::after {
-            content: ''; position: absolute; left: 0; bottom: 0;
-            width: 60px; height: 4px; background-color: var(--laranja-futuro);
-            border-radius: 2px;
+            margin-bottom: calc(var(--grid-unit) * 2);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        h3 { font-size: 1.25rem; color: var(--azul-futuro); margin-bottom: 0.5rem; font-weight: 700; }
-        p { font-size: 1.1rem; line-height: 1.6; color: var(--cinza-txt); margin-bottom: 0; }
-        
-        ul li { font-size: 1.1rem; color: var(--cinza-txt); margin-bottom: 0.5rem; }
+        .highlight {
+            color: var(--accent-orange);
+            font-weight: 700;
+        }
 
-        /* --- COMPONENTES VISUAIS --- */
-        .card-grid {
+        /* UI Components based on Brand DNA */
+        .grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            width: 100%;
-            max-width: 1400px;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--grid-unit) * 5); /* 45px */
+            height: 100%;
+            align-items: center;
         }
 
         .card {
-            background: var(--branco);
-            padding: 2.5rem;
-            border-left: 5px solid var(--azul-futuro);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Sombra elegante */
-            border-radius: 0 12px 12px 0;
-            transition: transform 0.3s ease;
+            background: var(--platinum);
+            border-radius: var(--radius-dna);
+            padding: calc(var(--grid-unit) * 4);
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 100%;
         }
-        .card:hover { transform: translateY(-5px); }
-        .card.accent { border-left-color: var(--laranja-futuro); }
 
-        .kpi-box {
-            background: linear-gradient(135deg, var(--azul-futuro) 0%, var(--azul-deep) 100%);
-            color: var(--branco);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 10px 20px rgba(5, 35, 67, 0.2);
+        .card.dark {
+            background: var(--prussian-blue);
+            color: var(--white);
         }
-        .kpi-value { font-size: 3rem; font-weight: 700; color: var(--laranja-futuro); display: block; margin-bottom: 0.5rem; }
-        .kpi-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; font-weight: 500; }
+        .card.dark h3, .card.dark p { color: var(--white); }
+        
+        .metric-big {
+            font-family: var(--font-display);
+            font-size: 64px;
+            font-weight: 300;
+            color: var(--accent-orange);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
 
         .tag {
             display: inline-block;
-            background: var(--laranja-futuro);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.75rem;
+            padding: 8px 16px;
+            background-color: rgba(255, 100, 8, 0.1);
+            color: var(--accent-orange);
+            border-radius: var(--radius-dna);
+            font-size: 14px;
             font-weight: 700;
-            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand {
+            position: absolute;
+            bottom: 30px;
+            right: 45px;
+            font-size: 12px;
+            color: var(--pale-slate);
             text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 10px rgba(236, 108, 35, 0.3);
+            letter-spacing: 1px;
         }
 
-        /* --- SLIDES (DESIGN ESPECÍFICO) --- */
-
-        /* CAPA: Impacto Azul */
-        #capa {
-            background: linear-gradient(135deg, var(--azul-futuro) 0%, var(--azul-deep) 100%);
-            color: var(--branco);
-            align-items: flex-start;
+        /* Slide Specific Customizations */
+        
+        /* Slide 1: Cover */
+        #slide-cover {
+            background-color: var(--prussian-blue);
+            color: var(--white);
         }
-        #capa h2 { color: var(--laranja-futuro); font-size: 1.5rem; border: none; padding: 0; font-weight: 400; }
-        #capa h2::after { display: none; }
-        .footer-capa {
-            position: absolute; bottom: 3rem; left: 10%; right: 10%;
-            font-size: 0.9rem; opacity: 0.6; border-top: 1px solid rgba(255,255,255,0.15);
-            padding-top: 1.5rem; display: flex; justify-content: space-between;
-        }
+        #slide-cover h1 { color: var(--white); }
+        #slide-cover .subtitle { color: var(--accent-orange); }
 
-        /* TESE: Limpo e Branco */
-        #tese { background-color: var(--branco); }
-        .quote-box {
-            font-size: 1.5rem; font-weight: 300; font-style: italic; color: var(--azul-futuro);
-            border-left: 4px solid var(--laranja-futuro); padding-left: 2rem; margin: 3rem 0;
-            line-height: 1.4;
+        /* Slide 2: Thesis */
+        .pivot-arrow {
+            font-size: 40px;
+            color: var(--accent-orange);
+            margin: 20px 0;
         }
 
-        /* OKRS: Fundo Técnico (Cinza) */
-        #okr1, #okr5 { background-color: var(--cinza-bg); }
-        #okr2, #okr4 { background-color: var(--branco
+        /* Slide 4: Funnel */
+        .funnel-step {
+            background: var(--white);
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-orange);
+        }
+
+        /* Slide 8: Closing */
+        .closing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 27px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="presentation-container">
+
+    <section class="slide" id="slide-cover">
+        <div style="max-width: 800px;">
+            <p class="subtitle">Estratégia de Crescimento Integrado</p>
+            <h1>Plano Tático de<br>Marketing 2026</h1>
+            <p style="font-size: 28px; color: var(--pale-slate); font-weight: 300;">
+                Acelerando a Receita, a Rede e o Ecossistema.
+            </p>
+            <div style="margin-top: 45px; width: 100px; height: 4px; background: var(--accent-orange);"></div>
+        </div>
+        <div class="footer-brand">Futuro Corp | Board Version</div>
+    </section>
+
+    <section class="slide">
+        <div class="grid-layout">
+            <div>
+                <span class="tag">O Big Picture</span>
+                <h2>O Pivô Estratégico: <br>"Tech-Enabled Service"</h2>
+                <p>Para suportar a meta de <strong>R$ 30 Milhões</strong>, o Marketing precisa evoluir. Deixamos de ser "suporte a vendas" para nos tornarmos a <strong>Inteligência Central</strong>.</p>
+                
+                <div style="margin-top: 30px;">
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="color: var(--accent-orange); margin-bottom: 5px;">01. Originação</h3>
+                        <p style="font-size: 16px;">Injetando demanda qualificada para os franqueados (B2C).</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--accent-orange); margin-bottom: 5px;">02. Atração</h3>
+                        <p style="font-size: 16px;">Filtrando talentos para a expansão da rede (B2B).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card dark" style="justify-content: center; text-align: center;">
+                <p style="font-family: var(--font-display); font-size: 32px; line-height: 1.1; color: white;">
+                    "Não somos um app, nem um escritório tradicional."
+                </p>
+                <div style="width: 50px; height: 1px; background: var(--accent-orange); margin: 20px auto;"></div>
+                <p style="color: white; font-style: italic;">
+                    Somos o <strong>'Uber do Planejamento Financeiro'</strong>: tecnologia proprietária (Oráculo) com atendimento humano de elite.
+                </p>
+            </div>
+        </div>
+        <div class="footer-brand">Conceito Central: Engenharia de Ciclo de Vida</div>
+    </section>
+
+    <section class="slide">
+        <span class="subtitle">OKR 1: Originação e Qualificação</span>
+        <div class="grid-layout">
+            <div>
+                <h2>A Máquina de Receita</h2>
+                <div class="card">
+                    <p class="metric-big">R$ 5.000.000</p>
+                    <p style="font-weight: 700;">Receita Originada Direta</p>
+                </div>
+                <div style="margin-top: 27px;">
+                    <p><strong>Deploy de IA (Abril/26):</strong> "Agente Planejador" para rentabilizar a base menor (ticket 1k) sem onerar o time humano.</p>
+                </div>
+            </div>
+            <div>
+                <h3 style="border-bottom: 1px solid #ddd; padding-bottom: 10px;">Como entregaremos (The How)</h3>
+                
+                <div style="margin-bottom: 20px;">
+                    <strong style="color: var(--accent-orange);">Volume Inteligente</strong>
+                    <p style="margin-bottom: 5px;">Captação de <strong>48.000 Leads Totais</strong> no ano.</p>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <strong style="color: var(--accent-orange);">Filtro de Ouro (KR 1.1)</strong>
+                    <p style="margin-bottom: 5px;">15% (7.200) devem ser <strong>Perfil High Ticket</strong> (Renda > 30k).</p>
+                </div>
+
+                <div class="card dark" style="padding: 20px;">
+                    <strong style="color: var(--accent-orange);">Fast Track Oráculo</strong>
+                    <p style="color: white; font-size: 14px; margin-bottom: 0;">Leads de alta renda furam a fila direto para o <strong>Concierge Humano</strong>, garantindo conversão máxima.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-brand">Foco: B2C High Ticket</div>
+    </section>
+
+    <section class="slide">
+        <span class="subtitle">OKR 2: O Funil de Sócios</span>
+        <h2>Expansão: Qualidade > Quantidade</h2>
+        
+        <div class="grid-layout">
+            <div>
+                <p>Não vamos entupir o time de expansão com curiosos. O Marketing assume o compromisso de entregar <strong>candidatos aprovados</strong>.</p>
+                <div class="card" style="border: 2px solid var(--accent-orange); margin-top: 20px;">
+                    <p class="metric-big">150</p>
+                    <p>Novos Franqueados nos primeiros 6 meses.</p>
+                </div>
+                <p style="margin-top: 20px; font-size: 14px;"><strong>Diferencial:</strong> O candidato passa por um "MBA Prático". Quem entra, fica.</p>
+            </div>
+            
+            <div style="background: var(--platinum); padding: 30px; border-radius: 15px;">
+                <h3 style="margin-bottom: 20px;">O Funil Reverso</h3>
+                
+                <div class="funnel-step" style="width: 100%;">
+                    <strong>Topo: Atração</strong>
+                    <div style="font-size: 13px;">Narrativa "Business Partner Program" (não vaga de emprego).</div>
+                </div>
+                
+                <div class="funnel-step" style="width: 80%; margin-left: 10%;">
+                    <strong>Meio: O Filtro (DNA)</strong>
+                    <div style="font-size: 13px;">1.500 Candidatos Aprovados na Triagem Inicial.</div>
+                </div>
+                
+                <div class="funnel-step" style="width: 60%; margin-left: 20%; background: var(--prussian-blue); color: white;">
+                    <strong style="color: var(--accent-orange);">Fundo: Conversão</strong>
+                    <div style="font
