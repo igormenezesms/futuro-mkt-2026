@@ -3,475 +3,443 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuro Corp | Board Deck 2026 (Premium)</title>
+    <title>Futuro Corp | Board Deck 2026</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;800;900&family=Manrope:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;600;800&family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <style>
-        /* * DESIGN SYSTEM v9.5 - "THE GLASS MONOLITH"
-         */
+        /* --- BRAND DNA (Variables from JSON) --- */
         :root {
-            /* Palette - Strict Mode */
-            --navy-deep: #0f1c36; /* Darker variant of Prussian */
-            --navy-main: #132343;
-            --blue-tech: #244676;
-            --orange-electric: #FF6408;
+            --navy-deep: #020b16;      /* Fundo profundo */
+            --navy-brand: #052343;     /* Azul Futuro */
+            --navy-light: #133a68;     /* Luz ambiente */
+            --orange-acc: #EC6C23;     /* Laranja Futuro */
             --white: #FFFFFF;
-            --glass-white: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shine: rgba(255, 255, 255, 0.15);
             --text-muted: rgba(255, 255, 255, 0.6);
             
-            /* Measurements */
-            --slide-pad: 6vw;
-            --radius-xl: 24px;
-            --radius-sm: 8px;
+            /* Spacing Tokens */
+            --gap-md: 24px;
+            --gap-lg: 48px;
         }
 
+        /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
         body {
-            font-family: 'Manrope', sans-serif;
             background-color: var(--navy-deep);
             color: var(--white);
-            overflow: hidden;
-        }
-
-        /* ATMOSPHERE & BACKGROUND */
-        .ambient-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle at 15% 50%, #1a3360 0%, var(--navy-deep) 50%);
-            z-index: -1;
-        }
-        
-        .grid-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        /* SCROLL CONTAINER */
-        .deck-container {
-            height: 100vh;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
+            font-family: 'Rubik', sans-serif;
+            overflow-x: hidden;
+            /* Scroll Smooth e Snap */
             scroll-behavior: smooth;
         }
 
+        /* Background Noise Texture para tirar o aspecto "chapado" */
+        body::before {
+            content: "";
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Ambient Light (Gradients de Fundo) */
+        .ambient-light {
+            position: fixed;
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, var(--navy-brand) 0%, transparent 70%);
+            top: -20%; left: -10%;
+            opacity: 0.6;
+            z-index: -2;
+            animation: pulseLight 10s infinite alternate;
+        }
+        .ambient-light-2 {
+            position: fixed;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(236, 108, 35, 0.08) 0%, transparent 70%);
+            bottom: -10%; right: -10%;
+            z-index: -2;
+        }
+
+        @keyframes pulseLight {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, .display-num {
+            font-family: 'Darker Grotesque', sans-serif;
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+        }
+
+        h1 { font-size: clamp(3.5rem, 8vw, 6rem); font-weight: 800; text-transform: uppercase; }
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; margin-bottom: var(--gap-md); }
+        h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--white); }
+        p { font-size: 1.1rem; line-height: 1.6; color: var(--text-muted); font-weight: 300; }
+        
+        .highlight { color: var(--orange-acc); }
+        .tag {
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.15em; 
+            color: var(--orange-acc); 
+            border: 1px solid rgba(236, 108, 35, 0.3);
+            padding: 8px 16px;
+            border-radius: 100px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* --- LAYOUT SYSTEM --- */
         section {
-            height: 100vh;
-            width: 100vw;
-            scroll-snap-align: start;
-            padding: var(--slide-pad);
+            min-height: 100vh;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            padding: 5% 10%;
             position: relative;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
+            border-bottom: 1px solid rgba(255,255,255,0.02);
         }
 
-        /* TYPOGRAPHY - HIGH END EDITORIAL */
-        h1, h2, h3, .display-font {
-            font-family: 'Darker Grotesque', sans-serif;
+        .container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
         }
 
-        h1 {
-            font-size: clamp(60px, 8vw, 120px);
-            font-weight: 800;
-            line-height: 0.85;
-            letter-spacing: -3px;
-            margin-bottom: 2rem;
-            background: linear-gradient(to right, #fff, #aabbd6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        h2 {
-            font-size: 56px;
-            font-weight: 700;
-            letter-spacing: -2px;
-            margin-bottom: 40px;
-            color: var(--white);
-        }
-
-        .kicker {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--orange-electric);
-            font-weight: 700;
-            margin-bottom: 16px;
-            display: block;
-            border-left: 2px solid var(--orange-electric);
-            padding-left: 15px;
-        }
-
-        p {
-            font-size: 18px;
-            line-height: 1.7;
-            color: #dbe4ef;
-            max-width: 60ch;
-            font-weight: 300;
-        }
-
-        /* GLASS COMPONENTS */
-        .glass-card {
-            background: var(--glass-white);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-xl);
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            transition: all 0.4s ease;
-        }
-
-        .glass-card:hover {
-            border-color: rgba(255,255,255,0.2);
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-        }
-
-        .stat-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-
-        .big-metric {
-            font-family: 'Darker Grotesque', sans-serif;
-            font-size: 80px;
-            font-weight: 300; /* Thin elegance */
-            color: var(--orange-electric);
-            line-height: 1;
-            margin-bottom: 10px;
-        }
-        
-        .metric-label {
-            font-size: 16px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--white);
-        }
-
-        /* LAYOUTS */
-        .grid-2 {
+        /* --- GLASS CARDS (Bento Grid) --- */
+        .grid-bento {
             display: grid;
-            grid-template-columns: 45% 50%;
-            justify-content: space-between;
-            align-items: center;
-            height: 100%;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
             margin-top: 40px;
         }
 
-        /* UI ELEMENTS */
-        .progress-bar {
-            position: fixed;
-            right: 40px;
-            top: 50%;
-            transform: translateY(-50%);
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            z-index: 10;
+            justify-content: space-between;
         }
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-        }
-        .dot.active { background: var(--orange-electric); box-shadow: 0 0 10px var(--orange-electric); }
 
-        .brand-watermark {
-            position: fixed;
-            bottom: 40px;
-            left: var(--slide-pad);
-            font-family: 'Darker Grotesque';
+        /* Hover Effect "Glow" */
+        .card::after {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--glass-shine);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .card:hover::after { opacity: 1; }
+
+        /* Card Sizes */
+        .col-3 { grid-column: span 3; }
+        .col-4 { grid-column: span 4; }
+        .col-6 { grid-column: span 6; }
+        .col-8 { grid-column: span 8; }
+        .col-12 { grid-column: span 12; }
+
+        /* Card Variations */
+        .card.highlight-bg {
+            background: linear-gradient(135deg, rgba(236, 108, 35, 0.1) 0%, rgba(5, 35, 67, 0.3) 100%);
+            border: 1px solid rgba(236, 108, 35, 0.2);
+        }
+        
+        .kpi-number {
+            font-family: 'Darker Grotesque', sans-serif;
+            font-size: 4.5rem;
             font-weight: 800;
-            font-size: 20px;
-            letter-spacing: 2px;
-            opacity: 0.4;
-            z-index: 10;
+            color: var(--white);
+            line-height: 1;
+            margin: 10px 0;
+            display: block;
+        }
+        .kpi-number span { font-size: 2rem; color: var(--text-muted); font-weight: 400;}
+
+        /* --- SPECIFIC SECTIONS --- */
+        
+        /* 1. HERO */
+        .hero-logo {
+            width: 160px;
+            margin-bottom: 6vh;
+            opacity: 0.9;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-footer {
+            position: absolute; bottom: 40px; left: 10%; right: 10%;
+            display: flex; justify-content: space-between;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 20px;
+            font-size: 0.85rem; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.1em;
         }
 
-        .funnel-visual {
-            width: 100%;
-            height: 12px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 6px;
-            margin: 25px 0 10px 0;
-            overflow: hidden;
+        /* 2. THE PIVOT (Slide 2) */
+        .quote-main {
+            font-family: 'Darker Grotesque';
+            font-size: 3rem;
+            line-height: 1.1;
+            font-weight: 300;
+            color: var(--white);
+            border-left: 4px solid var(--orange-acc);
+            padding-left: 30px;
+            margin: 40px 0;
         }
-        .funnel-fill {
-            height: 100%;
-            background: var(--orange-electric);
-            width: 0;
-            animation: fillBar 1.5s ease-out forwards;
+        
+        /* 3. OKR TABLES (Minimalist) */
+        .data-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
+        .data-row:last-child { border-bottom: none; }
+        .data-label { color: var(--text-muted); }
+        .data-val { font-weight: 600; color: var(--white); }
 
-        /* ANIMATIONS */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        /* 4. PROGRESS BAR */
+        .progress-container {
+            width: 100%; height: 4px; background: rgba(255,255,255,0.1);
+            border-radius: 2px; margin-top: 10px; overflow: hidden;
+        }
+        .progress-bar { height: 100%; background: var(--orange-acc); }
+
+        /* --- ANIMATIONS --- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpAnim 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.5s; }
+
+        @keyframes fadeUpAnim {
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fillBar { to { width: var(--w); } }
 
-        /* SPECIFIC SLIDE TWEAKS */
-        .divider-line {
-            width: 60px;
-            height: 4px;
-            background: var(--orange-electric);
-            margin: 30px 0;
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .grid-bento { display: flex; flex-direction: column; }
+            h1 { font-size: 3rem; }
+            section { padding: 80px 5%; height: auto; }
+            .hero-footer { position: relative; bottom: auto; margin-top: 50px; flex-direction: column; gap: 10px; }
+            .kpi-number { font-size: 3.5rem; }
         }
-
     </style>
 </head>
 <body>
 
-<div class="ambient-bg"></div>
-<div class="grid-overlay"></div>
-<div class="brand-watermark">FUTURO CORP // BOARD 2026</div>
+    <div class="ambient-light"></div>
+    <div class="ambient-light-2"></div>
 
-<div class="progress-bar">
-    <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div>
-</div>
-
-<div class="deck-container">
-
-    <section>
-        <div style="max-width: 900px;">
-            <span class="kicker">Estratégia Integrada 2026</span>
-            <h1>Plano Tático de Marketing</h1>
-            <p style="font-size: 24px; border-left: 1px solid rgba(255,255,255,0.3); padding-left: 20px;">
-                Acelerando a Receita, a Rede e o Ecossistema.<br>
-                <span style="color: var(--orange-electric);">Board Version 1.0</span>
-            </p>
-        </div>
-    </section>
-
-    <section>
-        <div class="grid-2">
-            <div>
-                <span class="kicker">O Pivô Estratégico</span>
-                <h2>Tech-Enabled Service</h2>
-                <div class="divider-line"></div>
-                <p>Para atingir os <strong>R$ 30M</strong>, evoluímos de "suporte" para <strong>Inteligência Central</strong>.</p>
-                <br>
-                <p style="opacity: 0.7;">Não somos apenas um escritório. Somos o 'Uber do Planejamento': Tecnologia proprietária (Oráculo) + Atendimento humano de elite.</p>
-            </div>
+    <section id="cover">
+        <div class="container hero-content">
+            <img src="Vertical branca.png" alt="Futuro Corp" class="hero-logo fade-up">
             
-            <div style="display: flex; flex-direction: column; gap: 20px;">
-                <div class="glass-card">
-                    <h3 style="color: var(--orange-electric); margin-bottom: 10px;">01. Originação (B2C)</h3>
-                    <p style="font-size: 16px;">Injetando demanda qualificada para os franqueados.</p>
-                </div>
-                <div class="glass-card" style="background: rgba(255, 100, 8, 0.1); border-color: var(--orange-electric);">
-                    <h3 style="color: #fff; margin-bottom: 10px;">02. Atração (B2B)</h3>
-                    <p style="font-size: 16px;">Filtrando talentos para expansão da rede.</p>
-                </div>
+            <div class="fade-up delay-1">
+                <span class="tag">Confidencial • Board Meeting</span>
+                <h1>O Plano Integrado<br><span style="color: var(--orange-acc)">2026</span></h1>
+                <p style="font-size: 1.5rem; max-width: 600px; margin-top: 20px;">
+                    Acelerando a Receita, a Rede e o Ecossistema. <br>
+                    De "Suporte" para <strong>Inteligência Central</strong>.
+                </p>
             </div>
+        </div>
+
+        <div class="hero-footer fade-up delay-2">
+            <span>Data: Jan 2026</span>
+            <span>Apresentador: CMO</span>
+            <span>Local: São Paulo, BR</span>
         </div>
     </section>
 
     <section>
-        <span class="kicker">OKR 1: B2C REVENUE</span>
-        <div class="grid-2">
-            <div>
-                <h2>Máquina de Originação</h2>
-                <p>Foco total em High Ticket para maximizar o ROAS e eficiência operacional.</p>
-                <div class="glass-card" style="margin-top: 40px;">
-                    <span class="metric-label">Meta de Receita Direta</span>
-                    <div class="big-metric">R$ 5.0 MM</div>
-                </div>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="glass-card stat-card">
-                    <span class="big-metric" style="font-size: 50px;">48k</span>
-                    <span class="metric-label">Leads Totais</span>
-                </div>
-                <div class="glass-card stat-card">
-                    <span class="big-metric" style="font-size: 50px;">7.2k</span>
-                    <span class="metric-label">High Ticket (>30k)</span>
-                </div>
-                <div class="glass-card" style="grid-column: span 2;">
-                    <span class="metric-label" style="color: var(--orange-electric);">Estratégia "Fast Track"</span>
-                    <p style="font-size: 14px; margin-top: 10px;">Cliente alta renda fura a fila direto para o Concierge Humano. IA atende tickets menores.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <span class="kicker">OKR 2: EXPANSÃO</span>
-        <h2>Qualidade > Quantidade</h2>
-        
-        <div class="grid-2">
-            <div>
-                <p>O Marketing assume o compromisso de entregar <strong>candidatos aprovados</strong> (Sócios), não apenas leads curiosos.</p>
-                <div class="glass-card" style="margin-top: 30px; border-left: 4px solid var(--orange-electric);">
-                    <div class="big-metric">150</div>
-                    <span class="metric-label">Novos Sócios (6 Meses)</span>
-                </div>
-            </div>
+        <div class="container">
+            <span class="tag">O Big Picture</span>
+            <h2 class="fade-up">Engenharia de Ciclo de Vida</h2>
             
-            <div class="glass-card">
-                <h3 style="margin-bottom: 20px;">O Funil Reverso</h3>
+            <div class="grid-bento">
+                <div class="card col-8 fade-up delay-1">
+                    <h3>O Pivô Estratégico</h3>
+                    <div class="quote-main">
+                        "Não somos um app. Somos o <span class="highlight">'Uber do Planejamento Financeiro'</span>: tecnologia proprietária com atendimento humano de elite."
+                    </div>
+                    <p>Deixamos de ser um departamento de "suporte a vendas" e nos tornamos a Inteligência Central que alimenta as duas pontas do negócio (B2B e B2C).</p>
+                </div>
                 
-                <div style="margin-bottom: 20px;">
-                    <div style="display: flex; justify-content: space-between; font-size: 14px;">
-                        <span>Atração (Narrativa Business Partner)</span>
-                        <span style="opacity: 0.5;">100%</span>
-                    </div>
-                    <div class="funnel-visual"><div class="funnel-fill" style="--w: 100%; background: #4a6fa5;"></div></div>
+                <div class="card col-4 fade-up delay-2" style="justify-content: center; align-items: center; text-align: center;">
+                    <div style="font-size: 5rem; line-height: 1;">🎯</div>
+                    <h3 style="margin-top: 20px;">Meta Global</h3>
+                    <div class="kpi-number">30 <span style="font-size: 2rem;">MM</span></div>
+                    <p>Faturamento Anual 2026</p>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div style="margin-bottom: 20px;">
-                    <div style="display: flex; justify-content: space-between; font-size: 14px;">
-                        <span>Filtro de DNA</span>
-                        <span style="opacity: 0.5;">Aprovados</span>
-                    </div>
-                    <div class="funnel-visual"><div class="funnel-fill" style="--w: 40%; background: #7aa5d8;"></div></div>
-                </div>
-
+    <section>
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: end; margin-bottom: 30px;">
                 <div>
-                    <div style="display: flex; justify-content: space-between; font-size: 14px;">
-                        <span style="color: var(--orange-electric); font-weight: 700;">Conversão (Sócios)</span>
-                        <span style="color: var(--orange-electric);">150 PNs</span>
+                    <span class="tag">OKR 1 • Originação</span>
+                    <h2>A Máquina de Receita</h2>
+                </div>
+                <div style="text-align: right;">
+                    <p>Meta de Receita Originada</p>
+                    <div style="font-family: 'Darker Grotesque'; font-size: 3rem; color: var(--orange-acc); font-weight: 800;">R$ 5.000.000</div>
+                </div>
+            </div>
+
+            <div class="grid-bento">
+                <div class="card col-4 highlight-bg">
+                    <h3>Volume de Leads</h3>
+                    <div class="kpi-number">48k</div>
+                    <div class="data-row">
+                        <span class="data-label">Perfil High Ticket</span>
+                        <span class="data-val">15% (7.200)</span>
                     </div>
-                    <div class="funnel-visual"><div class="funnel-fill" style="--w: 15%;"></div></div>
+                    <div class="progress-container"><div class="progress-bar" style="width: 15%"></div></div>
+                </div>
+
+                <div class="card col-4">
+                    <h3>Tática Principal</h3>
+                    <p style="margin-bottom: 20px;">Focar em canais de Inbound e Tráfego Pago para injetar "sangue novo" fora da bolha de networking dos franqueados.</p>
+                    <div class="data-row">
+                        <span class="data-label">ROAS Alvo</span>
+                        <span class="data-val">> 4x</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Deploy IA</span>
+                        <span class="data-val">Abril/26</span>
+                    </div>
+                </div>
+
+                 <div class="card col-4" style="background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop') center/cover; opacity: 0.6;">
+                    <div style="background: rgba(5,35,67,0.8); height: 100%; width: 100%; position: absolute; top:0; left:0;"></div>
+                    <div style="position: relative; z-index: 2;">
+                        <h3>Funil High Ticket</h3>
+                        <p style="color: rgba(255,255,255,0.8)">Prioridade total para leads com capacidade de investimento acima de 500k.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <span class="tag">OKR 2 & 3 • Expansão & Marca</span>
+            <h2>Rede e Autoridade</h2>
+
+            <div class="grid-bento">
+                <div class="card col-6">
+                    <h3 class="highlight">O Funil de Sócios</h3>
+                    <div class="kpi-number">150 <span style="font-size: 1.5rem;">Novos Franqueados</span></div>
+                    <p>Qualidade acima de quantidade. O foco muda de "vender franquia" para "recrutar sócios".</p>
+                    
+                    <div style="margin-top: 20px;">
+                        <div class="data-row">
+                            <span class="data-label">Topo (Business Partner)</span>
+                            <span class="data-val">Atração de Empreendedores</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">Meio (O Filtro)</span>
+                            <span class="data-val">Triagem Cultural Rigorosa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card col-6">
+                    <h3 class="highlight">Branded House</h3>
+                    <div class="kpi-number">30 <span style="font-size: 1.5rem;">de Março</span></div>
+                    <p>Prazo final para unificação total das marcas (Hub, FTR, Holdings) sob uma única bandeira.</p>
+                    <ul style="margin-top: 20px; list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 10px; color: var(--text-muted);">✓ Spokespersons (Alex e Thomas) como Top Voices</li>
+                        <li style="margin-bottom: 10px; color: var(--text-muted);">✓ Relatórios do Oráculo na imprensa (Tier-1)</li>
+                        <li style="margin-bottom: 10px; color: var(--text-muted);">✓ Identidade visual unificada</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <section>
-        <span class="kicker">OKR 3: POSICIONAMENTO</span>
-        <h2>Branded House Authority</h2>
-        <div class="divider-line"></div>
-        
-        <div class="grid-3">
-            <div class="glass-card">
-                <span style="font-size: 40px; color: var(--orange-electric);">01</span>
-                <h3>Unificação</h3>
-                <p style="font-size: 16px;">Fim das "marcas órfãs". Hub, FTR e Holdings sob identidade monolítica até 30/Mar.</p>
-            </div>
-            <div class="glass-card">
-                <span style="font-size: 40px; color: var(--orange-electric);">02</span>
-                <h3>Data Authority</h3>
-                <p style="font-size: 16px;">Publicação do "Relatório Oráculo". Gerar notícias baseadas em nossos dados proprietários.</p>
-            </div>
-            <div class="glass-card">
-                <span style="font-size: 40px; color: var(--orange-electric);">03</span>
-                <h3>Top Voices</h3>
-                <p style="font-size: 16px;">Alex Terek e Thomas Franco posicionados como líderes em canais Tier-1.</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="grid-2">
-            <div>
-                <span class="kicker">OKR 4: LTV & CROSS-SELL</span>
-                <h2>Ecossistema Automatizado</h2>
-                <p>Acabar com a dependência da memória do consultor. O Oráculo vende a próxima solução automaticamente.</p>
-            </div>
-            <div style="text-align: right;">
-                 <div class="big-metric">R$ 15 MM</div>
-                 <span class="metric-label">Em Oportunidades Cross-Sell</span>
-            </div>
-        </div>
-
-        <div class="grid-3">
-            <div class="glass-card">
-                <span class="metric-label" style="opacity: 0.5;">Densidade</span>
-                <div class="big-metric" style="font-size: 60px;">1.5</div>
-                <p style="font-size: 14px;">Produtos por Cliente</p>
-            </div>
-            <div class="glass-card" style="background: rgba(255, 100, 8, 0.05); border: 1px solid var(--orange-electric);">
-                <span class="metric-label" style="opacity: 0.5;">Automação IA</span>
-                <div class="big-metric" style="font-size: 60px;">R$ 6M</div>
-                <p style="font-size: 14px;">Gerado sem humano</p>
-            </div>
-            <div class="glass-card">
-                <span class="metric-label" style="opacity: 0.5;">Portas Laterais</span>
-                <div class="big-metric" style="font-size: 60px;">HUB</div>
-                <p style="font-size: 14px;">Captação direta BUs</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <span class="kicker">OKR 5: VALUATION</span>
-        <h2>Preparação Série A</h2>
-        
-        <div class="grid-2">
-            <div>
-                <p style="font-size: 24px; font-weight: 300;">"Somos uma <strong>Data Company</strong>. O Oráculo reduz o custo de servir e aumenta a margem."</p>
-                <div style="margin-top: 40px;">
-                    <div class="glass-card" style="display: inline-block; padding: 20px 40px;">
-                        <span class="metric-label">Meta Captação</span>
-                        <div class="big-metric" style="font-size: 50px;">R$ 6 MM</div>
-                    </div>
-                </div>
-            </div>
+        <div class="container">
+            <span class="tag">OKR 5 • Equity</span>
+            <h2>Preparação Série A</h2>
             
-            <div class="glass-card">
-                <h3>Ativos de Prova (Vídeo)</h3>
-                <div style="margin-top: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
-                    <strong style="color: var(--orange-electric);">🎥 O Manifesto</strong>
-                    <p style="font-size: 14px;">Foco em Emoção/Retenção (>60%). A Jornada do Herói.</p>
-                </div>
-                <div style="margin-top: 20px;">
-                    <strong style="color: var(--orange-electric);">🎥 Scalability Thesis</strong>
-                    <p style="font-size: 14px;">Foco Analítico para Investidores (Roadshow).</p>
+            <div class="grid-bento">
+                <div class="card col-12 highlight-bg" style="flex-direction: row; align-items: center; gap: 40px;">
+                    <div style="flex: 1;">
+                        <h3>Meta de Captação</h3>
+                        <div class="kpi-number" style="font-size: 6rem;">R$ 6MM</div>
+                        <p>Preparação de Governança e Roadshow.</p>
+                    </div>
+                    <div style="flex: 1; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px;">
+                        <h3>A Tese para Investidores</h3>
+                        <p style="font-size: 1.4rem; color: var(--white); margin-bottom: 20px;">"O Oráculo reduz o custo de servir e aumenta o LTV."</p>
+                        
+                        <div class="data-row">
+                            <span class="data-label">Ativo 1</span>
+                            <span class="data-val">Filme "Manifesto do Protagonista" (Retenção > 60%)</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">Ativo 2</span>
+                            <span class="data-val">Filme "Scalability Thesis" (Exclusivo Roadshow)</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section style="text-align: center;">
-        <span class="kicker">Resumo da Operação</span>
-        <h2 style="font-size: 72px;">O Caminho 2026</h2>
-        
-        <div class="grid-3" style="text-align: left;">
-            <div class="glass-card">
-                <h3 style="color: var(--orange-electric);">1. Trazer</h3>
-                <p>R$ 5MM Receita<br>+150 Sócios</p>
-            </div>
-            <div class="glass-card">
-                <h3 style="color: var(--orange-electric);">2. Rentabilizar</h3>
-                <p>R$ 15MM Cross-Sell<br>via Automação</p>
-            </div>
-            <div class="glass-card">
-                <h3 style="color: var(--orange-electric);">3. Valorizar</h3>
-                <p>Posicionamento<br>Data-Driven p/ IPO</p>
-            </div>
-        </div>
-        
-        <div style="margin-top: 60px; font-size: 12px; opacity: 0.3; letter-spacing: 2px;">
-            FUTURO CORP © 2026 | BRAND SYSTEM v9.5 STRICT MODE
+        <div class="container">
+             <img src="Vertical branca.png" alt="Futuro Corp" style="width: 120px; margin-bottom: 40px; opacity: 0.8;">
+             <h2>O Ano da Colheita</h2>
+             
+             <div class="grid-bento" style="max-width: 900px; margin: 40px auto;">
+                 <div class="card col-4" style="text-align: center; border: none; background: transparent; backdrop-filter: none; box-shadow: none;">
+                     <h3 class="highlight" style="font-size: 2rem;">Trazer</h3>
+                     <p>R$ 5MM + 150 Sócios</p>
+                 </div>
+                 <div class="card col-4" style="text-align: center; border: none; background: transparent; backdrop-filter: none; box-shadow: none;">
+                    <h3 class="highlight" style="font-size: 2rem;">Rentabilizar</h3>
+                    <p>R$ 15MM em Cross-Sell</p>
+                </div>
+                <div class="card col-4" style="text-align: center; border: none; background: transparent; backdrop-filter: none; box-shadow: none;">
+                    <h3 class="highlight" style="font-size: 2rem;">Valorizar</h3>
+                    <p>Rumo ao IPO 2030</p>
+                </div>
+             </div>
+
+             <div style="margin-top: 80px; opacity: 0.4; font-size: 0.8rem;">
+                 FUTURO CORP © 2026 • CONFIDENCIAL
+             </div>
         </div>
     </section>
-
-</div>
 
 </body>
 </html>
