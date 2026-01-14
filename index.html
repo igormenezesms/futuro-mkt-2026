@@ -3,434 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuro Corp | Plano MKT 2026</title>
+    <title>Futuro Corp | Board Deck 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;600;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* * BRAND SYSTEM VARIABLES (JSON SOURCE)
-         */
+        /* BRAND SYSTEM V4.0 - PALETA OFICIAL */
         :root {
-            --prussian-blue: #132343;
-            --platinum: #F4F5F6;
-            --pale-slate: #AFB8BE;
+            /* Cores Primárias */
+            --deep-blue: #132343; /* Prussian Blue */
+            --mid-blue: #244676;
+            --tech-blue: #18355d;
+            
+            /* Cores de Ação/Acento */
+            --accent-orange: #FF6408; /* Laranja Brilhante - Ação */
+            
+            /* Bases Neutras */
             --white: #FFFFFF;
-            --accent-orange: #FF6408; /* Futuro Corp & Hub Accent */
+            --platinum: #F4F5F6; /* Fundo de slides claros */
+            --slate: #AFB8BE; /* Textos secundários */
             
-            --radius-dna: 15px;
-            --grid-unit: 9px;
-            
-            --font-display: 'Darker Grotesque', sans-serif;
-            --font-body: 'Manrope', sans-serif; /* Proxy for Effra */
+            /* DNA Visual */
+            --radius: 15px;
+            --padding-std: 60px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: var(--font-body);
-            color: var(--prussian-blue);
-            background-color: var(--platinum);
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            font-family: 'Manrope', sans-serif;
+            overflow: hidden; /* Remove barra de rolagem dupla */
         }
 
-        /* Presentation Layout Logic */
-        .presentation-container {
+        /* CONTAINER PRINCIPAL COM SCROLL SNAP */
+        .presentation {
             width: 100vw;
             height: 100vh;
             overflow-y: scroll;
             scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
         }
 
-        section.slide {
+        /* ESTRUTURA DOS SLIDES */
+        section {
             width: 100vw;
             height: 100vh;
             scroll-snap-align: start;
+            padding: var(--padding-std);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: calc(var(--grid-unit) * 8); /* 72px */
             position: relative;
-            background: var(--white);
         }
 
-        /* Typography */
+        /* CLASSE 1: FUNDO ESCURO (CAPA) */
+        .bg-dark {
+            background-color: var(--deep-blue) !important;
+            color: var(--white) !important;
+        }
+        .bg-dark h1, .bg-dark h2, .bg-dark p { color: var(--white); }
+        .bg-dark .subtitle { color: var(--accent-orange); }
+
+        /* CLASSE 2: FUNDO CLARO (CONTEÚDO) */
+        .bg-light {
+            background-color: var(--white) !important;
+            color: var(--deep-blue) !important;
+            border-bottom: 8px solid var(--platinum); /* Detalhe estético */
+        }
+        .bg-light h2 { color: var(--deep-blue); }
+        .bg-light p { color: var(--deep-blue); }
+
+        /* TIPOGRAFIA */
         h1 {
-            font-family: var(--font-display);
+            font-family: 'Darker Grotesque', sans-serif;
             font-weight: 800;
-            font-size: 80px;
+            font-size: 82px;
             line-height: 0.9;
-            margin-bottom: calc(var(--grid-unit) * 3);
-            letter-spacing: -1px;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
         }
 
         h2 {
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 48px;
+            font-family: 'Darker Grotesque', sans-serif;
+            font-weight: 700;
+            font-size: 54px;
+            margin-bottom: 40px;
             line-height: 1;
-            margin-bottom: calc(var(--grid-unit) * 4);
-            color: var(--prussian-blue);
         }
 
         h3 {
-            font-family: var(--font-display);
+            font-family: 'Darker Grotesque', sans-serif;
             font-weight: 600;
-            font-size: 32px;
-            margin-bottom: calc(var(--grid-unit) * 2);
+            font-size: 28px;
+            margin-bottom: 10px;
         }
 
         p {
             font-size: 18px;
-            line-height: 1.5;
-            color: var(--prussian-blue);
-            margin-bottom: calc(var(--grid-unit) * 2);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-width: 90%;
         }
 
         .subtitle {
-            font-family: var(--font-body);
-            font-size: 24px;
-            color: var(--accent-orange);
-            font-weight: 500;
-            margin-bottom: calc(var(--grid-unit) * 2);
             text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .highlight {
-            color: var(--accent-orange);
             font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: block;
+            color: var(--accent-orange);
         }
 
-        /* UI Components based on Brand DNA */
-        .grid-layout {
+        /* COMPONENTES DE UI */
+        .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: calc(var(--grid-unit) * 5); /* 45px */
+            gap: 50px;
             height: 100%;
             align-items: center;
         }
 
-        .card {
-            background: var(--platinum);
-            border-radius: var(--radius-dna);
-            padding: calc(var(--grid-unit) * 4);
-            border: 1px solid rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            height: 100%;
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
         }
 
-        .card.dark {
-            background: var(--prussian-blue);
-            color: var(--white);
+        /* Cards inteligentes */
+        .card {
+            background: var(--platinum);
+            padding: 30px;
+            border-radius: var(--radius);
+            border-left: 5px solid transparent; /* Reserva de espaço */
+            transition: transform 0.3s ease;
         }
-        .card.dark h3, .card.dark p { color: var(--white); }
         
-        .metric-big {
-            font-family: var(--font-display);
-            font-size: 64px;
+        .card:hover {
+            transform: translateY(-5px);
+            border-left: 5px solid var(--accent-orange);
+            background: #F0F2F4;
+        }
+
+        /* Card Reverso (Escuro dentro do claro) */
+        .card-inverse {
+            background: var(--deep-blue);
+            color: var(--white);
+            padding: 35px;
+            border-radius: var(--radius);
+        }
+        .card-inverse h3, .card-inverse p { color: var(--white); }
+        .card-inverse strong { color: var(--accent-orange); }
+
+        /* Métricas */
+        .big-number {
+            font-family: 'Darker Grotesque', sans-serif;
+            font-size: 72px;
             font-weight: 300;
             color: var(--accent-orange);
             line-height: 1;
-            margin-bottom: 10px;
+            display: block;
         }
-
-        .tag {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: rgba(255, 100, 8, 0.1);
-            color: var(--accent-orange);
-            border-radius: var(--radius-dna);
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .footer-brand {
+        
+        .logo-mark {
             position: absolute;
-            bottom: 30px;
-            right: 45px;
-            font-size: 12px;
-            color: var(--pale-slate);
-            text-transform: uppercase;
+            top: 40px;
+            right: 60px;
+            font-weight: 800;
+            font-family: 'Darker Grotesque';
+            font-size: 24px;
+            opacity: 0.5;
             letter-spacing: 1px;
         }
 
-        /* Slide Specific Customizations */
-        
-        /* Slide 1: Cover */
-        #slide-cover {
-            background-color: var(--prussian-blue);
-            color: var(--white);
-        }
-        #slide-cover h1 { color: var(--white); }
-        #slide-cover .subtitle { color: var(--accent-orange); }
-
-        /* Slide 2: Thesis */
-        .pivot-arrow {
-            font-size: 40px;
-            color: var(--accent-orange);
-            margin: 20px 0;
-        }
-
-        /* Slide 4: Funnel */
-        .funnel-step {
-            background: var(--white);
-            margin-bottom: 10px;
+        /* Funnel Visual */
+        .funnel-box {
+            background: white;
             padding: 15px;
-            border-radius: 10px;
-            border-left: 5px solid var(--accent-orange);
-        }
-
-        /* Slide 8: Closing */
-        .closing-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 27px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
     </style>
 </head>
 <body>
 
-<div class="presentation-container">
+<div class="presentation">
 
-    <section class="slide" id="slide-cover">
+    <section class="bg-dark">
+        <div class="logo-mark">FUTURO CORP</div>
         <div style="max-width: 800px;">
-            <p class="subtitle">Estratégia de Crescimento Integrado</p>
-            <h1>Plano Tático de<br>Marketing 2026</h1>
-            <p style="font-size: 28px; color: var(--pale-slate); font-weight: 300;">
+            <span class="subtitle">Planejamento Estratégico Integrado</span>
+            <h1>Plano MKT 2026</h1>
+            <p style="font-size: 32px; font-weight: 300; opacity: 0.9;">
                 Acelerando a Receita, a Rede e o Ecossistema.
             </p>
-            <div style="margin-top: 45px; width: 100px; height: 4px; background: var(--accent-orange);"></div>
+            <div style="width: 80px; height: 6px; background: var(--accent-orange); margin-top: 40px;"></div>
         </div>
-        <div class="footer-brand">Futuro Corp | Board Version</div>
     </section>
 
-    <section class="slide">
-        <div class="grid-layout">
+    <section class="bg-light">
+        <div class="logo-mark">FUTURO CORP</div>
+        <div class="grid-2">
             <div>
-                <span class="tag">O Big Picture</span>
-                <h2>O Pivô Estratégico: <br>"Tech-Enabled Service"</h2>
-                <p>Para suportar a meta de <strong>R$ 30 Milhões</strong>, o Marketing precisa evoluir. Deixamos de ser "suporte a vendas" para nos tornarmos a <strong>Inteligência Central</strong>.</p>
-                
+                <span class="subtitle">O PIVÔ ESTRATÉGICO</span>
+                <h2>Tech-Enabled Service</h2>
+                <p>O Marketing deixa de ser suporte a vendas para ser a <strong>Inteligência Central</strong>.</p>
                 <div style="margin-top: 30px;">
-                    <div style="margin-bottom: 20px;">
-                        <h3 style="color: var(--accent-orange); margin-bottom: 5px;">01. Originação</h3>
-                        <p style="font-size: 16px;">Injetando demanda qualificada para os franqueados (B2C).</p>
+                    <div class="funnel-box" style="border-left: 4px solid var(--accent-orange);">
+                        <strong>01. Originação (B2C)</strong><br>
+                        Injetar demanda qualificada para os franqueados.
                     </div>
-                    <div>
-                        <h3 style="color: var(--accent-orange); margin-bottom: 5px;">02. Atração</h3>
-                        <p style="font-size: 16px;">Filtrando talentos para a expansão da rede (B2B).</p>
+                    <div class="funnel-box" style="border-left: 4px solid var(--deep-blue);">
+                        <strong>02. Atração (B2B)</strong><br>
+                        Filtrar talentos para expansão da rede.
                     </div>
                 </div>
             </div>
-            <div class="card dark" style="justify-content: center; text-align: center;">
-                <p style="font-family: var(--font-display); font-size: 32px; line-height: 1.1; color: white;">
+            <div class="card-inverse" style="display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-size: 28px; line-height: 1.2; font-family: 'Darker Grotesque';">
                     "Não somos um app, nem um escritório tradicional."
                 </p>
-                <div style="width: 50px; height: 1px; background: var(--accent-orange); margin: 20px auto;"></div>
-                <p style="color: white; font-style: italic;">
+                <p style="opacity: 0.8; margin-top: 20px;">
                     Somos o <strong>'Uber do Planejamento Financeiro'</strong>: tecnologia proprietária (Oráculo) com atendimento humano de elite.
                 </p>
             </div>
         </div>
-        <div class="footer-brand">Conceito Central: Engenharia de Ciclo de Vida</div>
     </section>
 
-    <section class="slide">
-        <span class="subtitle">OKR 1: Originação e Qualificação</span>
-        <div class="grid-layout">
+    <section class="bg-light">
+        <div class="logo-mark">OKR 1</div>
+        <div class="grid-2">
             <div>
-                <h2>A Máquina de Receita</h2>
+                <span class="subtitle">MÁQUINA DE VENDAS</span>
+                <h2>Originação & Qualificação</h2>
                 <div class="card">
-                    <p class="metric-big">R$ 5.000.000</p>
-                    <p style="font-weight: 700;">Receita Originada Direta</p>
+                    <span class="big-number">R$ 5 MM</span>
+                    <strong>Receita Originada Direta</strong>
                 </div>
-                <div style="margin-top: 27px;">
-                    <p><strong>Deploy de IA (Abril/26):</strong> "Agente Planejador" para rentabilizar a base menor (ticket 1k) sem onerar o time humano.</p>
-                </div>
+                <p style="margin-top: 30px; font-size: 16px; color: var(--slate);">
+                    *Deploy do "Agente Planejador IA" em Abril/26 para rentabilizar tickets menores.
+                </p>
             </div>
             <div>
-                <h3 style="border-bottom: 1px solid #ddd; padding-bottom: 10px;">Como entregaremos (The How)</h3>
-                
-                <div style="margin-bottom: 20px;">
-                    <strong style="color: var(--accent-orange);">Volume Inteligente</strong>
-                    <p style="margin-bottom: 5px;">Captação de <strong>48.000 Leads Totais</strong> no ano.</p>
+                <h3>O Funil High Ticket</h3>
+                <div class="card" style="margin-bottom: 20px;">
+                    <strong style="color: var(--accent-orange);">Volume:</strong> 48.000 Leads Totais
                 </div>
-
-                <div style="margin-bottom: 20px;">
-                    <strong style="color: var(--accent-orange);">Filtro de Ouro (KR 1.1)</strong>
-                    <p style="margin-bottom: 5px;">15% (7.200) devem ser <strong>Perfil High Ticket</strong> (Renda > 30k).</p>
+                <div class="card" style="margin-bottom: 20px;">
+                    <strong style="color: var(--accent-orange);">Filtro de Ouro:</strong> 15% (7.200) Perfil High Income (>30k)
                 </div>
-
-                <div class="card dark" style="padding: 20px;">
-                    <strong style="color: var(--accent-orange);">Fast Track Oráculo</strong>
-                    <p style="color: white; font-size: 14px; margin-bottom: 0;">Leads de alta renda furam a fila direto para o <strong>Concierge Humano</strong>, garantindo conversão máxima.</p>
+                <div class="card-inverse">
+                    <strong>Fast Track Oráculo</strong>
+                    <p style="margin: 5px 0 0 0; font-size: 14px;">Leads qualificados furam a fila direto para o Concierge Humano.</p>
                 </div>
             </div>
         </div>
-        <div class="footer-brand">Foco: B2C High Ticket</div>
     </section>
 
-    <section class="slide">
-        <span class="subtitle">OKR 2: O Funil de Sócios</span>
-        <h2>Expansão: Qualidade > Quantidade</h2>
+    <section class="bg-light">
+        <div class="logo-mark">OKR 2</div>
+        <span class="subtitle">EXPANSÃO DA REDE</span>
+        <h2>Qualidade > Quantidade</h2>
         
-        <div class="grid-layout">
+        <div class="grid-2">
             <div>
-                <p>Não vamos entupir o time de expansão com curiosos. O Marketing assume o compromisso de entregar <strong>candidatos aprovados</strong>.</p>
-                <div class="card" style="border: 2px solid var(--accent-orange); margin-top: 20px;">
-                    <p class="metric-big">150</p>
-                    <p>Novos Franqueados nos primeiros 6 meses.</p>
+                <p>O Marketing assume o compromisso de entregar <strong>candidatos aprovados</strong>, não apenas curiosos.</p>
+                <div class="card" style="border: 2px solid var(--accent-orange); background: white;">
+                    <span class="big-number">150</span>
+                    <strong>Novos Sócios Franqueados (6 Meses)</strong>
                 </div>
-                <p style="margin-top: 20px; font-size: 14px;"><strong>Diferencial:</strong> O candidato passa por um "MBA Prático". Quem entra, fica.</p>
             </div>
             
-            <div style="background: var(--platinum); padding: 30px; border-radius: 15px;">
+            <div style="background: var(--platinum); padding: 40px; border-radius: 20px;">
                 <h3 style="margin-bottom: 20px;">O Funil Reverso</h3>
                 
-                <div class="funnel-step" style="width: 100%;">
-                    <strong>Topo: Atração</strong>
-                    <div style="font-size: 13px;">Narrativa "Business Partner Program" (não vaga de emprego).</div>
+                <div style="width: 100%; background: #D1D5DB; height: 40px; border-radius: 8px; margin-bottom: 5px; display: flex; align-items: center; padding-left: 15px; font-size: 14px; font-weight: bold;">
+                    Topo: Narrativa "Business Partner"
                 </div>
-                
-                <div class="funnel-step" style="width: 80%; margin-left: 10%;">
-                    <strong>Meio: O Filtro (DNA)</strong>
-                    <div style="font-size: 13px;">1.500 Candidatos Aprovados na Triagem Inicial.</div>
+                <div style="width: 80%; background: #9CA3AF; height: 40px; border-radius: 8px; margin-bottom: 5px; display: flex; align-items: center; padding-left: 15px; font-size: 14px; font-weight: bold; margin-left: 10%;">
+                    Meio: Triagem de DNA (1.500)
                 </div>
-                
-                <div class="funnel-step" style="width: 60%; margin-left: 20%; background: var(--prussian-blue); color: white;">
-                    <strong style="color: var(--accent-orange);">Fundo: Conversão</strong>
-                    <div style="font-size: 13px; color: #ddd;">10% de conversão = 150 PNs.</div>
+                <div style="width: 60%; background: var(--accent-orange); color: white; height: 50px; border-radius: 8px; display: flex; align-items: center; padding-left: 15px; font-size: 16px; font-weight: bold; margin-left: 20%; box-shadow: 0 10px 20px rgba(255, 100, 8, 0.2);">
+                    Fundo: 150 Sócios Aprovados
                 </div>
             </div>
         </div>
-        <div class="footer-brand">Expansão da Rede</div>
     </section>
 
-    <section class="slide">
-        <span class="subtitle">OKR 3: Posicionamento</span>
-        <div class="grid-layout">
+    <section class="bg-light">
+        <div class="logo-mark">OKR 3</div>
+        <span class="subtitle">POSICIONAMENTO</span>
+        <h2>Branded House & Autoridade</h2>
+        
+        <div class="grid-3">
+            <div class="card">
+                <h3 style="color: var(--accent-orange);">01. Unificação</h3>
+                <p>Migração total para identidade monolítica. Hub, FTR e Holdings sob uma única bandeira até 30/Março.</p>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--accent-orange);">02. Data Authority</h3>
+                <p>Publicação do "Relatório de Inteligência Oráculo". Gerar notícias baseadas em nossos dados proprietários.</p>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--accent-orange);">03. Top Voices</h3>
+                <p>Alex Terek e Thomas Franco posicionados como líderes de pensamento em canais Tier-1.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light">
+        <div class="logo-mark">OKR 4</div>
+        <div class="grid-2">
             <div>
-                <h2>Autoridade Data-Driven & <br>Branded House</h2>
-                <p>Objetivo: Ser referência incontestável em Metodologia e Tecnologia.</p>
-                
-                <div style="margin-top: 30px;">
-                    <div class="card dark">
-                        <h3 style="color: var(--accent-orange);">Unificação Visual (KR 3.2)</h3>
-                        <p style="color: white; margin-bottom: 0;">Migração total para <strong>"Branded House"</strong>. Fim das marcas órfãs. Hub, FTR e Holdings sob uma única identidade monolítica até 30/Março.</p>
-                    </div>
+                <span class="subtitle">CROSS-SELL</span>
+                <h2>O Multiplicador de LTV</h2>
+                <p>Acabar com a dependência da memória do consultor. O Marketing automatiza a oferta da "próxima solução".</p>
+                <div class="card-inverse" style="margin-top: 40px;">
+                    <span class="big-number">R$ 15 MM</span>
+                    <p style="margin-top: 10px; color: white;">Em oportunidades geradas para as BUs.</p>
                 </div>
+            </div>
+            <div>
+                <div class="card" style="margin-bottom: 20px;">
+                    <h3>Automação Oráculo</h3>
+                    <p>Gatilhos automáticos (ex: "Liquidez > 500k") ofertam produtos específicos sem intervenção humana.</p>
+                    <strong>Meta: R$ 6MM via Automação</strong>
+                </div>
+                <div class="card">
+                    <h3>Portas Laterais</h3>
+                    <p>Ferramentas como "Revelador de Crédito Oculto" trazem clientes direto para o produto, depois expandimos para o planejamento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light">
+        <div class="logo-mark">OKR 5</div>
+        <span class="subtitle">VALUATION</span>
+        <h2>Preparação Série A</h2>
+        
+        <div class="grid-2">
+            <div>
+                <span class="big-number" style="color: var(--deep-blue);">R$ 6 MM</span>
+                <p style="font-weight: 700; color: var(--accent-orange);">Meta de Captação & Governança</p>
+                <p style="margin-top: 30px;">
+                    "Somos uma <strong>Data Company</strong>. O Oráculo reduz o custo de servir e aumenta a margem."
+                </p>
             </div>
             <div>
                 <div class="card">
-                    <strong style="font-size: 20px; color: var(--prussian-blue);">Autoridade de Dados (KR 3.1)</strong>
-                    <p>Publicação do <strong>"Relatório de Inteligência Oráculo"</strong>.</p>
-                    <p style="font-size: 15px; color: #666;">Não vamos apenas dar opiniões; vamos gerar notícias baseadas nos dados da nossa base (Ex: "O perfil de endividamento da classe média alta") para pautar a imprensa.</p>
-                </div>
-                
-                <div class="card" style="margin-top: 27px;">
-                    <strong style="font-size: 20px; color: var(--prussian-blue);">Spokespersons (KR 3.3)</strong>
-                    <p style="margin-bottom: 0;">Posicionar Alex Terek e Thomas Franco como "Top Voices", humanizando a autoridade da marca.</p>
-                </div>
-            </div>
-        </div>
-        <div class="footer-brand">Refinamento Institucional</div>
-    </section>
-
-    <section class="slide">
-        <span class="subtitle">OKR 4: Ecossistema</span>
-        <h2>Ativação de Cross-Sell</h2>
-        <p>Acabar com a dependência da memória do consultor. O Marketing automatiza a oferta da "próxima solução".</p>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 30px;">
-            <div class="card">
-                <p class="metric-big" style="font-size: 40px;">R$ 15MM</p>
-                <p style="font-size: 14px; font-weight: 700;">Em oportunidades para as BUs (Hub, FTR, Holdings).</p>
-            </div>
-            <div class="card">
-                <p class="metric-big" style="font-size: 40px;">1.5</p>
-                <p style="font-size: 14px; font-weight: 700;">Índice de Densidade (Soluções contratadas por EP).</p>
-            </div>
-            <div class="card">
-                <p class="metric-big" style="font-size: 40px;">R$ 6MM</p>
-                <p style="font-size: 14px; font-weight: 700;">Gerados via Automação do Oráculo (Sem intervenção manual).</p>
-            </div>
-        </div>
-
-        <div style="margin-top: 45px; display: flex; gap: 20px;">
-            <div style="flex: 1;">
-                <h3 style="font-size: 20px;">Automação via Oráculo</h3>
-                <p style="font-size: 14px;">Gatilhos automáticos (ex: "Liquidez > 500k") ofertando produtos específicos.</p>
-            </div>
-            <div style="flex: 1;">
-                <h3 style="font-size: 20px;">Portas Laterais</h3>
-                <p style="font-size: 14px;">Uso de "Revelador de Crédito Oculto" para captar direto para BUs.</p>
-            </div>
-        </div>
-        <div class="footer-brand">O Multiplicador de LTV</div>
-    </section>
-
-    <section class="slide">
-        <span class="subtitle">OKR 5: Preparação para Série A</span>
-        <div class="grid-layout">
-            <div>
-                <h2>Valor de Marca e Equity</h2>
-                <p class="metric-big">R$ 6.000.000</p>
-                <p>Meta de Captação e preparação de Governança.</p>
-                
-                <div style="margin-top: 30px; padding-left: 20px; border-left: 4px solid var(--accent-orange);">
-                    <p style="font-style: italic;">"Somos uma <strong>Data Company</strong>. O Oráculo reduz o custo de servir e aumenta o LTV."</p>
-                </div>
-            </div>
-            
-            <div style="display: flex; flex-direction: column; gap: 20px;">
-                <div class="card dark">
-                    <h3>Ativos de Prova (KR 5.2)</h3>
-                    <ul style="list-style: none; color: white;">
-                        <li style="margin-bottom: 15px;">🎥 <strong>Recrutamento:</strong> Filme "O Manifesto do Protagonista" (Emoção/Retenção).</li>
-                        <li>🎥 <strong>Investidores:</strong> Filme "The Scalability Thesis" (Exclusivo Roadshows).</li>
+                    <h3>Ativos de Prova (Vídeo)</h3>
+                    <ul style="margin-left: 20px; line-height: 2;">
+                        <li>🎥 <strong>O Manifesto:</strong> Foco em Emoção/Retenção (>60%).</li>
+                        <li>🎥 <strong>Scalability Thesis:</strong> Foco Analítico para Investidores.</li>
                     </ul>
                 </div>
-                <div class="card">
-                    <h3>O Alvo</h3>
-                    <p style="margin-bottom: 0;">Abrir relacionamento com <strong>10 Parceiros Estratégicos</strong> (Family Offices/Bancos) para garantir 2 Term Sheets na mesa.</p>
-                </div>
             </div>
         </div>
-        <div class="footer-brand">Valuation & Smart Money</div>
     </section>
 
-    <section class="slide" id="slide-cover" style="text-align: center;">
-        <h2 style="color: white; margin-bottom: 60px;">O Resumo da Operação 2026</h2>
+    <section class="bg-dark" style="text-align: center;">
+        <span class="subtitle" style="color: var(--white); opacity: 0.6;">RESUMO DA OPERAÇÃO</span>
+        <h2>O Caminho para 2026</h2>
         
-        <div class="closing-grid">
-            <div class="card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
-                <h3 style="color: var(--accent-orange);">1. Trazendo</h3>
-                <p style="color: white; font-size: 20px;">R$ 5MM em Receita<br>+ 150 Sócios</p>
+        <div class="grid-3" style="text-align: left; margin-top: 40px;">
+            <div class="card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                <h3 style="color: var(--accent-orange);">1. Trazer</h3>
+                <p style="color: white; font-size: 20px;">R$ 5MM Receita<br>+150 Sócios</p>
             </div>
-            
-            <div class="card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
-                <h3 style="color: var(--accent-orange);">2. Rentabilizando</h3>
-                <p style="color: white; font-size: 20px;">R$ 15MM em Cross-Sell<br>via Automação</p>
+            <div class="card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                <h3 style="color: var(--accent-orange);">2. Rentabilizar</h3>
+                <p style="color: white; font-size: 20px;">R$ 15MM Cross-Sell<br>via Automação</p>
             </div>
-            
-            <div class="card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
-                <h3 style="color: var(--accent-orange);">3. Valorizando</h3>
-                <p style="color: white; font-size: 20px;">Posicionamento<br>Data-Driven para IPO</p>
+            <div class="card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                <h3 style="color: var(--accent-orange);">3. Valorizar</h3>
+                <p style="color: white; font-size: 20px;">Posicionamento<br>Data-Driven p/ IPO</p>
             </div>
         </div>
         
-        <div style="margin-top: 60px;">
-            <p style="color: var(--pale-slate); font-size: 14px;">FUTURO CORP © 2026 | BRANDED HOUSE SYSTEM v4.0</p>
+        <div style="margin-top: 60px; font-size: 14px; opacity: 0.5;">
+            FUTURO CORP © 2026 | BRAND SYSTEM v4.0 STRICT MODE
         </div>
     </section>
 
