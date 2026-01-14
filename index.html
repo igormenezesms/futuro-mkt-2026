@@ -1,246 +1,239 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2867
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuro Corp | Plano Tático MKT 2026</title>
+    
+    <meta property="og:title" content="Futuro Corp | Plano Tático 2026">
+    <meta property="og:description" content="Apresentação Oficial para o Board. Estratégia de Crescimento Integrado.">
+    <meta name="theme-color" content="#052343">
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="pt-BR">\
-<head>\
-    <meta charset="UTF-8">\
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-    <title>Futuro Corp | Plano T\'e1tico MKT 2026</title>\
-    \
-    <meta property="og:title" content="Futuro Corp | Plano T\'e1tico 2026">\
-    <meta property="og:description" content="Apresenta\'e7\'e3o Oficial para o Board. Estrat\'e9gia de Crescimento Integrado.">\
-    <meta name="theme-color" content="#052343">\
-\
-    <style>\
-        /* --- BRANDING & RESET --- */\
-        :root \{\
-            --azul-futuro: #052343;\
-            --laranja-futuro: #EC6C23;\
-            --branco: #FFFFFF;\
-            --cinza-bg: #F0F2F5;\
-            --cinza-txt: #4A5568;\
-            --preto-suave: #1A202C;\
-        \}\
-\
-        * \{ margin: 0; padding: 0; box-sizing: border-box; \}\
-\
-        body \{\
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;\
-            background-color: var(--preto-suave);\
-            color: var(--preto-suave);\
-            overflow-y: scroll;\
-            scroll-snap-type: y mandatory; /* O segredo do efeito slide */\
-            height: 100vh;\
-        \}\
-\
-        /* --- ESTRUTURA --- */\
-        section \{\
-            height: 100vh;\
-            width: 100%;\
-            scroll-snap-align: start;\
-            display: flex;\
-            flex-direction: column;\
-            justify-content: center;\
-            padding: 4rem 8rem;\
-            position: relative;\
-            overflow: hidden;\
-        \}\
-\
-        /* --- LOGO --- */\
-        .logo-capa \{\
-            width: 180px; /* Tamanho elegante */\
-            margin-bottom: 3rem;\
-            display: block;\
-        \}\
-\
-        /* --- TIPOGRAFIA --- */\
-        h1 \{ font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; \}\
-        \
-        h2 \{\
-            font-size: 2.5rem; color: var(--azul-futuro); margin-bottom: 2rem;\
-            position: relative; padding-bottom: 1rem;\
-        \}\
-        h2::after \{\
-            content: ''; position: absolute; left: 0; bottom: 0;\
-            width: 80px; height: 6px; background-color: var(--laranja-futuro);\
-        \}\
-\
-        h3 \{ font-size: 1.5rem; color: var(--azul-futuro); margin-bottom: 0.5rem; \}\
-        p \{ font-size: 1.1rem; line-height: 1.6; color: var(--cinza-txt); margin-bottom: 1rem; \}\
-\
-        /* --- COMPONENTES --- */\
-        .card-grid \{ display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; width: 100%; \}\
-        \
-        .card \{\
-            background: var(--branco); padding: 2rem; border-left: 4px solid var(--azul-futuro);\
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-radius: 0 8px 8px 0;\
-        \}\
-        .card.accent \{ border-left-color: var(--laranja-futuro); \}\
-\
-        .kpi-box \{\
-            background: var(--azul-futuro); color: var(--branco); padding: 1.5rem;\
-            border-radius: 8px; text-align: center;\
-        \}\
-        .kpi-value \{ font-size: 2.5rem; font-weight: bold; color: var(--laranja-futuro); display: block; \}\
-        .kpi-label \{ font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; \}\
-\
-        .tag \{\
-            display: inline-block; background: var(--laranja-futuro); color: white;\
-            padding: 4px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: bold; margin-bottom: 1rem;\
-        \}\
-\
-        /* --- SLIDES ESPEC\'cdFICOS --- */\
-        #capa \{ background-color: var(--azul-futuro); color: var(--branco); align-items: flex-start; \}\
-        #capa h2 \{ color: var(--laranja-futuro); font-size: 1.8rem; border: none; padding: 0; \}\
-        #capa h2::after \{ display: none; \}\
-        \
-        .footer-capa \{\
-            position: absolute; bottom: 4rem; left: 8rem; font-size: 0.9rem; opacity: 0.7;\
-            border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem; width: calc(100% - 16rem);\
-            display: flex; justify-content: space-between;\
-        \}\
-\
-        #tese \{ background-color: var(--branco); \}\
-        .quote-box \{\
-            font-size: 1.4rem; font-style: italic; color: var(--azul-futuro);\
-            border-left: 4px solid var(--laranja-futuro); padding-left: 2rem; margin: 2rem 0;\
-        \}\
-\
-        #okr1 \{ background-color: var(--cinza-bg); \}\
-        #okr2 \{ background-color: var(--branco); \}\
-        \
-        .funnel-step \{\
-            padding: 1rem; background: var(--cinza-bg); margin-bottom: 0.5rem; border-radius: 4px; position: relative;\
-        \}\
-        .funnel-step::before \{\
-            content: '\uc0\u9660 '; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); color: var(--laranja-futuro); font-size: 0.8rem;\
-        \}\
-        .funnel-step:last-child::before \{ display: none; \}\
-\
-        #okr3 \{ background-color: var(--azul-futuro); color: var(--branco); \}\
-        #okr3 h2, #okr3 h3 \{ color: var(--branco); \}\
-        #okr3 p \{ color: rgba(255,255,255,0.8); \}\
-        #okr3 .card \{ background: rgba(255,255,255,0.1); border-left: 4px solid var(--laranja-futuro); color: white; \}\
-\
-        #okr4 \{ background-color: var(--branco); \}\
-        #okr5 \{ background-color: var(--cinza-bg); \}\
-\
-        #final \{ background-color: var(--azul-futuro); color: var(--branco); text-align: center; align-items: center; \}\
-        #final h2 \{ color: var(--branco); border: none; margin-bottom: 3rem; \}\
-        #final h2::after \{ display: none; \}\
-        \
-        .grid-final \{ display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; width: 100%; max-width: 1200px; \}\
-        .col-final h3 \{ color: var(--laranja-futuro); font-size: 2rem; margin-bottom: 1rem;\}\
-        .col-final p \{ color: rgba(255,255,255,0.9); font-size: 1.2rem;\}\
-\
-        @media (max-width: 768px) \{\
-            section \{ padding: 2rem; height: auto; min-height: 100vh; \}\
-            h1 \{ font-size: 2.5rem; \}\
-            .logo-capa \{ width: 140px; \}\
-            .footer-capa \{ left: 2rem; width: calc(100% - 4rem); flex-direction: column; gap: 1rem;\}\
-        \}\
-    </style>\
-</head>\
-<body>\
-\
-    <section id="capa">\
-        <div style="margin-bottom: auto;"></div> <img src="Vertical branca.png" alt="Logo Futuro Corp" class="logo-capa">\
-\
-        <span class="tag">PLANEJAMENTO ESTRAT\'c9GICO</span>\
-        <h1>Plano T\'e1tico de Marketing 2026</h1>\
-        <h2>Acelerando a Receita, a Rede e o Ecossistema.</h2>\
-        \
-        <div style="margin-top: auto;"></div> <div class="footer-capa">\
-            <span><strong>Futuro Corp</strong> | Estrat\'e9gia de Crescimento Integrado</span>\
-            <span>Vers\'e3o Board</span>\
-        </div>\
-    </section>\
-\
-    <section id="tese">\
-        <h2>A Tese de 2026: O Piv\'f4 Estrat\'e9gico</h2>\
-        <p>Conceito Central: <strong>"Engenharia de Ciclo de Vida"</strong>. O Marketing deixa de ser suporte a vendas e se torna a <strong>Intelig\'eancia Central</strong>.</p>\
-        <div class="quote-box">"N\'e3o somos um app, nem um escrit\'f3rio tradicional. Somos o 'Uber do Planejamento Financeiro'."</div>\
-        <div class="card-grid">\
-            <div class="card"><h3>01. Origina\'e7\'e3o (B2C)</h3><p>Injetando demanda qualificada via dados.</p></div>\
-            <div class="card accent"><h3>02. Atra\'e7\'e3o (B2B)</h3><p>Filtrando talentos de elite para a rede.</p></div>\
-        </div>\
-    </section>\
-\
-    <section id="okr1">\
-        <h2>OKR 1: A M\'e1quina de Receita (B2C)</h2>\
-        <div class="card-grid" style="margin-bottom: 3rem;">\
-            <div class="kpi-box"><span class="kpi-value">R$ 5 MM</span><span class="kpi-label">Receita Originada</span></div>\
-            <div class="kpi-box" style="background: white; border: 2px solid var(--azul-futuro);"><span class="kpi-value" style="color: var(--azul-futuro);">48k</span><span class="kpi-label" style="color: var(--cinza-txt);">Leads Totais</span></div>\
-            <div class="kpi-box"><span class="kpi-value">15%</span><span class="kpi-label">High Ticket</span></div>\
-        </div>\
-        <div class="card-grid">\
-            <div class="card"><h3>\uc0\u55357 \u56960  Fast Track</h3><p>Leads high income furam a fila para o Concierge.</p></div>\
-            <div class="card"><h3>\uc0\u55358 \u56598  Agente IA</h3><p>Deploy Abril/26 para rentabilizar a base menor.</p></div>\
-        </div>\
-    </section>\
-\
-    <section id="okr2">\
-        <h2>OKR 2: O Funil de S\'f3cios (Expans\'e3o)</h2>\
-        <p><strong>Meta:</strong> 150 Novos Franqueados. Qualidade > Quantidade.</p>\
-        <div style="max-width: 800px; margin: 2rem auto; width: 100%;">\
-            <div class="funnel-step"><strong>TOPO: "Business Partner"</strong><br><small>Atra\'e7\'e3o de s\'f3cios, n\'e3o funcion\'e1rios.</small></div>\
-            <div class="funnel-step" style="width: 80%; margin-left: 10%;"><strong>MEIO: O Filtro (DNA)</strong><br><small>Triagem cultural rigorosa.</small></div>\
-            <div class="funnel-step" style="width: 60%; margin-left: 20%; background: var(--azul-futuro); color: white;"><strong>FUNDO: 150 PNs</strong><br><small>Convers\'e3o de 10%.</small></div>\
-        </div>\
-    </section>\
-\
-    <section id="okr3">\
-        <h2>OKR 3: Autoridade Data-Driven</h2>\
-        <p>Migra\'e7\'e3o para <strong>Branded House</strong> at\'e9 30/Mar\'e7o.</p>\
-        <div class="card-grid">\
-            <div class="card"><h3>\uc0\u55357 \u56522  Relat\'f3rio Or\'e1culo</h3><p>Dados propriet\'e1rios pautando a imprensa.</p></div>\
-            <div class="card"><h3>\uc0\u55357 \u56803  Spokespersons</h3><p>Founders como "Top Voices" do setor.</p></div>\
-            <div class="card"><h3>\uc0\u55356 \u57256  Identidade \'danica</h3><p>Fim das marcas \'f3rf\'e3s.</p></div>\
-        </div>\
-    </section>\
-\
-    <section id="okr4">\
-        <h2>OKR 4: Cross-Sell (Ecossistema)</h2>\
-        <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem;">\
-            <span style="font-size: 3rem; font-weight: bold; color: var(--azul-futuro);">R$ 15 MM</span>\
-            <span style="font-size: 1.2rem; color: var(--cinza-txt);">em novas oportunidades.</span>\
-        </div>\
-        <div class="card-grid">\
-            <div class="card accent"><h3>Densidade</h3><p>1.5 Solu\'e7\'f5es por cliente.</p></div>\
-            <div class="card accent"><h3>Automa\'e7\'e3o</h3><p>Gatilhos do Or\'e1culo geram 40% da meta.</p></div>\
-            <div class="card accent"><h3>Portas Laterais</h3><p>Ferramentas diagn\'f3sticas captam direto.</p></div>\
-        </div>\
-    </section>\
-\
-    <section id="okr5">\
-        <h2>OKR 5: Prepara\'e7\'e3o S\'e9rie A</h2>\
-        <p>Captar R$ 6MM. Tese: <strong>"Somos uma Data Company"</strong>.</p>\
-        <div class="card-grid">\
-            <div class="card">\
-                <h3>\uc0\u55356 \u57260  Ativos de Prova</h3>\
-                <ul style="margin-left: 1.2rem;">\
-                    <li>Filme "Manifesto" (Recrutamento)</li>\
-                    <li>Filme "Scalability Thesis" (Investidores)</li>\
-                </ul>\
-            </div>\
-            <div class="card"><h3>\uc0\u55358 \u56605  Parceiros</h3><p>10 Family Offices/Bancos no pipeline.</p></div>\
-        </div>\
-    </section>\
-\
-    <section id="final">\
-        <h2>O Resumo 2026</h2>\
-        <div class="grid-final">\
-            <div class="col-final"><h3>1. Trazer</h3><p>R$ 5MM e 150 S\'f3cios.</p></div>\
-            <div class="col-final"><h3>2. Rentabilizar</h3><p>R$ 15MM em Cross-Sell.</p></div>\
-            <div class="col-final"><h3>3. Valorizar</h3><p>Posicionamento para IPO.</p></div>\
-        </div>\
-        <div style="margin-top: 4rem; opacity: 0.6; font-size: 0.9rem;">Futuro Corp \'a9 2026</div>\
-    </section>\
-\
-</body>\
-</html>}
+    <style>
+        /* --- BRANDING & RESET --- */
+        :root {
+            --azul-futuro: #052343;
+            --laranja-futuro: #EC6C23;
+            --branco: #FFFFFF;
+            --cinza-bg: #F0F2F5;
+            --cinza-txt: #4A5568;
+            --preto-suave: #1A202C;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--preto-suave);
+            color: var(--preto-suave);
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+        }
+
+        /* --- ESTRUTURA --- */
+        section {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- LOGO --- */
+        .logo-capa {
+            width: 180px;
+            margin-bottom: 3rem;
+            display: block;
+        }
+
+        /* --- TIPOGRAFIA --- */
+        h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
+        
+        h2 {
+            font-size: 2.5rem; color: var(--azul-futuro); margin-bottom: 2rem;
+            position: relative; padding-bottom: 1rem;
+        }
+        h2::after {
+            content: ''; position: absolute; left: 0; bottom: 0;
+            width: 80px; height: 6px; background-color: var(--laranja-futuro);
+        }
+
+        h3 { font-size: 1.5rem; color: var(--azul-futuro); margin-bottom: 0.5rem; }
+        p { font-size: 1.1rem; line-height: 1.6; color: var(--cinza-txt); margin-bottom: 1rem; }
+
+        /* --- COMPONENTES --- */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; width: 100%; }
+        
+        .card {
+            background: var(--branco); padding: 2rem; border-left: 4px solid var(--azul-futuro);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-radius: 0 8px 8px 0;
+        }
+        .card.accent { border-left-color: var(--laranja-futuro); }
+
+        .kpi-box {
+            background: var(--azul-futuro); color: var(--branco); padding: 1.5rem;
+            border-radius: 8px; text-align: center;
+        }
+        .kpi-value { font-size: 2.5rem; font-weight: bold; color: var(--laranja-futuro); display: block; }
+        .kpi-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; }
+
+        .tag {
+            display: inline-block; background: var(--laranja-futuro); color: white;
+            padding: 4px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: bold; margin-bottom: 1rem;
+        }
+
+        /* --- SLIDES ESPECÍFICOS --- */
+        #capa { background-color: var(--azul-futuro); color: var(--branco); align-items: flex-start; }
+        #capa h2 { color: var(--laranja-futuro); font-size: 1.8rem; border: none; padding: 0; }
+        #capa h2::after { display: none; }
+        
+        .footer-capa {
+            position: absolute; bottom: 4rem; left: 8rem; font-size: 0.9rem; opacity: 0.7;
+            border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem; width: calc(100% - 16rem);
+            display: flex; justify-content: space-between;
+        }
+
+        #tese { background-color: var(--branco); }
+        .quote-box {
+            font-size: 1.4rem; font-style: italic; color: var(--azul-futuro);
+            border-left: 4px solid var(--laranja-futuro); padding-left: 2rem; margin: 2rem 0;
+        }
+
+        #okr1 { background-color: var(--cinza-bg); }
+        #okr2 { background-color: var(--branco); }
+        
+        .funnel-step {
+            padding: 1rem; background: var(--cinza-bg); margin-bottom: 0.5rem; border-radius: 4px; position: relative;
+        }
+        .funnel-step::before {
+            content: '▼'; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); color: var(--laranja-futuro); font-size: 0.8rem;
+        }
+        .funnel-step:last-child::before { display: none; }
+
+        #okr3 { background-color: var(--azul-futuro); color: var(--branco); }
+        #okr3 h2, #okr3 h3 { color: var(--branco); }
+        #okr3 p { color: rgba(255,255,255,0.8); }
+        #okr3 .card { background: rgba(255,255,255,0.1); border-left: 4px solid var(--laranja-futuro); color: white; }
+
+        #okr4 { background-color: var(--branco); }
+        #okr5 { background-color: var(--cinza-bg); }
+
+        #final { background-color: var(--azul-futuro); color: var(--branco); text-align: center; align-items: center; }
+        #final h2 { color: var(--branco); border: none; margin-bottom: 3rem; }
+        #final h2::after { display: none; }
+        
+        .grid-final { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; width: 100%; max-width: 1200px; }
+        .col-final h3 { color: var(--laranja-futuro); font-size: 2rem; margin-bottom: 1rem;}
+        .col-final p { color: rgba(255,255,255,0.9); font-size: 1.2rem;}
+
+        @media (max-width: 768px) {
+            section { padding: 2rem; height: auto; min-height: 100vh; }
+            h1 { font-size: 2.5rem; }
+            .logo-capa { width: 140px; }
+            .footer-capa { left: 2rem; width: calc(100% - 4rem); flex-direction: column; gap: 1rem;}
+        }
+    </style>
+</head>
+<body>
+
+    <section id="capa">
+        <div style="margin-bottom: auto;"></div> <img src="Vertical branca.png" alt="Logo Futuro Corp" class="logo-capa">
+
+        <span class="tag">PLANEJAMENTO ESTRATÉGICO</span>
+        <h1>Plano Tático de Marketing 2026</h1>
+        <h2>Acelerando a Receita, a Rede e o Ecossistema.</h2>
+        
+        <div style="margin-top: auto;"></div> <div class="footer-capa">
+            <span><strong>Futuro Corp</strong> | Estratégia de Crescimento Integrado</span>
+            <span>Versão Board</span>
+        </div>
+    </section>
+
+    <section id="tese">
+        <h2>A Tese de 2026: O Pivô Estratégico</h2>
+        <p>Conceito Central: <strong>"Engenharia de Ciclo de Vida"</strong>. O Marketing deixa de ser suporte a vendas e se torna a <strong>Inteligência Central</strong>.</p>
+        <div class="quote-box">"Não somos um app, nem um escritório tradicional. Somos o 'Uber do Planejamento Financeiro'."</div>
+        <div class="card-grid">
+            <div class="card"><h3>01. Originação (B2C)</h3><p>Injetando demanda qualificada via dados.</p></div>
+            <div class="card accent"><h3>02. Atração (B2B)</h3><p>Filtrando talentos de elite para a rede.</p></div>
+        </div>
+    </section>
+
+    <section id="okr1">
+        <h2>OKR 1: A Máquina de Receita (B2C)</h2>
+        <div class="card-grid" style="margin-bottom: 3rem;">
+            <div class="kpi-box"><span class="kpi-value">R$ 5 MM</span><span class="kpi-label">Receita Originada</span></div>
+            <div class="kpi-box" style="background: white; border: 2px solid var(--azul-futuro);"><span class="kpi-value" style="color: var(--azul-futuro);">48k</span><span class="kpi-label" style="color: var(--cinza-txt);">Leads Totais</span></div>
+            <div class="kpi-box"><span class="kpi-value">15%</span><span class="kpi-label">High Ticket</span></div>
+        </div>
+        <div class="card-grid">
+            <div class="card"><h3>🚀 Fast Track</h3><p>Leads high income furam a fila para o Concierge.</p></div>
+            <div class="card"><h3>🤖 Agente IA</h3><p>Deploy Abril/26 para rentabilizar a base menor.</p></div>
+        </div>
+    </section>
+
+    <section id="okr2">
+        <h2>OKR 2: O Funil de Sócios (Expansão)</h2>
+        <p><strong>Meta:</strong> 150 Novos Franqueados. Qualidade > Quantidade.</p>
+        <div style="max-width: 800px; margin: 2rem auto; width: 100%;">
+            <div class="funnel-step"><strong>TOPO: "Business Partner"</strong><br><small>Atração de sócios, não funcionários.</small></div>
+            <div class="funnel-step" style="width: 80%; margin-left: 10%;"><strong>MEIO: O Filtro (DNA)</strong><br><small>Triagem cultural rigorosa.</small></div>
+            <div class="funnel-step" style="width: 60%; margin-left: 20%; background: var(--azul-futuro); color: white;"><strong>FUNDO: 150 PNs</strong><br><small>Conversão de 10%.</small></div>
+        </div>
+    </section>
+
+    <section id="okr3">
+        <h2>OKR 3: Autoridade Data-Driven</h2>
+        <p>Migração para <strong>Branded House</strong> até 30/Março.</p>
+        <div class="card-grid">
+            <div class="card"><h3>📊 Relatório Oráculo</h3><p>Dados proprietários pautando a imprensa.</p></div>
+            <div class="card"><h3>🗣 Spokespersons</h3><p>Founders como "Top Voices" do setor.</p></div>
+            <div class="card"><h3>🎨 Identidade Única</h3><p>Fim das marcas órfãs.</p></div>
+        </div>
+    </section>
+
+    <section id="okr4">
+        <h2>OKR 4: Cross-Sell (Ecossistema)</h2>
+        <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem;">
+            <span style="font-size: 3rem; font-weight: bold; color: var(--azul-futuro);">R$ 15 MM</span>
+            <span style="font-size: 1.2rem; color: var(--cinza-txt);">em novas oportunidades.</span>
+        </div>
+        <div class="card-grid">
+            <div class="card accent"><h3>Densidade</h3><p>1.5 Soluções por cliente.</p></div>
+            <div class="card accent"><h3>Automação</h3><p>Gatilhos do Oráculo geram 40% da meta.</p></div>
+            <div class="card accent"><h3>Portas Laterais</h3><p>Ferramentas diagnósticas captam direto.</p></div>
+        </div>
+    </section>
+
+    <section id="okr5">
+        <h2>OKR 5: Preparação Série A</h2>
+        <p>Captar R$ 6MM. Tese: <strong>"Somos uma Data Company"</strong>.</p>
+        <div class="card-grid">
+            <div class="card">
+                <h3>🎬 Ativos de Prova</h3>
+                <ul style="margin-left: 1.2rem;">
+                    <li>Filme "Manifesto" (Recrutamento)</li>
+                    <li>Filme "Scalability Thesis" (Investidores)</li>
+                </ul>
+            </div>
+            <div class="card"><h3>🤝 Parceiros</h3><p>10 Family Offices/Bancos no pipeline.</p></div>
+        </div>
+    </section>
+
+    <section id="final">
+        <h2>O Resumo 2026</h2>
+        <div class="grid-final">
+            <div class="col-final"><h3>1. Trazer</h3><p>R$ 5MM e 150 Sócios.</p></div>
+            <div class="col-final"><h3>2. Rentabilizar</h3><p>R$ 15MM em Cross-Sell.</p></div>
+            <div class="col-final"><h3>3. Valorizar</h3><p>Posicionamento para IPO.</p></div>
+        </div>
+        <div style="margin-top: 4rem; opacity: 0.6; font-size: 0.9rem;">Futuro Corp © 2026</div>
+    </section>
+
+</body>
+</html>
