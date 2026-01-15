@@ -11,30 +11,25 @@
     
     <style>
         /* * DESIGN SYSTEM: "THE SWISS ARCHITECT" (Final Master)
-         * Cor Base: #19253f (Validada)
-         * Logo: Imagem "Vertical branca.png"
+         * Cor Base: #19253f (Validada pelo Usuário)
+         * Estrutura: Grid Suíço Minimalista
+         * Navegação: Dots Laterais (Código 2)
          */
         
         :root {
-            /* A COR EXATA QUE VOCÊ VALIDOU */
-            --corp-bg: #19253f;      
-            
-            /* Laranja do Código 1 */
-            --corp-orange: #e4702b;  
-            
-            /* Elementos de Texto */
+            /* PALETA OFICIAL (Código 1 Reference) */
+            --corp-bg: #19253f;       /* O Azul Petróleo Elegante */
+            --corp-orange: #e4702b;   /* Laranja Futuro */
             --corp-white: #FFFFFF;
-            --corp-gray: #b0b8c4;
+            --corp-gray: #b0b8c4;     /* Texto Secundário */
             
-            /* Grid Arquitetônico */
-            --grid-line: rgba(255, 255, 255, 0.08); 
+            /* UI TOKENS */
+            --grid-line: rgba(255, 255, 255, 0.06); 
+            --margin-x: 7vw;
             
-            /* Typography */
+            /* TYPOGRAPHY */
             --font-display: 'Darker Grotesque', sans-serif;
             --font-body: 'Rubik', sans-serif;
-            
-            /* Layout */
-            --margin-x: 6vw;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,71 +38,56 @@
             background-color: var(--corp-bg);
             color: var(--corp-white);
             font-family: var(--font-body);
-            overflow: hidden;
+            overflow: hidden; /* Scroll controlado via JS/Snap */
         }
 
-        /* --- O GRID SUÍÇO --- */
+        /* --- BACKGROUND ENGINEERING --- */
         .bg-grid {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none;
-            z-index: 0;
-            display: flex;
-            justify-content: space-between;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 0;
+            display: flex; justify-content: space-between;
             padding: 0 var(--margin-x);
         }
         .line { width: 1px; height: 100%; background: var(--grid-line); }
 
-        /* --- LOGO (Imagem Restaurada) --- */
+        /* --- LOGO FIXED (Visual "Vertical Branca") --- */
         .brand-fixed {
             position: fixed;
             top: 40px;
-            left: 50px; /* Alinhamento do Código 1 */
+            left: 50px; /* Alinhamento original */
             z-index: 1000;
-            width: 140px; /* Tamanho elegante, não invasivo */
-            opacity: 1;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+            width: 120px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
         }
 
-        /* --- NAVEGAÇÃO LATERAL (Bolinhas) --- */
+        /* --- NAVIGATION DOTS (Funcionalidade Código 2) --- */
         .nav-dots {
             position: fixed;
             right: 40px;
             top: 50%;
             transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
+            display: flex; flex-direction: column; gap: 20px;
             z-index: 100;
         }
         
         .dot {
-            width: 8px;
-            height: 8px;
+            width: 8px; height: 8px;
             border-radius: 50%;
-            background: transparent;
             border: 1px solid rgba(255,255,255,0.3);
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            background: transparent;
         }
         
+        /* Tooltip Elegante */
         .dot::after {
             content: attr(data-label);
-            position: absolute;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--corp-orange);
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 14px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0;
-            transition: opacity 0.3s, transform 0.3s;
-            pointer-events: none;
-            white-space: nowrap;
+            position: absolute; right: 25px; top: 50%; transform: translateY(-50%);
+            color: var(--corp-orange); font-family: var(--font-display);
+            font-weight: 600; font-size: 12px; letter-spacing: 2px;
+            text-transform: uppercase; opacity: 0; pointer-events: none;
+            transition: all 0.3s; white-space: nowrap;
         }
 
         .dot:hover::after { opacity: 1; transform: translateY(-50%) translateX(-5px); }
@@ -115,11 +95,11 @@
         .dot.active {
             background: var(--corp-orange);
             border-color: var(--corp-orange);
-            transform: scale(1.5);
-            box-shadow: 0 0 20px rgba(228, 112, 43, 0.3);
+            transform: scale(1.4);
+            box-shadow: 0 0 15px rgba(228, 112, 43, 0.4);
         }
 
-        /* --- ESTRUTURA DOS SLIDES --- */
+        /* --- SLIDE CONTAINER --- */
         .deck {
             height: 100vh;
             overflow-y: scroll;
@@ -128,30 +108,24 @@
         }
 
         section {
-            height: 100vh;
-            width: 100vw;
+            height: 100vh; width: 100vw;
             scroll-snap-align: start;
-            position: relative;
-            z-index: 1;
+            position: relative; z-index: 1;
             padding: 0 var(--margin-x);
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.02);
+            display: flex; align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.01);
         }
 
-        /* --- TIPOGRAFIA --- */
+        /* --- TYPOGRAPHY (Grandiosidade Suíça) --- */
         h1 {
             font-family: var(--font-display);
-            font-size: 6.5rem;
+            font-size: 6rem;
             font-weight: 300;
             line-height: 0.9;
             letter-spacing: -2px;
             margin-bottom: 2rem;
         }
-        h1 strong {
-            font-weight: 700;
-            color: var(--corp-white);
-        }
+        h1 strong { font-weight: 700; color: var(--corp-white); }
         
         h2 {
             font-family: var(--font-display);
@@ -175,34 +149,30 @@
         }
 
         p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             line-height: 1.6;
             color: var(--corp-gray);
             max-width: 650px;
             font-weight: 300;
         }
 
-        /* --- LAYOUTS --- */
+        /* --- DATA & CONTENT MODULES --- */
         .layout-split {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            width: 100%;
-            height: 100%;
-            align-items: center;
+            display: grid; grid-template-columns: 1.2fr 1fr;
+            width: 100%; height: 100%; align-items: center;
         }
         
-        .content-left { padding-right: 4rem; }
+        .content-left { padding-right: 5rem; }
         .content-right { 
             border-left: 1px solid var(--grid-line); 
-            padding-left: 4rem; 
+            padding-left: 5rem; 
             height: 70%;
             display: flex; flex-direction: column; justify-content: center;
         }
 
-        /* --- ELEMENTOS DE DADOS --- */
         .metric-val {
             font-family: var(--font-display);
-            font-size: 5.5rem;
+            font-size: 5rem;
             font-weight: 700;
             color: var(--corp-white);
             line-height: 1;
@@ -210,7 +180,7 @@
             letter-spacing: -2px;
         }
         .metric-desc {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--corp-gray);
@@ -218,26 +188,27 @@
             display: block;
         }
 
-        /* Listas de Táticas */
-        .tactical-list { margin-top: 30px; }
-        .tactical-item { margin-bottom: 25px; position: relative; }
+        /* Tactical List (Substituindo listas comuns) */
+        .tactical-list { margin-top: 40px; }
+        .tactical-item { margin-bottom: 30px; position: relative; }
         .tactical-title {
             color: var(--corp-white); font-weight: 500; font-size: 1.1rem;
             margin-bottom: 5px; display: block;
         }
         .tactical-text { font-size: 0.95rem; color: var(--corp-gray); font-weight: 300; }
         .tactical-line {
-            width: 30px; height: 1px; background: var(--corp-orange);
-            margin-bottom: 10px; opacity: 0.7;
+            width: 40px; height: 1px; background: var(--corp-orange);
+            margin-bottom: 12px; opacity: 0.8;
         }
 
+        /* Quote Box */
         .quote-box {
             font-family: var(--font-display);
-            font-size: 2.2rem;
+            font-size: 2rem;
             line-height: 1.1;
             font-weight: 300;
             color: var(--corp-white);
-            border-left: 1px solid var(--corp-orange);
+            border-left: 2px solid var(--corp-orange);
             padding-left: 30px;
         }
 
@@ -250,7 +221,7 @@
 </head>
 <body>
 
-    <img src="Vertical branca.png" alt="Futuro Corp" class="brand-fixed">
+    <img src="Vertical branca.png" alt="FUTURO CORP" class="brand-fixed">
 
     <div class="bg-grid">
         <div class="line"></div>
@@ -261,11 +232,11 @@
 
     <div class="nav-dots">
         <div class="dot active" onclick="scrollToSlide(0)" data-label="Capa"></div>
-        <div class="dot" onclick="scrollToSlide(1)" data-label="Visão 2026"></div>
+        <div class="dot" onclick="scrollToSlide(1)" data-label="Visão Geral"></div>
         <div class="dot" onclick="scrollToSlide(2)" data-label="OKR 1: B2C"></div>
         <div class="dot" onclick="scrollToSlide(3)" data-label="OKR 2: B2B"></div>
         <div class="dot" onclick="scrollToSlide(4)" data-label="OKR 3: Autoridade"></div>
-        <div class="dot" onclick="scrollToSlide(5)" data-label="OKR 4: Eco"></div>
+        <div class="dot" onclick="scrollToSlide(5)" data-label="OKR 4: Ecossistema"></div>
         <div class="dot" onclick="scrollToSlide(6)" data-label="OKR 5: Equity"></div>
         <div class="dot" onclick="scrollToSlide(7)" data-label="Roadmap"></div>
     </div>
@@ -281,11 +252,11 @@
                     e o <strong>Ecossistema.</strong>
                 </h1>
                 <p style="margin-top: 3rem; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 20px;">
-                    Engenharia de Ciclo de Vida<br>
+                    Estratégia de Crescimento Integrado<br>
                     <span style="color: var(--corp-orange); font-weight: 500;">Versão Board Confidencial</span>
                 </p>
             </div>
-            <div class="footer-ref">Futuro Corp | Jan 2026</div>
+            <div class="footer-ref">Futuro Corp | Jan 2026 | São Paulo</div>
         </section>
 
         <section id="slide-1">
@@ -294,24 +265,24 @@
                     <span class="label-orange">O Pivô Estratégico</span>
                     <h2>Tech-Enabled Service</h2>
                     <p>
-                        Para suportar a meta de <strong>R$ 30 Milhões</strong>, o Marketing evolui de "suporte" para <strong>Inteligência Central</strong>.
+                        Para suportar a meta de <strong>R$ 30 Milhões</strong>, o Marketing evolui. Deixamos de ser "suporte" para ser a <strong>Inteligência Central</strong> do negócio.
                     </p>
                     <div class="tactical-list">
                         <div class="tactical-item">
                             <div class="tactical-line"></div>
                             <span class="tactical-title">Originação (B2C)</span>
-                            <span class="tactical-text">Injetar demanda qualificada para os franqueados via Tráfego e Dados.</span>
+                            <span class="tactical-text">Injetar demanda qualificada para os franqueados (B2C).</span>
                         </div>
                         <div class="tactical-item">
                             <div class="tactical-line"></div>
                             <span class="tactical-title">Atração (B2B)</span>
-                            <span class="tactical-text">Filtrar talentos de elite para expansão da rede.</span>
+                            <span class="tactical-text">Filtrar talentos de elite para a expansão da rede.</span>
                         </div>
                     </div>
                 </div>
                 <div class="content-right">
                     <div class="quote-box">
-                        "Não somos um app. Somos o <strong style="color:var(--corp-orange)">'Uber do Planejamento'</strong>: Tecnologia proprietária com atendimento humano de elite."
+                        "Não somos um app. Somos o <strong style="color:var(--corp-orange)">'Uber do Planejamento'</strong>: Tecnologia proprietária (Oráculo) com atendimento humano de elite."
                     </div>
                 </div>
             </div>
@@ -323,23 +294,23 @@
                     <span class="label-orange">OKR 1: Máquina de Receita</span>
                     <h2>Originação &<br>Qualificação</h2>
                     <p>
-                        O Marketing Corporate assume a responsabilidade de injetar "sangue novo" fora da bolha de networking.
+                        Injetar "sangue novo" via Inbound e Tráfego Pago, fora da bolha de networking dos franqueados.
                     </p>
                     <div class="tactical-list">
                         <div class="tactical-item">
                             <span class="tactical-title">Tática Chave: "Fast Track"</span>
-                            <span class="tactical-text">Leads da isca <em>Mapa de Risco</em> com alta renda caem direto no Concierge Humano.</span>
+                            <span class="tactical-text">Leads da isca <em>"Mapa de Risco"</em> com alta renda caem direto no Concierge Humano.</span>
                         </div>
                         <div class="tactical-item">
-                            <span class="tactical-title">Tecnologia: Agente IA</span>
-                            <span class="tactical-text">Deploy em Abril/26 para atender a base de tickets menores.</span>
+                            <span class="tactical-title">Tecnologia (KR 1.3)</span>
+                            <span class="tactical-text">Deploy do <strong>Agente Planejador IA</strong> (Abril/26) para base de tickets menores.</span>
                         </div>
                     </div>
                 </div>
                 <div class="content-right">
                     <div style="margin-bottom: 50px;">
                         <span class="metric-val">R$ 5MM</span>
-                        <span class="metric-desc">Receita Originada Direta</span>
+                        <span class="metric-desc">Meta de Receita Originada Direta</span>
                     </div>
                     <div>
                         <span class="metric-val" style="font-size: 3.5rem;">48k</span>
@@ -353,34 +324,31 @@
             <div class="layout-split">
                 <div class="content-left">
                     <span class="label-orange">OKR 2: Expansão da Rede</span>
-                    <h2>Qualidade ><br>Quantidade</h2>
+                    <h2>O Funil Reverso</h2>
                     <p>
-                        Mudança de Mindset: Não vendemos franquias, recrutamos sócios. O conceito de <strong>"Funil Reverso"</strong> exige que o candidato prove seu valor.
+                        Mudança de Mindset: Não vendemos franquias, recrutamos sócios. Qualidade > Quantidade.
                     </p>
                     <div class="tactical-list">
                         <div class="tactical-item">
                             <div class="tactical-line"></div>
-                            <span class="tactical-title">Narrativa: "Business Partner"</span>
-                            <span class="tactical-text">Posicionamento de sociedade, não de vaga de emprego.</span>
+                            <span class="tactical-title">Narrativa B2B</span>
+                            <span class="tactical-text">"Business Partner Program". Não é vaga de emprego, é sociedade.</span>
                         </div>
                         <div class="tactical-item">
                             <div class="tactical-line"></div>
                             <span class="tactical-title">Filtro: "MBA Prático"</span>
-                            <span class="tactical-text">Triagem cultural rigorosa antes do contrato.</span>
+                            <span class="tactical-text">Candidato passa por triagem cultural rigorosa antes do contrato.</span>
                         </div>
                     </div>
                 </div>
                 <div class="content-right">
                     <div style="margin-bottom: 40px;">
                         <span class="metric-desc" style="margin-bottom: 5px;">Triagem Inicial (Candidatos)</span>
-                        <span class="metric-val" style="font-size: 3rem; color: var(--corp-gray); opacity: 0.5;">1.500</span>
+                        <span class="metric-val" style="font-size: 3rem; opacity: 0.5;">1.500</span>
                     </div>
-                    <div style="margin-bottom: 40px; padding-left: 20px; border-left: 2px solid var(--corp-orange);">
+                    <div style="padding-left: 20px; border-left: 2px solid var(--corp-orange);">
                         <span class="metric-desc" style="margin-bottom: 5px; color: var(--corp-orange);">Novos Sócios Aprovados</span>
                         <span class="metric-val">150</span>
-                    </div>
-                    <div>
-                        <span class="metric-desc">Taxa de Conversão: 10% (Alta Qualidade)</span>
                     </div>
                 </div>
             </div>
@@ -396,18 +364,18 @@
                     </p>
                     <div class="tactical-list">
                         <div class="tactical-item">
-                            <span class="tactical-title">Spokespersons</span>
-                            <span class="tactical-text">Alex Terek e Thomas Franco posicionados como "Top Voices" e líderes intelectuais.</span>
+                            <span class="tactical-title">Spokespersons (KR 3.3)</span>
+                            <span class="tactical-text">Alex Terek e Thomas Franco posicionados como "Top Voices" do mercado.</span>
                         </div>
                         <div class="tactical-item">
                             <span class="tactical-title">Imprensa Tier-1</span>
-                            <span class="tactical-text">Publicação de Relatórios de Inteligência baseados em dados do Oráculo.</span>
+                            <span class="tactical-text">Gerar notícias usando dados proprietários do Oráculo (Data-Driven PR).</span>
                         </div>
                     </div>
                 </div>
                 <div class="content-right">
                     <div class="quote-box" style="font-size: 1.8rem;">
-                        "O mercado tem opiniões. Nós temos dados. O <strong style="color: var(--corp-orange);">Relatório Oráculo</strong> pauta a imprensa com a verdade financeira do brasileiro."
+                        "O mercado tem opiniões. Nós temos dados. O <strong style="color: var(--corp-orange);">Relatório de Inteligência Oráculo</strong> pauta a imprensa com a verdade financeira."
                     </div>
                 </div>
             </div>
@@ -419,18 +387,18 @@
                     <span class="label-orange">OKR 4: LTV & Cross-Sell</span>
                     <h2>Engenharia de<br>Ciclo de Vida</h2>
                     <p>
-                        Acabar com a dependência da memória do consultor. O sistema vende a próxima solução.
+                        O sistema vende a próxima solução. Automação para reduzir a dependência da memória do consultor.
                     </p>
                     <div class="tactical-list">
                         <div class="tactical-item">
                             <div class="tactical-line"></div>
                             <span class="tactical-title">Automação (KR 4.2)</span>
-                            <span class="tactical-text">Gatilhos automáticos (ex: Liquidez > 500k) ofertam produtos sem intervenção humana.</span>
+                            <span class="tactical-text">Gatilhos automáticos (Ex: "Liquidez > 500k") ofertam produtos das BUs sem intervenção humana.</span>
                         </div>
                         <div class="tactical-item">
                             <div class="tactical-line"></div>
                             <span class="tactical-title">Portas Laterais (KR 4.3)</span>
-                            <span class="tactical-text">Ferramentas como "Revelador de Crédito Oculto" captam direto para as BUs.</span>
+                            <span class="tactical-text">Uso de ferramentas como <em>"Revelador de Crédito Oculto"</em> para captar direto na BU.</span>
                         </div>
                     </div>
                 </div>
@@ -441,7 +409,7 @@
                     </div>
                     <div>
                         <span class="metric-val" style="font-size: 3.5rem;">1.5</span>
-                        <span class="metric-desc">Índice Densidade (Soluções/Cliente)</span>
+                        <span class="metric-desc">Soluções por Cliente (Densidade)</span>
                     </div>
                 </div>
             </div>
@@ -453,7 +421,7 @@
                     <span class="label-orange">OKR 5: Série A (Valuation)</span>
                     <h2>A Narrativa para<br>o Capital</h2>
                     <p>
-                        Tese de Investimento: Somos uma <strong>Data Company</strong>. O Oráculo reduz custo de servir e aumenta LTV.
+                        Tese de Investimento: Somos uma <strong>Data Company</strong>. O Oráculo reduz o custo de servir e aumenta o LTV.
                     </p>
                     <div class="tactical-list">
                         <div class="tactical-item">
@@ -461,8 +429,8 @@
                             <span class="tactical-text">R$ 6.000.000,00 e Preparação de Governança.</span>
                         </div>
                         <div class="tactical-item">
-                            <span class="tactical-title">Alvo</span>
-                            <span class="tactical-text">10 Parceiros Estratégicos (Family Offices/Bancos).</span>
+                            <span class="tactical-title">Alvo (KR 5.3)</span>
+                            <span class="tactical-text">Relacionamento com 10 Parceiros Estratégicos (Family Offices/Bancos).</span>
                         </div>
                     </div>
                 </div>
@@ -481,27 +449,32 @@
 
         <section id="slide-7" style="display: block; padding-top: 15vh;">
             <div style="text-align: center; margin-bottom: 5rem;">
+                <span class="label-orange" style="display:inline-block; border:none;">Resumo Executivo</span>
                 <h2>O Caminho 2026</h2>
             </div>
             
             <div style="display: flex; justify-content: space-around; max-width: 1400px; margin: 0 auto; text-align: left;">
+                
                 <div style="flex: 1; padding: 0 40px; border-right: 1px solid var(--grid-line);">
                     <span style="font-family: var(--font-display); font-size: 5rem; color: var(--corp-gray); opacity: 0.2; line-height: 1;">01</span>
-                    <h3 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--corp-orange); margin: 10px 0;">TRAZER</h3>
+                    <h3 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--corp-orange); margin: 10px 0;">TRAZER</h3>
                     <p style="font-size: 1rem;">R$ 5MM Receita<br>+150 Sócios</p>
                 </div>
+
                 <div style="flex: 1; padding: 0 40px; border-right: 1px solid var(--grid-line);">
                     <span style="font-family: var(--font-display); font-size: 5rem; color: var(--corp-gray); opacity: 0.2; line-height: 1;">02</span>
-                    <h3 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--corp-orange); margin: 10px 0;">RENTABILIZAR</h3>
+                    <h3 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--corp-orange); margin: 10px 0;">RENTABILIZAR</h3>
                     <p style="font-size: 1rem;">R$ 15MM Cross-Sell<br>Automação Total</p>
                 </div>
+
                 <div style="flex: 1; padding: 0 40px;">
                     <span style="font-family: var(--font-display); font-size: 5rem; color: var(--corp-gray); opacity: 0.2; line-height: 1;">03</span>
-                    <h3 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--corp-orange); margin: 10px 0;">VALORIZAR</h3>
+                    <h3 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--corp-orange); margin: 10px 0;">VALORIZAR</h3>
                     <p style="font-size: 1rem;">Data-Driven<br>Roadshow Série A</p>
                 </div>
+
             </div>
-            <div class="footer-ref" style="width: 100%; text-align: center; left: 0; bottom: 50px;">FUTURO CORP © 2026 | CONFIDENCIAL</div>
+            <div class="footer-ref" style="width: 100%; text-align: center; left: 0; bottom: 50px;">FUTURO CORP © 2026 | BRAND SYSTEM KB-02</div>
         </section>
 
     </div>
