@@ -10,12 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800&family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
     
     <style>
-        /* * DESIGN SYSTEM: "THE SWISS ARCHITECT" (Restored Code 1 Foundation)
-         * Foco: Elegância, Cor #19253f, Linhas Finas, Tipografia Gigante.
+        /* * DESIGN SYSTEM: "THE SWISS ARCHITECT" (Final Master)
+         * Cor Base: #19253f (Validada)
+         * Logo: Imagem "Vertical branca.png"
          */
         
         :root {
-            /* A COR EXATA QUE VOCÊ GOSTOU (Código 1) */
+            /* A COR EXATA QUE VOCÊ VALIDOU */
             --corp-bg: #19253f;      
             
             /* Laranja do Código 1 */
@@ -45,7 +46,7 @@
             overflow: hidden;
         }
 
-        /* --- O GRID SUÍÇO (A Base da Elegância) --- */
+        /* --- O GRID SUÍÇO --- */
         .bg-grid {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -57,7 +58,18 @@
         }
         .line { width: 1px; height: 100%; background: var(--grid-line); }
 
-        /* --- NAVIGATION DOTS (A Funcionalidade do Código 2) --- */
+        /* --- LOGO (Imagem Restaurada) --- */
+        .brand-fixed {
+            position: fixed;
+            top: 40px;
+            left: 50px; /* Alinhamento do Código 1 */
+            z-index: 1000;
+            width: 140px; /* Tamanho elegante, não invasivo */
+            opacity: 1;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+
+        /* --- NAVEGAÇÃO LATERAL (Bolinhas) --- */
         .nav-dots {
             position: fixed;
             right: 40px;
@@ -65,12 +77,12 @@
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
-            gap: 24px; /* Mais espaçado para elegância */
+            gap: 24px;
             z-index: 100;
         }
         
         .dot {
-            width: 8px; /* Mais delicado */
+            width: 8px;
             height: 8px;
             border-radius: 50%;
             background: transparent;
@@ -80,7 +92,6 @@
             position: relative;
         }
         
-        /* Tooltip minimalista que aparece no hover */
         .dot::after {
             content: attr(data-label);
             position: absolute;
@@ -108,21 +119,6 @@
             box-shadow: 0 0 20px rgba(228, 112, 43, 0.3);
         }
 
-        /* --- LOGO (Marca D'água Elegante) --- */
-        .brand-fixed {
-            position: fixed;
-            top: 40px;
-            left: 50px;
-            z-index: 1000;
-            font-family: var(--font-display);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1.2rem;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .brand-square { width: 12px; height: 12px; background: var(--corp-orange); }
-
         /* --- ESTRUTURA DOS SLIDES --- */
         .deck {
             height: 100vh;
@@ -143,11 +139,11 @@
             border-bottom: 1px solid rgba(255,255,255,0.02);
         }
 
-        /* --- TIPOGRAFIA (Estilo Código 1: Grande e Fina) --- */
+        /* --- TIPOGRAFIA --- */
         h1 {
             font-family: var(--font-display);
-            font-size: 6.5rem; /* Gigante */
-            font-weight: 300; /* Light */
+            font-size: 6.5rem;
+            font-weight: 300;
             line-height: 0.9;
             letter-spacing: -2px;
             margin-bottom: 2rem;
@@ -203,9 +199,7 @@
             display: flex; flex-direction: column; justify-content: center;
         }
 
-        /* --- ELEMENTOS DE DADOS (Substituindo Emojis e Caixas) --- */
-        
-        /* Números Gigantes (Estilo Código 1) */
+        /* --- ELEMENTOS DE DADOS --- */
         .metric-val {
             font-family: var(--font-display);
             font-size: 5.5rem;
@@ -224,32 +218,19 @@
             display: block;
         }
 
-        /* Listas de Táticas (Sem bolinhas, design clean) */
-        .tactical-list {
-            margin-top: 30px;
-        }
-        .tactical-item {
-            margin-bottom: 25px;
-            position: relative;
-        }
+        /* Listas de Táticas */
+        .tactical-list { margin-top: 30px; }
+        .tactical-item { margin-bottom: 25px; position: relative; }
         .tactical-title {
-            color: var(--corp-white);
-            font-weight: 500;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            display: block;
+            color: var(--corp-white); font-weight: 500; font-size: 1.1rem;
+            margin-bottom: 5px; display: block;
         }
-        .tactical-text {
-            font-size: 0.95rem;
-            color: var(--corp-gray);
-            font-weight: 300;
-        }
+        .tactical-text { font-size: 0.95rem; color: var(--corp-gray); font-weight: 300; }
         .tactical-line {
             width: 30px; height: 1px; background: var(--corp-orange);
             margin-bottom: 10px; opacity: 0.7;
         }
 
-        /* Highlight de Frase (Citação) */
         .quote-box {
             font-family: var(--font-display);
             font-size: 2.2rem;
@@ -260,25 +241,16 @@
             padding-left: 30px;
         }
 
-        /* Footer */
         .footer-ref {
-            position: absolute;
-            bottom: 40px;
-            left: var(--margin-x);
-            font-size: 0.7rem;
-            opacity: 0.3;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            position: absolute; bottom: 40px; left: var(--margin-x);
+            font-size: 0.7rem; opacity: 0.3; letter-spacing: 2px; text-transform: uppercase;
         }
 
     </style>
 </head>
 <body>
 
-    <div class="brand-fixed">
-        <div class="brand-square"></div>
-        Futuro Corp
-    </div>
+    <img src="Vertical branca.png" alt="Futuro Corp" class="brand-fixed">
 
     <div class="bg-grid">
         <div class="line"></div>
@@ -353,7 +325,6 @@
                     <p>
                         O Marketing Corporate assume a responsabilidade de injetar "sangue novo" fora da bolha de networking.
                     </p>
-                    
                     <div class="tactical-list">
                         <div class="tactical-item">
                             <span class="tactical-title">Tática Chave: "Fast Track"</span>
@@ -514,25 +485,21 @@
             </div>
             
             <div style="display: flex; justify-content: space-around; max-width: 1400px; margin: 0 auto; text-align: left;">
-                
                 <div style="flex: 1; padding: 0 40px; border-right: 1px solid var(--grid-line);">
                     <span style="font-family: var(--font-display); font-size: 5rem; color: var(--corp-gray); opacity: 0.2; line-height: 1;">01</span>
                     <h3 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--corp-orange); margin: 10px 0;">TRAZER</h3>
                     <p style="font-size: 1rem;">R$ 5MM Receita<br>+150 Sócios</p>
                 </div>
-
                 <div style="flex: 1; padding: 0 40px; border-right: 1px solid var(--grid-line);">
                     <span style="font-family: var(--font-display); font-size: 5rem; color: var(--corp-gray); opacity: 0.2; line-height: 1;">02</span>
                     <h3 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--corp-orange); margin: 10px 0;">RENTABILIZAR</h3>
                     <p style="font-size: 1rem;">R$ 15MM Cross-Sell<br>Automação Total</p>
                 </div>
-
                 <div style="flex: 1; padding: 0 40px;">
                     <span style="font-family: var(--font-display); font-size: 5rem; color: var(--corp-gray); opacity: 0.2; line-height: 1;">03</span>
                     <h3 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--corp-orange); margin: 10px 0;">VALORIZAR</h3>
                     <p style="font-size: 1rem;">Data-Driven<br>Roadshow Série A</p>
                 </div>
-
             </div>
             <div class="footer-ref" style="width: 100%; text-align: center; left: 0; bottom: 50px;">FUTURO CORP © 2026 | CONFIDENCIAL</div>
         </section>
@@ -540,7 +507,6 @@
     </div>
 
     <script>
-        // LÓGICA DE NAVEGAÇÃO
         const dots = document.querySelectorAll('.dot');
         const sections = document.querySelectorAll('section');
 
