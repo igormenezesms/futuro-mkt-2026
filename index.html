@@ -10,17 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
     
     <style>
-        /* * DESIGN SYSTEM: "THE FUTURO SWISS GRID"
+        /* * DESIGN SYSTEM: "THE FUTURO SWISS GRID" - V2.0 (REFINED)
          * Conceito: Clareza absoluta, autoridade, linhas guias visíveis.
          */
         
         :root {
-            /* Palette Oficial */
+            /* Palette Oficial KB-02 */
             --corp-blue: #19253f;     /* Fundo Principal */
             --corp-blue-light: #244676; /* Elementos Secundários */
             --corp-orange: #e4702b;   /* Ação e Destaque (O "Ponto Focal") */
             --corp-white: #FFFFFF;    /* Texto e Contraste */
-            --grid-line: rgba(255, 255, 255, 0.1); /* Linhas arquiteturais */
+            --grid-line: rgba(255, 255, 255, 0.05); /* Refinado: 5% para elegância sutil */
+            --text-gray: #E5E7EB;     /* Mais claro que o anterior para melhor contraste */
             
             /* Typography */
             --font-main: 'Rubik', sans-serif;
@@ -36,7 +37,10 @@
             background-color: var(--corp-blue);
             color: var(--corp-white);
             font-family: var(--font-main);
-            overflow: hidden; /* Scroll controlado */
+            overflow: hidden; 
+            /* REFINAMENTO 9.5: Font Smoothing para fundos escuros */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* LOGO FIXO (BRAND GUARDIAN) */
@@ -45,12 +49,12 @@
             top: 40px;
             left: 50px;
             z-index: 1000;
-            width: 140px; /* Tamanho elegante, não invasivo */
+            width: 140px;
             opacity: 1;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
 
-        /* PROGRESS TRACKER (Direita) */
+        /* PROGRESS TRACKER */
         .progress-bar {
             position: fixed;
             right: 50px;
@@ -64,16 +68,17 @@
         .step {
             width: 2px;
             height: 40px;
-            background: var(--grid-line);
+            background: rgba(255,255,255,0.1); /* Mais sutil inativo */
             transition: all 0.3s ease;
         }
         .step.active {
             background: var(--corp-orange);
             height: 60px;
             width: 3px;
+            box-shadow: 0 0 10px rgba(228, 112, 43, 0.3); /* Glow sutil */
         }
 
-        /* GRID DE FUNDO (Estilo Engenharia) */
+        /* GRID DE FUNDO */
         .bg-grid {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -106,9 +111,9 @@
 
         /* TYPOGRAPHY SYSTEM */
         h1 {
-            font-size: 6rem; /* Gigante */
-            font-weight: 300; /* Light para elegância */
-            line-height: 0.9;
+            font-size: 6rem; 
+            font-weight: 300; 
+            line-height: 0.95; /* Leve ajuste para leitura */
             letter-spacing: -2px;
             margin-bottom: 2rem;
         }
@@ -122,13 +127,14 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             letter-spacing: -1px;
+            line-height: 1.1;
         }
 
         .label-orange {
             color: var(--corp-orange);
             font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px; /* Aumentado para "Premium Feel" */
             font-weight: 700;
             display: block;
             margin-bottom: 1rem;
@@ -139,15 +145,20 @@
         p {
             font-size: 1.25rem;
             line-height: 1.6;
-            color: #d1d5db;
-            max-width: 600px;
-            font-weight: 300;
+            color: var(--text-gray);
+            max-width: 650px;
+            font-weight: 400; /* Regular para legibilidade no escuro */
+        }
+        
+        p strong {
+            color: var(--corp-white);
+            font-weight: 700;
         }
 
-        /* LAYOUTS ESPECÍFICOS */
+        /* LAYOUTS */
         .layout-split {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 0.8fr; /* Mais espaço para conteúdo */
             width: 100%;
             height: 100%;
             align-items: center;
@@ -157,7 +168,7 @@
         .content-right { 
             border-left: 1px solid var(--grid-line); 
             padding-left: 4rem; 
-            height: 70%;
+            height: 60%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -173,30 +184,32 @@
             color: var(--corp-orange);
             line-height: 1;
             display: block;
+            margin-bottom: 5px;
         }
         .metric-desc {
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0.8;
+            color: rgba(255,255,255,0.7);
         }
 
         .tag-pill {
             display: inline-block;
             padding: 8px 16px;
-            border: 1px solid var(--grid-line);
+            border: 1px solid rgba(255,255,255,0.2);
             border-radius: 50px;
             margin-right: 10px;
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 10px;
+            color: rgba(255,255,255,0.8);
         }
 
         .funnel-step {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             position: relative;
         }
         .funnel-bar {
@@ -206,8 +219,9 @@
             display: flex;
             align-items: center;
             padding-left: 15px;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 0.9rem;
+            border-radius: 0 4px 4px 0;
         }
 
         /* FOOTER DISCRETO */
@@ -215,17 +229,18 @@
             position: absolute;
             bottom: 40px;
             left: var(--margin-x);
-            font-size: 0.75rem;
-            opacity: 0.3;
+            font-size: 0.7rem;
+            opacity: 0.4;
             letter-spacing: 2px;
             text-transform: uppercase;
+            font-weight: 500;
         }
 
     </style>
 </head>
 <body>
 
-    <img src="Vertical branca.png" alt="Futuro Corp Logo" class="brand-fixed">
+    <div class="brand-fixed" style="color:white; font-weight:bold; font-size:1.5rem;">FUTURO<br>CORP</div>
 
     <div class="bg-grid">
         <div class="line"></div>
@@ -246,14 +261,14 @@
     <div class="deck">
 
         <section>
-            <div style="margin-top: 10vh;">
+            <div style="margin-top: 5vh;">
                 <span class="label-orange">Plano Tático de Marketing 2026</span>
                 <h1>
                     Acelerando a<br>
                     <strong>Receita, a Rede</strong><br>
                     e o <strong>Ecossistema.</strong>
                 </h1>
-                <p style="margin-top: 2rem; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px;">
+                <p style="margin-top: 2rem; border-left: 1px solid var(--corp-orange); padding-left: 20px;">
                     Conceito Central: <strong>"Engenharia de Ciclo de Vida"</strong>.<br>
                     O Marketing não para na primeira venda. Ele orquestra a jornada para maximizar o <strong>LTV</strong>.
                 </p>
@@ -267,19 +282,19 @@
                     <span class="label-orange">O Pivô Estratégico</span>
                     <h2>Tech-Enabled Service</h2>
                     <p>
-                        Para suportar a meta de <strong>R$ 30 Milhões</strong>, o Marketing precisa evoluir. Deixamos de ser "suporte a vendas" para nos tornarmos a <strong>Inteligência Central</strong>.
+                        Para suportar a meta de <strong>R$ 30 Milhões</strong>, o Marketing precisa evoluir. Deixamos de ser um departamento de "suporte" para nos tornarmos a <strong>Inteligência Central</strong>.
                         <br><br>
-                        "Não somos um app, nem um escritório tradicional. Somos o <strong>'Uber do Planejamento Financeiro'</strong>: tecnologia proprietária (Oráculo) com atendimento humano de elite."
+                        "Não somos um app, nem um escritório tradicional. Somos o <strong>'Uber do Planejamento Financeiro'</strong>: Tecnologia proprietária (Oráculo) + Atendimento humano de elite."
                     </p>
                 </div>
                 <div class="content-right">
-                    <div style="margin-bottom: 40px;">
-                        <span class="metric-val" style="font-size: 3rem; color: var(--corp-white);">Originação</span>
-                        <p style="font-size: 1rem;">Injetando demanda qualificada para os franqueados (B2C)</p>
+                    <div style="margin-bottom: 50px;">
+                        <span class="metric-val">Originação</span>
+                        <p style="font-size: 1rem; color:white;">Injetar demanda qualificada (B2C)</p>
                     </div>
                     <div>
-                        <span class="metric-val" style="font-size: 3rem; color: var(--corp-white);">Atração</span>
-                        <p style="font-size: 1rem;">Filtrando talentos para a expansão da rede (B2B)</p>
+                        <span class="metric-val">Atração</span>
+                        <p style="font-size: 1rem; color:white;">Filtrar talentos para a Rede (B2B)</p>
                     </div>
                 </div>
             </div>
@@ -289,20 +304,20 @@
         <section>
             <div class="layout-split">
                 <div class="content-left">
-                    <span class="label-orange">OKR 1: Originação e Qualificação (B2C)</span>
+                    <span class="label-orange">OKR 1: B2C</span>
                     <h2>Originação &<br>Qualificação</h2>
-                    <p>Foco no <strong>High Ticket</strong>. O "Agente Planejador IA" rentabiliza a base menor, sem onerar o time humano.</p>
+                    <p>Foco no <strong>High Ticket</strong>. O "Agente IA" cuida da base menor, enquanto o humano foca onde há margem.</p>
                     <br>
                     <div class="tag-pill">Volume: 48k Leads</div>
-                    <div class="tag-pill">Filtro: 15% High Ticket</div>
+                    <div class="tag-pill" style="border-color: var(--corp-orange); color: var(--corp-orange);">Filtro: 15% High Ticket</div>
                 </div>
                 <div class="content-right">
                     <div class="metric-box">
                         <span class="metric-val">R$ 5MM</span>
                         <span class="metric-desc">Receita Originada Direta</span>
                     </div>
-                    <div class="metric-box" style="opacity: 0.5;">
-                        <span class="metric-val" style="font-size: 3rem;">> 30k</span>
+                    <div class="metric-box">
+                        <span class="metric-val" style="font-size: 2.5rem; color: var(--corp-white);">R$ 30k+</span>
                         <span class="metric-desc">Renda Alvo (Persona Black)</span>
                     </div>
                 </div>
@@ -313,23 +328,23 @@
         <section>
             <div class="layout-split">
                 <div class="content-left">
-                    <span class="label-orange">OKR 2: O Funil de Sócios (Expansão)</span>
+                    <span class="label-orange">OKR 2: Expansão da Rede</span>
                     <h2>Qualidade ><br>Quantidade</h2>
-                    <p>O Marketing assume o compromisso de entregar <strong>candidatos aprovados</strong>, não apenas curiosos. Usamos um "Funil Reverso" onde o candidato precisa provar seu valor.</p>
+                    <p>O Marketing entrega <strong>Sócios Aprovados</strong>, não curiosos. Usamos um "Funil Reverso" onde o candidato precisa provar seu valor.</p>
                 </div>
                 <div class="content-right">
                     <div style="width: 100%;">
                         <div class="funnel-step">
-                            <span style="width: 80px; font-size: 0.8rem; text-align: right;">Topo</span>
-                            <div class="funnel-bar" style="width: 100%; background: #374151;">Narrativa "Business Partner Program"</div>
+                            <span style="width: 80px; font-size: 0.8rem; text-align: right; opacity:0.7;">Topo</span>
+                            <div class="funnel-bar" style="width: 100%; background: #374151;">Narrativa "Business Partner"</div>
                         </div>
                         <div class="funnel-step">
-                            <span style="width: 80px; font-size: 0.8rem; text-align: right;">Meio</span>
-                            <div class="funnel-bar" style="width: 40%; background: #4b5563;">Triagem Inicial (1.500 Aprovados)</div>
+                            <span style="width: 80px; font-size: 0.8rem; text-align: right; opacity:0.7;">Meio</span>
+                            <div class="funnel-bar" style="width: 40%; background: #4b5563;">Triagem de DNA (1.500)</div>
                         </div>
                         <div class="funnel-step">
-                            <span style="width: 80px; font-size: 0.8rem; text-align: right; color: var(--corp-orange);">Meta</span>
-                            <div class="funnel-bar" style="width: 15%; background: var(--corp-orange); color: white;">150 Novos Franqueados</div>
+                            <span style="width: 80px; font-size: 0.8rem; text-align: right; color: var(--corp-orange); font-weight:700;">Meta</span>
+                            <div class="funnel-bar" style="width: 15%; background: var(--corp-orange); color: white;">150 Novos Sócios</div>
                         </div>
                     </div>
                 </div>
@@ -344,13 +359,15 @@
                     <h2>O Multiplicador<br>de Valor</h2>
                     <p>
                         Automação de Cross-Sell via <strong>Oráculo</strong>.
-                        O sistema dispara gatilhos automáticos ofertando produtos específicos.
+                        O sistema vende a próxima solução (Seguro/Investimento) sem depender do consultor.
                     </p>
                     <br>
-                    <p>
-                        <strong>Tese de Investimento:</strong><br>
-                        "Somos uma <strong>Data Company</strong>. O Oráculo reduz o custo de servir e aumenta o LTV."
-                    </p>
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-left: 2px solid var(--corp-white);">
+                        <p style="font-size: 1rem; margin:0;">
+                            <strong>Tese para Série A:</strong><br>
+                            "Somos uma <span style="color: var(--corp-orange);">Data Company</span>. O Oráculo reduz o custo de servir e aumenta o LTV."
+                        </p>
+                    </div>
                 </div>
                 <div class="content-right">
                     <div class="metric-box">
@@ -368,26 +385,26 @@
 
         <section>
             <div style="width: 100%;">
-                <h2 style="text-align: center; margin-bottom: 3rem;">O Resumo da Operação 2026</h2>
+                <h2 style="text-align: center; margin-bottom: 4rem;">O Caminho 2026</h2>
                 <div style="display: flex; justify-content: space-around; text-align: center;">
                     <div>
-                        <span style="font-size: 4rem; font-weight: 300; display: block; margin-bottom: 10px;">1.</span>
-                        <h3 style="font-size: 1.5rem; color: var(--corp-orange);">TRAZENDO</h3>
+                        <span style="font-size: 3rem; font-weight: 300; display: block; margin-bottom: 10px; opacity:0.3;">01</span>
+                        <h3 style="font-size: 1.5rem; color: var(--corp-orange); margin-bottom:10px;">TRAZER</h3>
                         <p style="font-size: 1rem;">R$ 5MM Receita<br>+150 Sócios</p>
                     </div>
-                    <div style="border-left: 1px solid var(--grid-line); border-right: 1px solid var(--grid-line); padding: 0 40px;">
-                        <span style="font-size: 4rem; font-weight: 300; display: block; margin-bottom: 10px;">2.</span>
-                        <h3 style="font-size: 1.5rem; color: var(--corp-orange);">RENTABILIZANDO</h3>
+                    <div style="border-left: 1px solid var(--grid-line); border-right: 1px solid var(--grid-line); padding: 0 60px;">
+                        <span style="font-size: 3rem; font-weight: 300; display: block; margin-bottom: 10px; opacity:0.3;">02</span>
+                        <h3 style="font-size: 1.5rem; color: var(--corp-orange); margin-bottom:10px;">RENTABILIZAR</h3>
                         <p style="font-size: 1rem;">R$ 15MM Cross-Sell<br>via Automação</p>
                     </div>
                     <div>
-                        <span style="font-size: 4rem; font-weight: 300; display: block; margin-bottom: 10px;">3.</span>
-                        <h3 style="font-size: 1.5rem; color: var(--corp-orange);">VALORIZANDO</h3>
+                        <span style="font-size: 3rem; font-weight: 300; display: block; margin-bottom: 10px; opacity:0.3;">03</span>
+                        <h3 style="font-size: 1.5rem; color: var(--corp-orange); margin-bottom:10px;">VALORIZAR</h3>
                         <p style="font-size: 1rem;">Posicionamento<br>Data-Driven p/ IPO</p>
                     </div>
                 </div>
             </div>
-             <div class="footer-ref">Futuro Corp | Estratégia de Crescimento Integrado</div>
+            <div class="footer-ref">FUTURO CORP © 2026 | BRAND SYSTEM KB-02</div>
         </section>
 
     </div>
