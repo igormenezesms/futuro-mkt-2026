@@ -1,783 +1,396 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Futuro Corp | Board 2026 Strategy</title>
-
     
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
-
     
-
     <style>
-
         /* * DESIGN SYSTEM: "THE FUTURO SWISS GRID"
-
          * Conceito: Clareza absoluta, autoridade, linhas guias visíveis.
-
          */
-
         
-
         :root {
-
             /* Palette Oficial */
-
             --corp-blue: #19253f;     /* Fundo Principal */
-
             --corp-blue-light: #244676; /* Elementos Secundários */
-
             --corp-orange: #e4702b;   /* Ação e Destaque (O "Ponto Focal") */
-
             --corp-white: #FFFFFF;    /* Texto e Contraste */
-
             --grid-line: rgba(255, 255, 255, 0.1); /* Linhas arquiteturais */
-
             
-
             /* Typography */
-
             --font-main: 'Rubik', sans-serif;
-
             
-
             /* Spacing */
-
             --margin-x: 6vw;
-
             --margin-y: 5vh;
-
         }
-
-
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-
-
         body {
-
             background-color: var(--corp-blue);
-
             color: var(--corp-white);
-
             font-family: var(--font-main);
-
             overflow: hidden; /* Scroll controlado */
-
         }
-
-
 
         /* LOGO FIXO (BRAND GUARDIAN) */
-
         .brand-fixed {
-
             position: fixed;
-
             top: 40px;
-
             left: 50px;
-
             z-index: 1000;
-
             width: 140px; /* Tamanho elegante, não invasivo */
-
             opacity: 1;
-
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
-
         }
-
-
 
         /* PROGRESS TRACKER (Direita) */
-
         .progress-bar {
-
             position: fixed;
-
             right: 50px;
-
             top: 50%;
-
             transform: translateY(-50%);
-
             display: flex;
-
             flex-direction: column;
-
             gap: 20px;
-
             z-index: 100;
-
         }
-
         .step {
-
             width: 2px;
-
             height: 40px;
-
             background: var(--grid-line);
-
             transition: all 0.3s ease;
-
         }
-
         .step.active {
-
             background: var(--corp-orange);
-
             height: 60px;
-
             width: 3px;
-
         }
-
-
 
         /* GRID DE FUNDO (Estilo Engenharia) */
-
         .bg-grid {
-
             position: fixed;
-
             top: 0; left: 0; width: 100vw; height: 100vh;
-
             pointer-events: none;
-
             z-index: 0;
-
             display: flex;
-
             justify-content: space-between;
-
             padding: 0 var(--margin-x);
-
         }
-
         .line { width: 1px; height: 100%; background: var(--grid-line); }
 
-
-
         /* CONTAINER DE SLIDES */
-
         .deck {
-
             height: 100vh;
-
             overflow-y: scroll;
-
             scroll-snap-type: y mandatory;
-
             scroll-behavior: smooth;
-
         }
-
-
 
         section {
-
             height: 100vh;
-
             width: 100vw;
-
             scroll-snap-align: start;
-
             position: relative;
-
             z-index: 1;
-
             padding: 0 var(--margin-x);
-
             display: flex;
-
             align-items: center;
-
         }
-
-
 
         /* TYPOGRAPHY SYSTEM */
-
         h1 {
-
             font-size: 6rem; /* Gigante */
-
             font-weight: 300; /* Light para elegância */
-
             line-height: 0.9;
-
             letter-spacing: -2px;
-
             margin-bottom: 2rem;
-
         }
-
         h1 strong {
-
             font-weight: 700;
-
             color: var(--corp-white);
-
         }
-
         
-
         h2 {
-
             font-size: 3.5rem;
-
             font-weight: 700;
-
             margin-bottom: 1.5rem;
-
             letter-spacing: -1px;
-
         }
-
-
 
         .label-orange {
-
             color: var(--corp-orange);
-
             font-size: 0.9rem;
-
             text-transform: uppercase;
-
             letter-spacing: 3px;
-
             font-weight: 700;
-
             display: block;
-
             margin-bottom: 1rem;
-
             border-left: 3px solid var(--corp-orange);
-
             padding-left: 15px;
-
         }
-
-
 
         p {
-
             font-size: 1.25rem;
-
             line-height: 1.6;
-
             color: #d1d5db;
-
             max-width: 600px;
-
             font-weight: 300;
-
         }
-
-
 
         /* LAYOUTS ESPECÍFICOS */
-
         .layout-split {
-
             display: grid;
-
             grid-template-columns: 1fr 1fr;
-
             width: 100%;
-
             height: 100%;
-
             align-items: center;
-
         }
-
-
 
         .content-left { padding-right: 4rem; }
-
         .content-right { 
-
             border-left: 1px solid var(--grid-line); 
-
             padding-left: 4rem; 
-
             height: 70%;
-
             display: flex;
-
             flex-direction: column;
-
             justify-content: center;
-
         }
-
-
 
         /* COMPONENTS */
-
         .metric-box {
-
             margin-bottom: 3rem;
-
         }
-
         .metric-val {
-
             font-size: 5rem;
-
             font-weight: 700;
-
             color: var(--corp-orange);
-
             line-height: 1;
-
             display: block;
-
         }
-
         .metric-desc {
-
             font-size: 1rem;
-
             text-transform: uppercase;
-
             letter-spacing: 1px;
-
             opacity: 0.8;
-
         }
-
-
 
         .tag-pill {
-
             display: inline-block;
-
             padding: 8px 16px;
-
             border: 1px solid var(--grid-line);
-
             border-radius: 50px;
-
             margin-right: 10px;
-
             font-size: 0.8rem;
-
             text-transform: uppercase;
-
             letter-spacing: 1px;
-
             margin-bottom: 10px;
-
         }
-
-
 
         .funnel-step {
-
             display: flex;
-
             align-items: center;
-
             margin-bottom: 15px;
-
             position: relative;
-
         }
-
         .funnel-bar {
-
             height: 50px;
-
             background: rgba(255,255,255,0.05);
-
             margin-left: 20px;
-
             display: flex;
-
             align-items: center;
-
             padding-left: 15px;
-
             font-weight: 700;
-
             font-size: 0.9rem;
-
         }
-
-
 
         /* FOOTER DISCRETO */
-
         .footer-ref {
-
             position: absolute;
-
             bottom: 40px;
-
             left: var(--margin-x);
-
             font-size: 0.75rem;
-
             opacity: 0.3;
-
             letter-spacing: 2px;
-
             text-transform: uppercase;
-
         }
 
-
-
     </style>
-
 </head>
-
 <body>
-
-
 
     <img src="Vertical branca.png" alt="Futuro Corp Logo" class="brand-fixed">
 
-
-
     <div class="bg-grid">
-
         <div class="line"></div>
-
         <div class="line"></div>
-
         <div class="line"></div>
-
         <div class="line"></div>
-
     </div>
-
-
 
     <div class="progress-bar">
-
         <div class="step active"></div>
-
         <div class="step"></div>
-
         <div class="step"></div>
-
         <div class="step"></div>
-
         <div class="step"></div>
-
         <div class="step"></div>
-
     </div>
-
-
 
     <div class="deck">
 
-
-
         <section>
-
             <div style="margin-top: 10vh;">
-
-                <span class="label-orange">Plano Tático Integrado</span>
-
+                <span class="label-orange">Plano Tático de Marketing 2026</span>
                 <h1>
-
                     Acelerando a<br>
-
                     <strong>Receita, a Rede</strong><br>
-
                     e o <strong>Ecossistema.</strong>
-
                 </h1>
-
                 <p style="margin-top: 2rem; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px;">
-
-                    Estratégia MKT 2026<br>
-
-                    <span style="color: var(--corp-orange);">Board Version</span>
-
+                    Conceito Central: <strong>"Engenharia de Ciclo de Vida"</strong>.<br>
+                    O Marketing não para na primeira venda. Ele orquestra a jornada para maximizar o <strong>LTV</strong>.
                 </p>
-
             </div>
-
-            <div class="footer-ref">Futuro Corp © 2026 // Brand & Design</div>
-
+            <div class="footer-ref">Futuro Corp | Estratégia de Crescimento Integrado</div>
         </section>
 
-
-
         <section>
-
             <div class="layout-split">
-
                 <div class="content-left">
-
                     <span class="label-orange">O Pivô Estratégico</span>
-
                     <h2>Tech-Enabled Service</h2>
-
                     <p>
-
-                        Para bater os <strong>R$ 30M</strong>, deixamos de ser "suporte" para ser a <strong>Inteligência Central</strong>.
-
+                        Para suportar a meta de <strong>R$ 30 Milhões</strong>, o Marketing precisa evoluir. Deixamos de ser um departamento de "suporte a vendas" para nos tornarmos a <strong>Inteligência Central</strong>.
                         <br><br>
-
-                        "Não somos um app, nem um escritório. Somos o 'Uber do Planejamento': Tecnologia proprietária + Atendimento humano de elite."
-
+                        "Não somos um app, nem um escritório tradicional. Somos o <strong>'Uber do Planejamento Financeiro'</strong>: tecnologia proprietária (Oráculo) com atendimento humano de elite."
                     </p>
-
                 </div>
-
                 <div class="content-right">
-
                     <div style="margin-bottom: 40px;">
-
                         <span class="metric-val" style="font-size: 3rem; color: var(--corp-white);">Originação</span>
-
-                        <p style="font-size: 1rem;">Injetar demanda qualificada (B2C)</p>
-
+                        <p style="font-size: 1rem;">Injetando demanda qualificada para os franqueados (B2C)</p>
                     </div>
-
                     <div>
-
                         <span class="metric-val" style="font-size: 3rem; color: var(--corp-white);">Atração</span>
-
-                        <p style="font-size: 1rem;">Filtrar talentos para a Rede (B2B)</p>
-
+                        <p style="font-size: 1rem;">Filtrando talentos para a expansão da rede (B2B)</p>
                     </div>
-
                 </div>
-
             </div>
-
+             <div class="footer-ref">Futuro Corp | Estratégia de Crescimento Integrado</div>
         </section>
 
-
-
         <section>
-
             <div class="layout-split">
-
                 <div class="content-left">
-
-                    <span class="label-orange">OKR 1: Máquina de Vendas</span>
-
+                    <span class="label-orange">OKR 1: Originação e Qualificação (B2C)</span>
                     <h2>Originação &<br>Qualificação</h2>
-
-                    <p>Foco no <strong>High Ticket</strong>. O "Agente IA" cuida da base menor, enquanto o humano foca onde há margem.</p>
-
+                    <p>Foco no <strong>High Ticket</strong>. O "Agente Planejador IA" rentabiliza a base menor, sem onerar o time humano.</p>
                     <br>
-
                     <div class="tag-pill">Volume: 48k Leads</div>
-
-                    <div class="tag-pill">Filtro: 15% High Income</div>
-
+                    <div class="tag-pill">Filtro: 15% High Ticket</div>
                 </div>
-
                 <div class="content-right">
-
                     <div class="metric-box">
-
                         <span class="metric-val">R$ 5MM</span>
-
                         <span class="metric-desc">Receita Originada Direta</span>
-
                     </div>
-
                     <div class="metric-box" style="opacity: 0.5;">
-
-                        <span class="metric-val" style="font-size: 3rem;">> 30k</span>
-
-                        <span class="metric-desc">Renda Alvo (Persona Black)</span>
-
+                        <span class="metric-val" style="font-size: 3rem;">30k</span>
+                        <span class="metric-desc">Renda Compatível (High Ticket)</span>
                     </div>
-
                 </div>
-
             </div>
-
+             <div class="footer-ref">Futuro Corp | Estratégia de Crescimento Integrado</div>
         </section>
 
-
-
         <section>
-
             <div class="layout-split">
-
                 <div class="content-left">
-
-                    <span class="label-orange">OKR 2: Expansão da Rede</span>
-
+                    <span class="label-orange">OKR 2: O Funil de Sócios (Expansão)</span>
                     <h2>Qualidade ><br>Quantidade</h2>
-
-                    <p>O Marketing entrega <strong>Sócios Aprovados</strong>, não curiosos. Usamos um "Funil Reverso" onde o candidato precisa provar seu valor.</p>
-
+                    <p>A Correção de Rota: O Marketing assume o compromisso de entregar <strong>candidatos aprovados</strong>, não apenas curiosos.</p>
                 </div>
-
                 <div class="content-right">
-
                     <div style="width: 100%;">
-
                         <div class="funnel-step">
-
                             <span style="width: 80px; font-size: 0.8rem; text-align: right;">Topo</span>
-
-                            <div class="funnel-bar" style="width: 100%; background: #374151;">Narrativa "Business Partner"</div>
-
+                            <div class="funnel-bar" style="width: 100%; background: #374151;">Narrativa "Business Partner Program"</div>
                         </div>
-
                         <div class="funnel-step">
-
                             <span style="width: 80px; font-size: 0.8rem; text-align: right;">Meio</span>
-
-                            <div class="funnel-bar" style="width: 40%; background: #4b5563;">Triagem de DNA (1.500)</div>
-
+                            <div class="funnel-bar" style="width: 40%; background: #4b5563;">Triagem Inicial (1.500 Aprovados)</div>
                         </div>
-
                         <div class="funnel-step">
-
                             <span style="width: 80px; font-size: 0.8rem; text-align: right; color: var(--corp-orange);">Meta</span>
-
-                            <div class="funnel-bar" style="width: 15%; background: var(--corp-orange); color: white;">150 Novos Sócios</div>
-
+                            <div class="funnel-bar" style="width: 15%; background: var(--corp-orange); color: white;">150 Novos Franqueados</div>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
+             <div class="footer-ref">Futuro Corp | Estratégia de Crescimento Integrado</div>
         </section>
 
-
-
         <section>
-
             <div class="layout-split">
-
                 <div class="content-left">
-
                     <span class="label-orange">OKR 4 e 5: LTV & Equity</span>
-
                     <h2>O Multiplicador<br>de Valor</h2>
-
                     <p>
-
                         Automação de Cross-Sell via <strong>Oráculo</strong>.
-
-                        O sistema vende a próxima solução sem depender do consultor.
-
+                        O sistema dispara gatilhos automáticos ofertando a próxima solução sem depender da memória do consultor.
                     </p>
-
                     <br>
-
                     <p>
-
                         <strong>Tese para Série A:</strong><br>
-
-                        "Somos uma Data Company. Reduzimos o custo de servir e aumentamos a margem."
-
+                        "Somos uma <strong>Data Company</strong>. O Oráculo reduz o custo de servir e aumenta o LTV."
                     </p>
-
                 </div>
-
                 <div class="content-right">
-
                     <div class="metric-box">
-
                         <span class="metric-val">R$ 15MM</span>
-
-                        <span class="metric-desc">Em Cross-Sell (Ecossistema)</span>
-
+                        <span class="metric-desc">Em oportunidades (Ecossistema)</span>
                     </div>
-
                     <div class="metric-box">
-
                         <span class="metric-val" style="color: var(--corp-white);">R$ 6MM</span>
-
                         <span class="metric-desc">Meta de Captação (Valuation)</span>
-
                     </div>
-
                 </div>
-
             </div>
-
+             <div class="footer-ref">Futuro Corp | Estratégia de Crescimento Integrado</div>
         </section>
-
-
 
         <section>
-
             <div style="width: 100%;">
-
-                <h2 style="text-align: center; margin-bottom: 3rem;">O Caminho 2026</h2>
-
+                <h2 style="text-align: center; margin-bottom: 3rem;">O Resumo da Operação 2026</h2>
                 <div style="display: flex; justify-content: space-around; text-align: center;">
-
                     <div>
-
                         <span style="font-size: 4rem; font-weight: 300; display: block; margin-bottom: 10px;">1.</span>
-
-                        <h3 style="font-size: 1.5rem; color: var(--corp-orange);">TRAZER</h3>
-
+                        <h3 style="font-size: 1.5rem; color: var(--corp-orange);">TRAZENDO</h3>
                         <p style="font-size: 1rem;">R$ 5MM Receita<br>+150 Sócios</p>
-
                     </div>
-
                     <div style="border-left: 1px solid var(--grid-line); border-right: 1px solid var(--grid-line); padding: 0 40px;">
-
                         <span style="font-size: 4rem; font-weight: 300; display: block; margin-bottom: 10px;">2.</span>
-
-                        <h3 style="font-size: 1.5rem; color: var(--corp-orange);">RENTABILIZAR</h3>
-
+                        <h3 style="font-size: 1.5rem; color: var(--corp-orange);">RENTABILIZANDO</h3>
                         <p style="font-size: 1rem;">R$ 15MM Cross-Sell<br>via Automação</p>
-
                     </div>
-
                     <div>
-
                         <span style="font-size: 4rem; font-weight: 300; display: block; margin-bottom: 10px;">3.</span>
-
-                        <h3 style="font-size: 1.5rem; color: var(--corp-orange);">VALORIZAR</h3>
-
+                        <h3 style="font-size: 1.5rem; color: var(--corp-orange);">VALORIZANDO</h3>
                         <p style="font-size: 1rem;">Posicionamento<br>Data-Driven p/ IPO</p>
-
                     </div>
-
                 </div>
-
             </div>
-
-            <div class="footer-ref">FUTURO CORP © 2026 | BRAND SYSTEM KB-02</div>
-
+            <div class="footer-ref">Futuro Corp | Estratégia de Crescimento Integrado</div>
         </section>
-
-
 
     </div>
 
-
-
 </body>
-
 </html>
