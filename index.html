@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuro Corp | Board Deck 2026</title>
+    <title>Futuro Corp | Plano Tático 2026</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;600;800&family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- BRAND DNA (Variables from JSON) --- */
+        /* --- BRAND DNA --- */
         :root {
             --navy-deep: #020b16;      /* Fundo profundo */
             --navy-brand: #052343;     /* Azul Futuro */
@@ -35,11 +35,10 @@
             color: var(--white);
             font-family: 'Rubik', sans-serif;
             overflow-x: hidden;
-            /* Scroll Smooth e Snap */
             scroll-behavior: smooth;
         }
 
-        /* Background Noise Texture para tirar o aspecto "chapado" */
+        /* Background Noise Texture */
         body::before {
             content: "";
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -48,7 +47,7 @@
             z-index: -1;
         }
 
-        /* Ambient Light (Gradients de Fundo) */
+        /* Ambient Light */
         .ambient-light {
             position: fixed;
             width: 800px; height: 800px;
@@ -106,6 +105,7 @@
             padding: 5% 10%;
             position: relative;
             border-bottom: 1px solid rgba(255,255,255,0.02);
+            scroll-snap-align: start;
         }
 
         .container {
@@ -137,7 +137,6 @@
             justify-content: space-between;
         }
 
-        /* Hover Effect "Glow" */
         .card::after {
             content: '';
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -152,14 +151,12 @@
         }
         .card:hover::after { opacity: 1; }
 
-        /* Card Sizes */
         .col-3 { grid-column: span 3; }
         .col-4 { grid-column: span 4; }
         .col-6 { grid-column: span 6; }
         .col-8 { grid-column: span 8; }
         .col-12 { grid-column: span 12; }
 
-        /* Card Variations */
         .card.highlight-bg {
             background: linear-gradient(135deg, rgba(236, 108, 35, 0.1) 0%, rgba(5, 35, 67, 0.3) 100%);
             border: 1px solid rgba(236, 108, 35, 0.2);
@@ -176,31 +173,13 @@
         }
         .kpi-number span { font-size: 2rem; color: var(--text-muted); font-weight: 400;}
 
-        /* --- SPECIFIC SECTIONS --- */
+        /* --- COMPONENTS --- */
+        .hero-logo { width: 160px; margin-bottom: 6vh; opacity: 0.9; }
+        .hero-content { position: relative; z-index: 2; }
         
-        /* 1. HERO */
-        .hero-logo {
-            width: 160px;
-            margin-bottom: 6vh;
-            opacity: 0.9;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        .hero-footer {
-            position: absolute; bottom: 40px; left: 10%; right: 10%;
-            display: flex; justify-content: space-between;
-            border-top: 1px solid var(--glass-border);
-            padding-top: 20px;
-            font-size: 0.85rem; color: var(--text-muted);
-            text-transform: uppercase; letter-spacing: 0.1em;
-        }
-
-        /* 2. THE PIVOT (Slide 2) */
         .quote-main {
             font-family: 'Darker Grotesque';
-            font-size: 3rem;
+            font-size: 2.5rem;
             line-height: 1.1;
             font-weight: 300;
             color: var(--white);
@@ -209,7 +188,6 @@
             margin: 40px 0;
         }
         
-        /* 3. OKR TABLES (Minimalist) */
         .data-row {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 0;
@@ -219,7 +197,6 @@
         .data-label { color: var(--text-muted); }
         .data-val { font-weight: 600; color: var(--white); }
 
-        /* 4. PROGRESS BAR */
         .progress-container {
             width: 100%; height: 4px; background: rgba(255,255,255,0.1);
             border-radius: 2px; margin-top: 10px; overflow: hidden;
@@ -240,12 +217,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- MOBILE RESPONSIVE --- */
+        /* --- MOBILE --- */
         @media (max-width: 1024px) {
             .grid-bento { display: flex; flex-direction: column; }
             h1 { font-size: 3rem; }
             section { padding: 80px 5%; height: auto; }
-            .hero-footer { position: relative; bottom: auto; margin-top: 50px; flex-direction: column; gap: 10px; }
             .kpi-number { font-size: 3.5rem; }
         }
     </style>
@@ -260,34 +236,28 @@
             <img src="Vertical branca.png" alt="Futuro Corp" class="hero-logo fade-up">
             
             <div class="fade-up delay-1">
-                <span class="tag">Confidencial • Board Meeting</span>
-                <h1>O Plano Integrado<br><span style="color: var(--orange-acc)">2026</span></h1>
+                <span class="tag">Estratégia de Crescimento Integrado</span>
+                <h1>Plano Tático de<br><span style="color: var(--orange-acc)">Marketing 2026</span></h1>
                 <p style="font-size: 1.5rem; max-width: 600px; margin-top: 20px;">
-                    Acelerando a Receita, a Rede e o Ecossistema. <br>
-                    De "Suporte" para <strong>Inteligência Central</strong>.
+                    Acelerando a Receita, a Rede e o Ecossistema.<br>
+                    Conceito Central: <strong>Engenharia de Ciclo de Vida</strong>.
                 </p>
             </div>
-        </div>
-
-        <div class="hero-footer fade-up delay-2">
-            <span>Data: Jan 2026</span>
-            <span>Apresentador: CMO</span>
-            <span>Local: São Paulo, BR</span>
         </div>
     </section>
 
     <section>
         <div class="container">
             <span class="tag">O Big Picture</span>
-            <h2 class="fade-up">Engenharia de Ciclo de Vida</h2>
+            <h2 class="fade-up">O Pivô Estratégico</h2>
             
             <div class="grid-bento">
                 <div class="card col-8 fade-up delay-1">
-                    <h3>O Pivô Estratégico</h3>
+                    <h3>Tech-Enabled Service</h3>
                     <div class="quote-main">
-                        "Não somos um app. Somos o <span class="highlight">'Uber do Planejamento Financeiro'</span>: tecnologia proprietária com atendimento humano de elite."
+                        "Não somos um app. Somos o <span class="highlight">'Uber do Planejamento Financeiro'</span>: tecnologia proprietária (Oráculo) com atendimento humano de elite."
                     </div>
-                    <p>Deixamos de ser um departamento de "suporte a vendas" e nos tornamos a Inteligência Central que alimenta as duas pontas do negócio (B2B e B2C).</p>
+                    <p>O Marketing evolui de "suporte a vendas" para a <strong>Inteligência Central</strong> que alimenta as duas pontas do negócio (B2B e B2C).</p>
                 </div>
                 
                 <div class="card col-4 fade-up delay-2" style="justify-content: center; align-items: center; text-align: center;">
@@ -304,11 +274,11 @@
         <div class="container">
             <div style="display: flex; justify-content: space-between; align-items: end; margin-bottom: 30px;">
                 <div>
-                    <span class="tag">OKR 1 • Originação</span>
+                    <span class="tag">OKR 1 • Originação B2C</span>
                     <h2>A Máquina de Receita</h2>
                 </div>
                 <div style="text-align: right;">
-                    <p>Meta de Receita Originada</p>
+                    <p>Meta de Receita Originada Direta</p>
                     <div style="font-family: 'Darker Grotesque'; font-size: 3rem; color: var(--orange-acc); font-weight: 800;">R$ 5.000.000</div>
                 </div>
             </div>
@@ -325,8 +295,8 @@
                 </div>
 
                 <div class="card col-4">
-                    <h3>Tática Principal</h3>
-                    <p style="margin-bottom: 20px;">Focar em canais de Inbound e Tráfego Pago para injetar "sangue novo" fora da bolha de networking dos franqueados.</p>
+                    <h3>Táticas Chave</h3>
+                    <p style="margin-bottom: 20px;">Injeção de "sangue novo" fora da bolha de networking dos franqueados.</p>
                     <div class="data-row">
                         <span class="data-label">ROAS Alvo</span>
                         <span class="data-val">> 4x</span>
@@ -341,7 +311,7 @@
                     <div style="background: rgba(5,35,67,0.8); height: 100%; width: 100%; position: absolute; top:0; left:0;"></div>
                     <div style="position: relative; z-index: 2;">
                         <h3>Funil High Ticket</h3>
-                        <p style="color: rgba(255,255,255,0.8)">Prioridade total para leads com capacidade de investimento acima de 500k.</p>
+                        <p style="color: rgba(255,255,255,0.8)">Humanos focam na margem. IA cuida da base.</p>
                     </div>
                 </div>
             </div>
@@ -355,18 +325,18 @@
 
             <div class="grid-bento">
                 <div class="card col-6">
-                    <h3 class="highlight">O Funil de Sócios</h3>
+                    <h3 class="highlight">O Funil de Sócios (B2B)</h3>
                     <div class="kpi-number">150 <span style="font-size: 1.5rem;">Novos Franqueados</span></div>
-                    <p>Qualidade acima de quantidade. O foco muda de "vender franquia" para "recrutar sócios".</p>
+                    <p>Qualidade acima de quantidade. Narrativa de "Business Partner".</p>
                     
                     <div style="margin-top: 20px;">
                         <div class="data-row">
-                            <span class="data-label">Topo (Business Partner)</span>
+                            <span class="data-label">Topo</span>
                             <span class="data-val">Atração de Empreendedores</span>
                         </div>
                         <div class="data-row">
-                            <span class="data-label">Meio (O Filtro)</span>
-                            <span class="data-val">Triagem Cultural Rigorosa</span>
+                            <span class="data-label">Meio</span>
+                            <span class="data-val">Filtro Cultural e Teste de Perfil</span>
                         </div>
                     </div>
                 </div>
@@ -378,8 +348,45 @@
                     <ul style="margin-top: 20px; list-style: none; padding-left: 0;">
                         <li style="margin-bottom: 10px; color: var(--text-muted);">✓ Spokespersons (Alex e Thomas) como Top Voices</li>
                         <li style="margin-bottom: 10px; color: var(--text-muted);">✓ Relatórios do Oráculo na imprensa (Tier-1)</li>
-                        <li style="margin-bottom: 10px; color: var(--text-muted);">✓ Identidade visual unificada</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: end; margin-bottom: 30px;">
+                <div>
+                    <span class="tag">OKR 4 • LTV e Ecossistema</span>
+                    <h2>O Multiplicador de Valor</h2>
+                </div>
+                <div style="text-align: right;">
+                    <p>Meta de Cross-Sell</p>
+                    <div style="font-family: 'Darker Grotesque'; font-size: 3rem; color: var(--orange-acc); font-weight: 800;">R$ 15.000.000</div>
+                </div>
+            </div>
+
+            <div class="grid-bento">
+                <div class="card col-4 highlight-bg">
+                    <h3>Automação Oráculo</h3>
+                    <div class="kpi-number">40% <span style="font-size: 1.5rem;">da Meta</span></div>
+                    <p>Gatilhos automáticos (Ex: "Liquidez > 500k") ofertam produtos sem intervenção manual.</p>
+                </div>
+
+                <div class="card col-4">
+                    <h3>Índice de Densidade</h3>
+                    <div class="kpi-number">1.5 <span style="font-size: 1.5rem;">Soluções/Cliente</span></div>
+                    <p>O cliente entra pelo planejamento, mas fica pelo seguro/investimento.</p>
+                </div>
+
+                <div class="card col-4">
+                    <h3>Portas Laterais</h3>
+                    <p style="margin-bottom: 20px;">Ferramentas diagnósticas captam direto para as BUs.</p>
+                    <div class="data-row">
+                        <span class="data-label">Exemplo</span>
+                        <span class="data-val">"Revelador de Crédito Oculto"</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -391,23 +398,23 @@
             <h2>Preparação Série A</h2>
             
             <div class="grid-bento">
-                <div class="card col-12 highlight-bg" style="flex-direction: row; align-items: center; gap: 40px;">
-                    <div style="flex: 1;">
+                <div class="card col-12 highlight-bg" style="flex-direction: row; align-items: center; gap: 40px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
                         <h3>Meta de Captação</h3>
                         <div class="kpi-number" style="font-size: 6rem;">R$ 6MM</div>
-                        <p>Preparação de Governança e Roadshow.</p>
+                        <p>Preparação de Governança e Roadshow (Smart Money).</p>
                     </div>
-                    <div style="flex: 1; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px;">
+                    <div style="flex: 1; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px; min-width: 300px;">
                         <h3>A Tese para Investidores</h3>
-                        <p style="font-size: 1.4rem; color: var(--white); margin-bottom: 20px;">"O Oráculo reduz o custo de servir e aumenta o LTV."</p>
+                        <p style="font-size: 1.4rem; color: var(--white); margin-bottom: 20px;">"Somos uma Data Company. O Oráculo reduz o custo de servir e aumenta o LTV."</p>
                         
                         <div class="data-row">
-                            <span class="data-label">Ativo 1</span>
-                            <span class="data-val">Filme "Manifesto do Protagonista" (Retenção > 60%)</span>
+                            <span class="data-label">Recrutamento</span>
+                            <span class="data-val">Filme "Manifesto do Protagonista"</span>
                         </div>
                         <div class="data-row">
-                            <span class="data-label">Ativo 2</span>
-                            <span class="data-val">Filme "Scalability Thesis" (Exclusivo Roadshow)</span>
+                            <span class="data-label">Investidores</span>
+                            <span class="data-val">Filme "The Scalability Thesis"</span>
                         </div>
                     </div>
                 </div>
