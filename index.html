@@ -29,13 +29,16 @@
             --margin-x: 6vw;
             --margin-y: 5vh;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             background-color: var(--corp-blue);
             color: var(--corp-white);
             font-family: var(--font-main);
             overflow: hidden; /* Scroll controlado */
         }
+
         /* LOGO FIXO (BRAND GUARDIAN) */
         .brand-fixed {
             position: fixed;
@@ -46,6 +49,7 @@
             opacity: 1;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
+
         /* PROGRESS TRACKER (Direita) */
         .progress-bar {
             position: fixed;
@@ -68,6 +72,7 @@
             height: 60px;
             width: 3px;
         }
+
         /* GRID DE FUNDO (Estilo Engenharia) */
         .bg-grid {
             position: fixed;
@@ -79,6 +84,7 @@
             padding: 0 var(--margin-x);
         }
         .line { width: 1px; height: 100%; background: var(--grid-line); }
+
         /* CONTAINER DE SLIDES */
         .deck {
             height: 100vh;
@@ -86,6 +92,7 @@
             scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
         }
+
         section {
             height: 100vh;
             width: 100vw;
@@ -96,6 +103,7 @@
             display: flex;
             align-items: center;
         }
+
         /* TYPOGRAPHY SYSTEM */
         h1 {
             font-size: 6rem; /* Gigante */
@@ -115,6 +123,7 @@
             margin-bottom: 1.5rem;
             letter-spacing: -1px;
         }
+
         .label-orange {
             color: var(--corp-orange);
             font-size: 0.9rem;
@@ -126,6 +135,7 @@
             border-left: 3px solid var(--corp-orange);
             padding-left: 15px;
         }
+
         p {
             font-size: 1.25rem;
             line-height: 1.6;
@@ -133,6 +143,7 @@
             max-width: 600px;
             font-weight: 300;
         }
+
         /* LAYOUTS ESPECÍFICOS */
         .layout-split {
             display: grid;
@@ -141,6 +152,7 @@
             height: 100%;
             align-items: center;
         }
+
         .content-left { padding-right: 4rem; }
         .content-right { 
             border-left: 1px solid var(--grid-line); 
@@ -150,6 +162,7 @@
             flex-direction: column;
             justify-content: center;
         }
+
         /* COMPONENTS */
         .metric-box {
             margin-bottom: 3rem;
@@ -167,6 +180,7 @@
             letter-spacing: 1px;
             opacity: 0.8;
         }
+
         .tag-pill {
             display: inline-block;
             padding: 8px 16px;
@@ -178,6 +192,7 @@
             letter-spacing: 1px;
             margin-bottom: 10px;
         }
+
         .funnel-step {
             display: flex;
             align-items: center;
@@ -194,6 +209,7 @@
             font-weight: 700;
             font-size: 0.9rem;
         }
+
         /* FOOTER DISCRETO */
         .footer-ref {
             position: absolute;
@@ -204,16 +220,20 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
+
     </style>
 </head>
 <body>
+
     <img src="Vertical branca.png" alt="Futuro Corp Logo" class="brand-fixed">
+
     <div class="bg-grid">
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
     </div>
+
     <div class="progress-bar">
         <div class="step active"></div>
         <div class="step"></div>
@@ -222,7 +242,9 @@
         <div class="step"></div>
         <div class="step"></div>
     </div>
+
     <div class="deck">
+
         <section>
             <div style="margin-top: 10vh;">
                 <span class="label-orange">Plano Tático Integrado</span>
@@ -238,6 +260,7 @@
             </div>
             <div class="footer-ref">Futuro Corp © 2026 // Brand & Design</div>
         </section>
+
         <section>
             <div class="layout-split">
                 <div class="content-left">
@@ -261,6 +284,7 @@
                 </div>
             </div>
         </section>
+
         <section>
             <div class="layout-split">
                 <div class="content-left">
@@ -283,6 +307,7 @@
                 </div>
             </div>
         </section>
+
         <section>
             <div class="layout-split">
                 <div class="content-left">
@@ -308,6 +333,7 @@
                 </div>
             </div>
         </section>
+
         <section>
             <div class="layout-split">
                 <div class="content-left">
@@ -335,6 +361,7 @@
                 </div>
             </div>
         </section>
+
         <section>
             <div style="width: 100%;">
                 <h2 style="text-align: center; margin-bottom: 3rem;">O Caminho 2026</h2>
@@ -358,6 +385,8 @@
             </div>
             <div class="footer-ref">FUTURO CORP © 2026 | BRAND SYSTEM KB-02</div>
         </section>
+
     </div>
+
 </body>
 </html>
