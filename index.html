@@ -3,280 +3,562 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuro Corp | Board Strategy 2026 (Full Deck)</title>
+    <title>Futuro Corp | Board Strategy 2026</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;600;800&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800&family=Rubik:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
     
     <style>
-        /* DESIGN SYSTEM v10: "High-Density Information Architecture" */
+        /* * DESIGN SYSTEM: "THE SWISS ARCHITECT" (Restored Code 1 Foundation)
+         * Foco: Elegância, Cor #19253f, Linhas Finas, Tipografia Gigante.
+         */
+        
         :root {
-            --corp-blue-deep: #052343;
-            --corp-orange: #EC6C23;
-            --corp-white: #FFFFFF;
-            --grid-line: rgba(255, 255, 255, 0.08);
-            --glass-bg: rgba(255, 255, 255, 0.04);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            /* A COR EXATA QUE VOCÊ GOSTOU (Código 1) */
+            --corp-bg: #19253f;      
             
+            /* Laranja do Código 1 */
+            --corp-orange: #e4702b;  
+            
+            /* Elementos de Texto */
+            --corp-white: #FFFFFF;
+            --corp-gray: #b0b8c4;
+            
+            /* Grid Arquitetônico */
+            --grid-line: rgba(255, 255, 255, 0.08); 
+            
+            /* Typography */
             --font-display: 'Darker Grotesque', sans-serif;
             --font-body: 'Rubik', sans-serif;
             
-            --margin-x: 6vw; /* Margem reduzida para caber mais texto */
+            /* Layout */
+            --margin-x: 6vw;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--corp-blue-deep);
+            background-color: var(--corp-bg);
             color: var(--corp-white);
             font-family: var(--font-body);
             overflow: hidden;
         }
 
-        /* Noise Texture */
-        body::before {
-            content: "";
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none; z-index: -1;
-        }
-
-        /* Grid */
+        /* --- O GRID SUÍÇO (A Base da Elegância) --- */
         .bg-grid {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none; z-index: 0; display: flex; justify-content: space-between;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            display: flex;
+            justify-content: space-between;
             padding: 0 var(--margin-x);
         }
         .line { width: 1px; height: 100%; background: var(--grid-line); }
 
-        /* Navigation Dots */
+        /* --- NAVIGATION DOTS (A Funcionalidade do Código 2) --- */
         .nav-dots {
-            position: fixed; right: 30px; top: 50%; transform: translateY(-50%);
-            display: flex; flex-direction: column; gap: 15px; z-index: 100;
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 24px; /* Mais espaçado para elegância */
+            z-index: 100;
         }
+        
         .dot {
-            width: 10px; height: 10px; border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.4); cursor: pointer; transition: all 0.3s;
+            width: 8px; /* Mais delicado */
+            height: 8px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
         }
-        .dot.active { background: var(--corp-orange); border-color: var(--corp-orange); transform: scale(1.3); }
-        .dot:hover::after {
-            content: attr(data-tooltip); position: absolute; right: 20px; top: -2px;
-            background: var(--corp-orange); padding: 4px 8px; font-size: 10px;
-            border-radius: 4px; white-space: nowrap;
+        
+        /* Tooltip minimalista que aparece no hover */
+        .dot::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--corp-orange);
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+            white-space: nowrap;
         }
 
-        /* Brand */
+        .dot:hover::after { opacity: 1; transform: translateY(-50%) translateX(-5px); }
+        
+        .dot.active {
+            background: var(--corp-orange);
+            border-color: var(--corp-orange);
+            transform: scale(1.5);
+            box-shadow: 0 0 20px rgba(228, 112, 43, 0.3);
+        }
+
+        /* --- LOGO (Marca D'água Elegante) --- */
         .brand-fixed {
-            position: fixed; top: 30px; left: var(--margin-x); z-index: 1000;
-            font-family: var(--font-display); font-weight: 800; font-size: 1.4rem;
-            text-transform: uppercase; letter-spacing: 1px;
+            position: fixed;
+            top: 40px;
+            left: 50px;
+            z-index: 1000;
+            font-family: var(--font-display);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.2rem;
             display: flex; align-items: center; gap: 10px;
         }
-        .brand-icon { width: 15px; height: 15px; background: var(--corp-orange); }
+        .brand-square { width: 12px; height: 12px; background: var(--corp-orange); }
 
-        /* Slide Layouts */
-        .deck { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        /* --- ESTRUTURA DOS SLIDES --- */
+        .deck {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
         section {
-            height: 100vh; width: 100vw; scroll-snap-align: start; position: relative;
-            z-index: 1; padding: 0 var(--margin-x); display: flex; align-items: center;
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: start;
+            position: relative;
+            z-index: 1;
+            padding: 0 var(--margin-x);
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.02);
         }
 
-        /* Typography */
-        h1 { font-family: var(--font-display); font-size: 5rem; font-weight: 300; line-height: 0.9; margin-bottom: 1.5rem; letter-spacing: -2px;}
-        h2 { font-family: var(--font-display); font-size: 3.5rem; font-weight: 600; margin-bottom: 1rem; line-height: 0.95; }
-        h3 { font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--corp-orange); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        /* --- TIPOGRAFIA (Estilo Código 1: Grande e Fina) --- */
+        h1 {
+            font-family: var(--font-display);
+            font-size: 6.5rem; /* Gigante */
+            font-weight: 300; /* Light */
+            line-height: 0.9;
+            letter-spacing: -2px;
+            margin-bottom: 2rem;
+        }
+        h1 strong {
+            font-weight: 700;
+            color: var(--corp-white);
+        }
         
-        .subtitle { font-size: 1.2rem; color: #cbd5e1; max-width: 700px; font-weight: 300; line-height: 1.5; margin-bottom: 2rem; }
+        h2 {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            line-height: 0.95;
+        }
+
+        .label-orange {
+            color: var(--corp-orange);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 1.5rem;
+            border-left: 2px solid var(--corp-orange);
+            padding-left: 15px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--corp-gray);
+            max-width: 650px;
+            font-weight: 300;
+        }
+
+        /* --- LAYOUTS --- */
+        .layout-split {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+        }
         
-        .tag-orange {
-            color: var(--corp-orange); font-size: 0.75rem; text-transform: uppercase;
-            letter-spacing: 2px; font-weight: 700; border-left: 2px solid var(--corp-orange);
-            padding-left: 10px; margin-bottom: 1rem; display: inline-block;
+        .content-left { padding-right: 4rem; }
+        .content-right { 
+            border-left: 1px solid var(--grid-line); 
+            padding-left: 4rem; 
+            height: 70%;
+            display: flex; flex-direction: column; justify-content: center;
         }
 
-        /* Content Layouts */
-        .split-screen {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; width: 100%; height: 80%; align-items: center;
-        }
-
-        /* Data Cards (High Density) */
-        .card-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%;
-        }
-        .info-card {
-            background: var(--glass-bg); border: 1px solid var(--glass-border);
-            padding: 25px; border-radius: 6px; backdrop-filter: blur(10px);
-            display: flex; flex-direction: column; justify-content: start;
-        }
-        .info-card.full { grid-column: span 2; }
+        /* --- ELEMENTOS DE DADOS (Substituindo Emojis e Caixas) --- */
         
-        .big-number { font-family: var(--font-display); font-size: 3.5rem; font-weight: 800; line-height: 1; color: var(--corp-white); }
-        .card-text { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; margin-top: 10px; }
-        .card-text strong { color: var(--corp-white); font-weight: 500; }
-
-        /* Lists */
-        ul.strategy-list { list-style: none; margin-top: 10px; }
-        ul.strategy-list li {
-            margin-bottom: 12px; padding-left: 15px; position: relative; font-size: 0.95rem; color: #e2e8f0; font-weight: 300;
+        /* Números Gigantes (Estilo Código 1) */
+        .metric-val {
+            font-family: var(--font-display);
+            font-size: 5.5rem;
+            font-weight: 700;
+            color: var(--corp-white);
+            line-height: 1;
+            display: block;
+            letter-spacing: -2px;
         }
-        ul.strategy-list li::before {
-            content: "•"; color: var(--corp-orange); position: absolute; left: 0; font-size: 1.2rem; line-height: 1rem;
+        .metric-desc {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--corp-gray);
+            margin-top: 10px;
+            display: block;
         }
 
-        .footer-ref { position: absolute; bottom: 30px; left: var(--margin-x); font-size: 0.65rem; opacity: 0.4; letter-spacing: 2px; text-transform: uppercase; }
+        /* Listas de Táticas (Sem bolinhas, design clean) */
+        .tactical-list {
+            margin-top: 30px;
+        }
+        .tactical-item {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .tactical-title {
+            color: var(--corp-white);
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .tactical-text {
+            font-size: 0.95rem;
+            color: var(--corp-gray);
+            font-weight: 300;
+        }
+        .tactical-line {
+            width: 30px; height: 1px; background: var(--corp-orange);
+            margin-bottom: 10px; opacity: 0.7;
+        }
+
+        /* Highlight de Frase (Citação) */
+        .quote-box {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            line-height: 1.1;
+            font-weight: 300;
+            color: var(--corp-white);
+            border-left: 1px solid var(--corp-orange);
+            padding-left: 30px;
+        }
+
+        /* Footer */
+        .footer-ref {
+            position: absolute;
+            bottom: 40px;
+            left: var(--margin-x);
+            font-size: 0.7rem;
+            opacity: 0.3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
 
     </style>
 </head>
 <body>
 
-    <div class="brand-fixed"><div class="brand-icon"></div>Futuro Corp</div>
-    
+    <div class="brand-fixed">
+        <div class="brand-square"></div>
+        Futuro Corp
+    </div>
+
     <div class="bg-grid">
-        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
     </div>
 
     <div class="nav-dots">
-        <div class="dot active" onclick="scrollToSlide(0)" data-tooltip="Cover"></div>
-        <div class="dot" onclick="scrollToSlide(1)" data-tooltip="Big Picture"></div>
-        <div class="dot" onclick="scrollToSlide(2)" data-tooltip="OKR 1: B2C"></div>
-        <div class="dot" onclick="scrollToSlide(3)" data-tooltip="OKR 2: B2B"></div>
-        <div class="dot" onclick="scrollToSlide(4)" data-tooltip="OKR 3: Autoridade"></div>
-        <div class="dot" onclick="scrollToSlide(5)" data-tooltip="OKR 4: Eco"></div>
-        <div class="dot" onclick="scrollToSlide(6)" data-tooltip="OKR 5: Equity"></div>
-        <div class="dot" onclick="scrollToSlide(7)" data-tooltip="Resumo"></div>
+        <div class="dot active" onclick="scrollToSlide(0)" data-label="Capa"></div>
+        <div class="dot" onclick="scrollToSlide(1)" data-label="Visão 2026"></div>
+        <div class="dot" onclick="scrollToSlide(2)" data-label="OKR 1: B2C"></div>
+        <div class="dot" onclick="scrollToSlide(3)" data-label="OKR 2: B2B"></div>
+        <div class="dot" onclick="scrollToSlide(4)" data-label="OKR 3: Autoridade"></div>
+        <div class="dot" onclick="scrollToSlide(5)" data-label="OKR 4: Eco"></div>
+        <div class="dot" onclick="scrollToSlide(6)" data-label="OKR 5: Equity"></div>
+        <div class="dot" onclick="scrollToSlide(7)" data-label="Roadmap"></div>
     </div>
 
     <div class="deck" id="deck">
 
         <section id="slide-0">
-            <div>
-                <span class="tag-orange">Planejamento Estratégico</span>
-                <h1>Plano Tático de<br>Marketing 2026</h1>
-                <p class="subtitle" style="font-size: 1.5rem; color: var(--corp-white);">
-                    Acelerando a <strong>Receita</strong>, a <strong>Rede</strong> e o <strong>Ecossistema</strong>.
+            <div style="margin-top: 5vh;">
+                <span class="label-orange">Plano Tático 2026</span>
+                <h1>
+                    Acelerando a<br>
+                    <strong>Receita, a Rede</strong><br>
+                    e o <strong>Ecossistema.</strong>
+                </h1>
+                <p style="margin-top: 3rem; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 20px;">
+                    Engenharia de Ciclo de Vida<br>
+                    <span style="color: var(--corp-orange); font-weight: 500;">Versão Board Confidencial</span>
                 </p>
-                <div style="margin-top: 40px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px;">
-                    <p style="font-size: 0.9rem; color: #94a3b8;">Versão Board Confidencial<br>Engenharia de Ciclo de Vida</p>
-                </div>
             </div>
-            <div class="footer-ref">Futuro Corp | Estratégia de Crescimento Integrado</div>
+            <div class="footer-ref">Futuro Corp | Jan 2026</div>
         </section>
 
         <section id="slide-1">
-            <div class="split-screen">
-                <div>
-                    <span class="tag-orange">O Pivô Estratégico</span>
+            <div class="layout-split">
+                <div class="content-left">
+                    <span class="label-orange">O Pivô Estratégico</span>
                     <h2>Tech-Enabled Service</h2>
-                    <p class="subtitle">
-                        Deixamos de ser "suporte" para ser a <strong>Inteligência Central</strong>. Não somos um app, nem um escritório tradicional.
+                    <p>
+                        Para suportar a meta de <strong>R$ 30 Milhões</strong>, o Marketing evolui de "suporte" para <strong>Inteligência Central</strong>.
                     </p>
-                    <div style="background: rgba(236, 108, 35, 0.1); border-left: 3px solid var(--corp-orange); padding: 20px;">
-                        <p style="font-style: italic; color: white;">
-                            "Somos o <strong>'Uber do Planejamento Financeiro'</strong>: Tecnologia proprietária (Oráculo) + Atendimento humano de elite."
-                        </p>
+                    <div class="tactical-list">
+                        <div class="tactical-item">
+                            <div class="tactical-line"></div>
+                            <span class="tactical-title">Originação (B2C)</span>
+                            <span class="tactical-text">Injetar demanda qualificada para os franqueados via Tráfego e Dados.</span>
+                        </div>
+                        <div class="tactical-item">
+                            <div class="tactical-line"></div>
+                            <span class="tactical-title">Atração (B2B)</span>
+                            <span class="tactical-text">Filtrar talentos de elite para expansão da rede.</span>
+                        </div>
                     </div>
                 </div>
-                <div class="card-grid">
-                    <div class="info-card">
-                        <h3>Originação (B2C)</h3>
-                        <p class="card-text">Injetando demanda qualificada para os franqueados.</p>
-                    </div>
-                    <div class="info-card">
-                        <h3>Atração (B2B)</h3>
-                        <p class="card-text">Filtrando talentos para expansão da rede.</p>
-                    </div>
-                    <div class="info-card full">
-                        <span class="big-number" style="font-size: 2.5rem;">R$ 30 Milhões</span>
-                        <p class="card-text">Meta de Receita Global suportada pelo Marketing.</p>
+                <div class="content-right">
+                    <div class="quote-box">
+                        "Não somos um app. Somos o <strong style="color:var(--corp-orange)">'Uber do Planejamento'</strong>: Tecnologia proprietária com atendimento humano de elite."
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="slide-2">
-            <div class="split-screen">
-                <div>
-                    <span class="tag-orange">OKR 1: Máquina de Receita</span>
-                    <h2>Originação & Qualificação</h2>
-                    <p class="subtitle">Injetar "sangue novo" via Inbound e Tráfego, fora da bolha de networking.</p>
+            <div class="layout-split">
+                <div class="content-left">
+                    <span class="label-orange">OKR 1: Máquina de Receita</span>
+                    <h2>Originação &<br>Qualificação</h2>
+                    <p>
+                        O Marketing Corporate assume a responsabilidade de injetar "sangue novo" fora da bolha de networking.
+                    </p>
                     
-                    <ul class="strategy-list">
-                        <li><strong>Meta:</strong> R$ 5MM em Receita Originada Direta.</li>
-                        <li><strong>Tecnologia:</strong> Deploy do "Agente Planejador IA" (Abril/26) para base ticket 1k.</li>
-                        <li><strong>The How:</strong> "Fast Track" do Oráculo. Leads da isca <em>Mapa de Risco</em> caem direto no Concierge.</li>
-                    </ul>
+                    <div class="tactical-list">
+                        <div class="tactical-item">
+                            <span class="tactical-title">Tática Chave: "Fast Track"</span>
+                            <span class="tactical-text">Leads da isca <em>Mapa de Risco</em> com alta renda caem direto no Concierge Humano.</span>
+                        </div>
+                        <div class="tactical-item">
+                            <span class="tactical-title">Tecnologia: Agente IA</span>
+                            <span class="tactical-text">Deploy em Abril/26 para atender a base de tickets menores.</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-grid">
-                    <div class="info-card full">
-                        <span class="big-number">48.000</span>
-                        <p class="card-text">Leads Totais / Ano</p>
+                <div class="content-right">
+                    <div style="margin-bottom: 50px;">
+                        <span class="metric-val">R$ 5MM</span>
+                        <span class="metric-desc">Receita Originada Direta</span>
                     </div>
-                    <div class="info-card">
-                        <h3>Filtro de Ouro</h3>
-                        <span class="big-number" style="font-size: 2rem;">7.200</span>
-                        <p class="card-text">Leads High Ticket (15%)<br><strong>Renda > 30k</strong></p>
-                    </div>
-                    <div class="info-card">
-                        <h3>Conversão</h3>
-                        <p class="card-text">Atendimento Concierge Humano para garantir conversão máxima.</p>
+                    <div>
+                        <span class="metric-val" style="font-size: 3.5rem;">48k</span>
+                        <span class="metric-desc">Leads Totais (15% High Ticket)</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="slide-3">
-            <div class="split-screen">
-                <div>
-                    <span class="tag-orange">OKR 2: Expansão da Rede</span>
-                    <h2>O Funil Reverso</h2>
-                    <p class="subtitle">Qualidade > Quantidade. O Marketing entrega sócios aprovados, não leads curiosos.</p>
-                    
-                    <ul class="strategy-list">
-                        <li><strong>Narrativa:</strong> "Business Partner Program" (não é vaga de emprego).</li>
-                        <li><strong>Diferencial:</strong> Candidato passa por um "MBA Prático" antes de entrar. Quem entra, fica.</li>
-                        <li><strong>Meta Temporal:</strong> 150 Sócios em 6 meses.</li>
-                    </ul>
-                </div>
-                <div class="card-grid">
-                    <div class="info-card full" style="display:flex; flex-direction:row; align-items:center; justify-content:space-between;">
-                        <div>
-                            <span style="display:block; font-size:0.8rem; text-transform:uppercase;">Triagem Inicial</span>
-                            <span class="big-number" style="font-size: 2.5rem; color:#94a3b8;">1.500</span>
+            <div class="layout-split">
+                <div class="content-left">
+                    <span class="label-orange">OKR 2: Expansão da Rede</span>
+                    <h2>Qualidade ><br>Quantidade</h2>
+                    <p>
+                        Mudança de Mindset: Não vendemos franquias, recrutamos sócios. O conceito de <strong>"Funil Reverso"</strong> exige que o candidato prove seu valor.
+                    </p>
+                    <div class="tactical-list">
+                        <div class="tactical-item">
+                            <div class="tactical-line"></div>
+                            <span class="tactical-title">Narrativa: "Business Partner"</span>
+                            <span class="tactical-text">Posicionamento de sociedade, não de vaga de emprego.</span>
                         </div>
-                        <div style="font-size: 2rem; color: var(--corp-orange);">→</div>
-                        <div style="text-align:right;">
-                            <span style="display:block; font-size:0.8rem; text-transform:uppercase; color:var(--corp-orange);">Novos Sócios</span>
-                            <span class="big-number" style="font-size: 3rem;">150</span>
+                        <div class="tactical-item">
+                            <div class="tactical-line"></div>
+                            <span class="tactical-title">Filtro: "MBA Prático"</span>
+                            <span class="tactical-text">Triagem cultural rigorosa antes do contrato.</span>
                         </div>
                     </div>
-                    <div class="info-card full">
-                        <p class="card-text" style="text-align: center;">
-                            Taxa de Conversão Conservadora: <strong>10%</strong><br>
-                            (Filtro de Cultura/DNA rigoroso)
-                        </p>
+                </div>
+                <div class="content-right">
+                    <div style="margin-bottom: 40px;">
+                        <span class="metric-desc" style="margin-bottom: 5px;">Triagem Inicial (Candidatos)</span>
+                        <span class="metric-val" style="font-size: 3rem; color: var(--corp-gray); opacity: 0.5;">1.500</span>
+                    </div>
+                    <div style="margin-bottom: 40px; padding-left: 20px; border-left: 2px solid var(--corp-orange);">
+                        <span class="metric-desc" style="margin-bottom: 5px; color: var(--corp-orange);">Novos Sócios Aprovados</span>
+                        <span class="metric-val">150</span>
+                    </div>
+                    <div>
+                        <span class="metric-desc">Taxa de Conversão: 10% (Alta Qualidade)</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="slide-4">
-            <div class="split-screen">
-                <div>
-                    <span class="tag-orange">OKR 3: Posicionamento</span>
-                    <h2>Autoridade &<br>Branded House</h2>
-                    <p class="subtitle">Ser referência incontestável em Metodologia e Tecnologia.</p>
-                    
-                    <ul class="strategy-list">
-                        <li><strong>Unificação (KR 3.2):</strong> Fim das "marcas órfãs". Hub, FTR e Holdings sob identidade monolítica até 30/Março.</li>
-                        <li><strong>Spokespersons (KR 3.3):</strong> Alex Terek e Thomas Franco posicionados como "Top Voices".</li>
-                        <li><strong>Imprensa Tier-1:</strong> Gerar notícias, não opiniões.</li>
-                    </ul>
+            <div class="layout-split">
+                <div class="content-left">
+                    <span class="label-orange">OKR 3: Posicionamento</span>
+                    <h2>Branded House &<br>Autoridade</h2>
+                    <p>
+                        Unificação total das marcas (Hub, FTR, Holdings) sob uma única bandeira até 30 de Março.
+                    </p>
+                    <div class="tactical-list">
+                        <div class="tactical-item">
+                            <span class="tactical-title">Spokespersons</span>
+                            <span class="tactical-text">Alex Terek e Thomas Franco posicionados como "Top Voices" e líderes intelectuais.</span>
+                        </div>
+                        <div class="tactical-item">
+                            <span class="tactical-title">Imprensa Tier-1</span>
+                            <span class="tactical-text">Publicação de Relatórios de Inteligência baseados em dados do Oráculo.</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="info-card full" style="padding: 40px;">
-                    <h3>Ativo Estratégico (KR 3.1)</h3>
-                    <span class="big-number" style="font-size: 2.5rem; margin-bottom: 15px; display:block;">Relatório de Inteligência Oráculo</span>
-                    <p class="card-text">
-                        Usar nossa base de dados para pautar o mercado. <br>
-                        <em>Ex: "O perfil de endividamento da classe média alta."</em>
+                <div class="content-right">
+                    <div class="quote-box" style="font-size: 1.8rem;">
+                        "O mercado tem opiniões. Nós temos dados. O <strong style="color: var(--corp-orange);">Relatório Oráculo</strong> pauta a imprensa com a verdade financeira do brasileiro."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide-5">
+            <div class="layout-split">
+                <div class="content-left">
+                    <span class="label-orange">OKR 4: LTV & Cross-Sell</span>
+                    <h2>Engenharia de<br>Ciclo de Vida</h2>
+                    <p>
+                        Acabar com a dependência da memória do consultor. O sistema vende a próxima solução.
+                    </p>
+                    <div class="tactical-list">
+                        <div class="tactical-item">
+                            <div class="tactical-line"></div>
+                            <span class="tactical-title">Automação (KR 4.2)</span>
+                            <span class="tactical-text">Gatilhos automáticos (ex: Liquidez > 500k) ofertam produtos sem intervenção humana.</span>
+                        </div>
+                        <div class="tactical-item">
+                            <div class="tactical-line"></div>
+                            <span class="tactical-title">Portas Laterais (KR 4.3)</span>
+                            <span class="tactical-text">Ferramentas como "Revelador de Crédito Oculto" captam direto para as BUs.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-right">
+                    <div style="margin-bottom: 50px;">
+                        <span class="metric-val">R$ 15MM</span>
+                        <span class="metric-desc">Receita Cruzada (Cross-Sell)</span>
+                    </div>
+                    <div>
+                        <span class="metric-val" style="font-size: 3.5rem;">1.5</span>
+                        <span class="metric-desc">Índice Densidade (Soluções/Cliente)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide-6">
+            <div class="layout-split">
+                <div class="content-left">
+                    <span class="label-orange">OKR 5: Série A (Valuation)</span>
+                    <h2>A Narrativa para<br>o Capital</h2>
+                    <p>
+                        Tese de Investimento: Somos uma <strong>Data Company</strong>. O Oráculo reduz custo de servir e aumenta LTV.
+                    </p>
+                    <div class="tactical-list">
+                        <div class="tactical-item">
+                            <span class="tactical-title">Meta de Captação</span>
+                            <span class="tactical-text">R$ 6.000.000,00 e Preparação de Governança.</span>
+                        </div>
+                        <div class="tactical-item">
+                            <span class="tactical-title">Alvo</span>
+                            <span class="tactical-text">10 Parceiros Estratégicos (Family Offices/Bancos).</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-right">
+                    <div style="margin-bottom: 40px;">
+                        <span class="metric-desc">Ativo de Recrutamento (Emoção)</span>
+                        <span class="metric-val" style="font-size: 2rem;">"O Manifesto do Protagonista"</span>
+                    </div>
+                    <div>
+                        <span class="metric-desc">Ativo de Investimento (Razão)</span>
+                        <span class="metric-val" style="font-size: 2rem; color: var(--corp-orange);">"The Scalability Thesis"</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide-7" style="display: block; padding-top: 15vh;">
+            <div style="text-align: center; margin-bottom: 5rem;">
+                <h2>O Caminho 2026</h2>
+            </div>
+            
+            <div style="display: flex; justify-content: space-around; max-width: 1400px; margin: 0 auto; text-align: left;">
+                
+                <div style="flex: 1; padding: 0 40px; border-right: 1px solid var(--grid-line);">
+                    <span style="font-family: var(--font-display); font-size: 5rem; color: var(--corp-gray); opacity: 0.2; line-height: 1;">01</span>
+                    <h3 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--corp-orange); margin: 10px 0;">TRAZER</h3>
+                    <p style="font-size: 1rem;">R$ 5MM Receita<br>+150 Sócios</p>
+                </div>
+
+                <div style="flex: 1; padding: 0 40px; border-right: 1px solid var(--grid-line);">
+                    <span style="font-family: var(--font-display); font-size: 5rem; color: var(--corp-gray); opacity: 0.2; line-height: 1;">02</span>
+                    <h3 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--corp-orange); margin: 10px 0;">RENTABILIZAR</h3>
+                    <p style="font-size: 1rem;">R$ 15MM Cross-Sell<br>Automação Total</p>
+                </div>
+
+                <div style="flex: 1; padding: 0 40px;">
+                    <span style="font-family: var(--font-display); font-size: 5rem; color: var(--corp-gray); opacity: 0.2; line-height: 1;">03</span>
+                    <h3 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--corp-orange); margin: 10px 0;">VALORIZAR</h3>
+                    <p style="font-size: 1rem;">Data-Driven<br>Roadshow Série A</p>
+                </div>
+
+            </div>
+            <div class="footer-ref" style="width: 100%; text-align: center; left: 0; bottom: 50px;">FUTURO CORP © 2026 | CONFIDENCIAL</div>
+        </section>
+
+    </div>
+
+    <script>
+        // LÓGICA DE NAVEGAÇÃO
+        const dots = document.querySelectorAll('.dot');
+        const sections = document.querySelectorAll('section');
+
+        function scrollToSlide(index) {
+            sections[index].scrollIntoView({ behavior: 'smooth' });
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    dots.forEach(d => d.classList.remove('active'));
+                    const index = entry.target.id.split('-')[1];
+                    if(dots[index]) dots[index].classList.add('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(s => observer.observe(s));
+    </script>
+</body>
+</html>
